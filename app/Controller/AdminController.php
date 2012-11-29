@@ -8,7 +8,7 @@
 App::import('Vendor', 'TopApi');
 
 class AdminController extends AppController{
-	public $uses = array('Item', 'Cat', 'Content', 'Favors', 'users', 'Thumbs');
+	public $uses = array('Item', 'Cat', 'Content', 'Favors', 'users');
 
 
 	/**
@@ -35,9 +35,25 @@ class AdminController extends AppController{
 	/**
 	* ======================== Item method Below above category method ===========================
 	*/
-	public function item($id){
-	   $data = $this->getItemById($id);
-   	   pr($data);
+	public function itemsadd($url){
+	    if(isset($_POST['urls'])){
+		$record;
+		$arr = preg_split("/([^\S]+)\n/", $_POST['urls']);
+	        $api = new TopApi();
+		foreach($arr as $row){
+		   //echo $row;
+		    $num_iid = $api->get_id($row);
+		    $resq = $api->fetch($num_iid);
+		    $resq['item']['id'] = '';
+		    $resq['item']['num_iid'] = $num_iid;
+		    if($resq != false && $this->Item->save($resq['item'])){
+			$record['success'][] = $num_iid;		
+		    }
+		    else{
+			$record['failed'][] = $num_iid;	
+		    }
+		}
+	    }
 	}
 
 	/**

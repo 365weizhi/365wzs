@@ -781,3 +781,79 @@
 2012-11-29 14:15:50 Error: [MissingControllerException] Controller class ItemController could not be found.
 #0 /var/www/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2012-11-29 19:42:17 Error: [MissingViewException] View file "/var/www/365wzs/app/View/Admin/itemsadd.ctp" is missing.
+#0 /var/www/365wzs/lib/Cake/View/View.php(473): View->_getViewFileName(NULL)
+#1 /var/www/365wzs/lib/Cake/Controller/Controller.php(956): View->render(NULL, NULL)
+#2 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(193): Controller->render()
+#3 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(AdminController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-11-29 19:42:34 Error: [MissingViewException] View file "/var/www/365wzs/app/View/Admin/itemsadd.ctp" is missing.
+#0 /var/www/365wzs/lib/Cake/View/View.php(473): View->_getViewFileName(NULL)
+#1 /var/www/365wzs/lib/Cake/Controller/Controller.php(956): View->render(NULL, NULL)
+#2 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(193): Controller->render()
+#3 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(AdminController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-11-29 19:42:50 Error: [MissingViewException] View file "/var/www/365wzs/app/View/Admin/items_add.ctp" is missing.
+#0 /var/www/365wzs/lib/Cake/View/View.php(473): View->_getViewFileName(NULL)
+#1 /var/www/365wzs/lib/Cake/Controller/Controller.php(956): View->render(NULL, NULL)
+#2 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(193): Controller->render()
+#3 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(AdminController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-11-29 19:43:10 Error: [MissingViewException] View file "/var/www/365wzs/app/View/Admin/itemsadd.ctp" is missing.
+#0 /var/www/365wzs/lib/Cake/View/View.php(473): View->_getViewFileName(NULL)
+#1 /var/www/365wzs/lib/Cake/Controller/Controller.php(956): View->render(NULL, NULL)
+#2 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(193): Controller->render()
+#3 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(AdminController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-11-29 20:09:36 Error: Fatal Error (4): syntax error, unexpected ';' in [/var/www/365wzs/app/Controller/AdminController.php, line 40]
+2012-11-29 20:09:36 Error: [FatalErrorException] syntax error, unexpected ';'
+#0 /var/www/365wzs/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/365wzs...', 40)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/365wzs...', 40, Array)
+#2 /var/www/365wzs/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/365wzs...', 40, Array)
+#3 /var/www/365wzs/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-11-29 20:17:52 Error: Fatal Error (64): Cannot redeclare class Lotus in [/var/www/365wzs/app/Vendor/TopApi/lotusphp_runtime/Lotus.php, line 3]
+2012-11-29 20:17:52 Error: [FatalErrorException] Cannot redeclare class Lotus
+#0 /var/www/365wzs/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', '/var/www/365wzs...', 3)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', '/var/www/365wzs...', 3, Array)
+#2 /var/www/365wzs/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', '/var/www/365wzs...', 3, Array)
+#3 /var/www/365wzs/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-11-29 20:21:05 Error: Fatal Error (64): Cannot redeclare class Lotus in [/var/www/365wzs/app/Vendor/TopApi/lotusphp_runtime/Lotus.php, line 3]
+2012-11-29 20:21:05 Error: [FatalErrorException] Cannot redeclare class Lotus
+#0 /var/www/365wzs/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', '/var/www/365wzs...', 3)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', '/var/www/365wzs...', 3, Array)
+#2 /var/www/365wzs/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', '/var/www/365wzs...', 3, Array)
+#3 /var/www/365wzs/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-11-29 20:30:08 Error: Fatal Error (64): Cannot redeclare class Lotus in [/var/www/365wzs/app/Vendor/TopApi/lotusphp_runtime/Lotus.php, line 3]
+2012-11-29 20:30:08 Error: [FatalErrorException] Cannot redeclare class Lotus
+#0 /var/www/365wzs/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', '/var/www/365wzs...', 3)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', '/var/www/365wzs...', 3, Array)
+#2 /var/www/365wzs/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', '/var/www/365wzs...', 3, Array)
+#3 /var/www/365wzs/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-11-29 20:30:17 Error: Fatal Error (64): Cannot redeclare class Lotus in [/var/www/365wzs/app/Vendor/TopApi/lotusphp_runtime/Lotus.php, line 3]
+2012-11-29 20:30:17 Error: [FatalErrorException] Cannot redeclare class Lotus
+#0 /var/www/365wzs/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', '/var/www/365wzs...', 3)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', '/var/www/365wzs...', 3, Array)
+#2 /var/www/365wzs/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', '/var/www/365wzs...', 3, Array)
+#3 /var/www/365wzs/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-11-29 20:37:34 Error: Fatal Error (4): syntax error, unexpected '{' in [/var/www/365wzs/app/Controller/AdminController.php, line 47]
+2012-11-29 20:37:34 Error: [FatalErrorException] syntax error, unexpected '{'
+#0 /var/www/365wzs/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/365wzs...', 47)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/365wzs...', 47, Array)
+#2 /var/www/365wzs/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/365wzs...', 47, Array)
+#3 /var/www/365wzs/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
