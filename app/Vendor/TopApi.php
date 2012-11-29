@@ -1,13 +1,30 @@
 <?php
 App::import('Vendor', 'TopConfig');
 
-class TopApi{
+class TopApi {
 	
 	function __construct()
 	{
         include "TopApi/TopSdk.php";
 	}
+    /**
+    * Get Item by num_iid
+    * @return object
+    * @author whenjonny
+    */
+    function getItemByNumIid($num_iid, $cid){
+	$c = new TopClient;
+	$c->appkey = APPKEY;
+	$c->secretKey = SECRETKEY;
 
+	$req = new TaobaokeItemsGetRequest;
+    	$req->setFields("num_iid,title,nick,pic_url,price,click_url,commission,commission_rate,commission_num,commission_volume,shop_click_url,seller_credit_score,item_location,volume");
+	$req->setPid(PID);
+	$req->setCid($cid);
+	$req->setKeyword($num_iid);
+	$resp = $c->execute($req);
+	return $resp;
+    }
     /**
      * Search
      * @param string $keyword  
@@ -80,5 +97,72 @@ class TopApi{
         $req->setFields("cid,parent_cid,name,is_parent");
         $req->setParentCid($parentid);
         return $c->execute($req);
+    }
+
+
+    public function fetch($id) {
+	$c = new TopClient;
+	$c->appkey = APPKEY;//$taoke_setting['taobao_appkey'];
+	$c->secretKey = SECRETKEY;//$taoke_setting['taobao_appsecret'];
+	$req = new ItemGetRequest;
+	$req->setFields("detail_url,title,nick,pic_url,price");
+	$req->setNumIid($id);
+	$resp = $c->execute($req);
+	$res=(array)$resp;
+
+	if(isset($res['code'])){
+		return false;
+	}
+       //print_r($resp);exit;
+	if (!isset($resp->item)) {
+		return false;
+	}
+
+	$item = (array) $resp->item;
+	$result = array();
+	$result['item']['num_iid'] = $id;
+	$result['item']['title'] = $item['title'];
+	$result['item']['price'] = $item['price'];
+	$result['item']['pic_url'] = $item['pic_url'];
+	$result['img'][] = $item['pic_url'] . '_310x310.jpg';//210x1000.jpg';
+	$result['img'][] = $item['pic_url'] . '_64x64.jpg';
+	$result['item']['click_url'] = $item['detail_url'];
+
+	$shop_click_url = '';
+	$req = new TaobaokeItemsDetailGetRequest; //$tb_top->load_api('TaobaokeItemsDetailGetRequest');
+	$req->setFields("click_url, shop_click_url, location, cid, nick");
+	$req->setNumIids($id);
+	$req->setPid(PID);
+	$resp = $c->execute($req);
+
+	if (isset($resp->taobaoke_item_details)) {
+		$taoke = (array) $resp->taobaoke_item_details->taobaoke_item_detail;
+		if ($taoke['click_url']) {
+			$result['item']['click_url'] = $taoke['click_url'];
+			$result['item']['item_location'] = $taoke['item']->location->state.$taoke['item']->location->city;
+			$result['item']['shop_click_url'] = $taoke['shop_click_url'];
+			$result['item']['cid'] = $taoke['item']->cid->__toString();
+			$result['item']['content_id'] = $taoke['item']->cid->__toString();
+			$result['item']['nick'] = $taoke['item']->nick->__toString();
+		}
+	}
+//	$result['item']['resq'] = $taoke;
+	return $result;
+    }
+
+    public function get_id($url) {
+	$id = 0;
+	$parse = parse_url($url);
+	if (isset($parse['query'])) {
+		parse_str($parse['query'], $params);
+		if (isset($params['id'])) {
+			$id = $params['id'];
+		} elseif (isset($params['item_id'])) {
+			$id = $params['item_id'];
+		} elseif (isset($params['default_item_id'])) {
+			$id = $params['default_item_id'];
+		}
+	}
+	return $id;
     }
 }

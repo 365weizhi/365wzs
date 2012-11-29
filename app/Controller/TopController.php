@@ -6,7 +6,7 @@ App::import('Vendor', 'TopApi');
 
 class TopController extends AppController{
 	// No Model Import
-	public $uses = array('Item', 'Cat', 'Post', 'Content');
+	public $uses = array('Item', 'Cat', 'Content');
 	// No Auto Render
 	public $autoRender = false;
 	// No Cache Query
@@ -74,13 +74,13 @@ class TopController extends AppController{
 	 */
 	public function saveCategory(){
 		$rt_obj = array();
-		if(isset($_POST['cid']) && isset($_POST['name'])){
+		if(isset($_POST['cid']) && isset($_POST['name']) &&
 			$this->Cat->save(
 				array(
 					'id'=>$_POST['cid'],
 					'name'=>$_POST['name'],
 				)
-			);
+			)) {
 			$rt_obj['MESSAGE'] = "Saved success";
 		}
 		else{
@@ -94,13 +94,13 @@ class TopController extends AppController{
 	 */
 	public function saveContent(){
 		$rt_obj = array();
-		if(isset($_POST['cid']) && isset($_POST['name'])){
+		if(isset($_POST['cid']) && isset($_POST['name']) &&
 			$this->Content->save(
 				array(
 					'id'=>$_POST['cid'],
 					'name'=>$_POST['name'],
 				)
-			);
+			)){
 			$rt_obj['MESSAGE'] = "Saved success";
 		}
 		else{
@@ -133,7 +133,7 @@ class TopController extends AppController{
 	public function saveItem(){
 		$rt_obj = array();
 		if(	isset($_POST['title']) && isset($_POST['cat_id']) && isset($_POST['content_id'])
-			&& isset($_POST['click_url']) && isset($_POST['price'])	&& isset($_POST['nick'])) {
+			&& isset($_POST['click_url']) && isset($_POST['price'])	&& isset($_POST['nick']) && 
 			$data = array(
 				'title' => $_POST['title'],
 				'num_iid' => $_POST['num_iid'],
@@ -153,7 +153,7 @@ class TopController extends AppController{
 				'commission' => isset($_POST['commission'])?$_POST['commission']:'',
 				'commission_num' => isset($_POST['commission_num'])?$_POST['commission_num']:'',
 				'commission_volume' => isset($_POST['commission_volume'])?$_POST['commission_volume']:'',
-			);
+			)){
 			
 			/**
 			 * Here We should Resize the image from server before save.

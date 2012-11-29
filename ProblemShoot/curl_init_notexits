@@ -1,0 +1,15 @@
+apt-get安装，因为比起自己编译简单多了，不需要自己配置什么）
+
+# sudo apt-get install curl libcurl3 libcurl3-dev php5-curl
+
+恭喜，PHP5 cURL安装完毕。记得重启Apache服务器
+
+# sudo /etc/init.d/apache2 restart
+
+如果仍然有问题，尝试编辑你的php.ini文件（我的是/etc/php5/apache2/php.ini),在最后加上一行：
+
+extension=curl.so
+
+保存文件后重启Apache服务器。
+
+
