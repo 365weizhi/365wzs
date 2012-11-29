@@ -857,3 +857,34 @@
 #3 /var/www/365wzs/lib/Cake/Core/App.php(899): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2012-11-29 21:56:41 Error: Fatal Error (4): syntax error, unexpected ';' in [/var/www/365wzs/app/Controller/AdminController.php, line 60]
+2012-11-29 21:56:41 Error: [FatalErrorException] syntax error, unexpected ';'
+#0 /var/www/365wzs/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/365wzs...', 60)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/365wzs...', 60, Array)
+#2 /var/www/365wzs/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/365wzs...', 60, Array)
+#3 /var/www/365wzs/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-11-29 21:59:35 Error: [MissingActionException] Action AdminController::<pre class=() could not be found.
+#0 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(AdminController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-11-29 22:00:07 Error: [MissingActionException] Action AdminController::<pre class=() could not be found.
+#0 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(AdminController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-11-29 22:01:26 Error: Fatal Error (4): syntax error, unexpected '[', expecting ']' in [/var/www/365wzs/app/View/Admin/itemslist.ctp, line 21]
+2012-11-29 22:01:26 Error: [FatalErrorException] syntax error, unexpected '[', expecting ']'
+#0 /var/www/365wzs/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/365wzs...', 21)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/365wzs...', 21, Array)
+#2 /var/www/365wzs/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/365wzs...', 21, Array)
+#3 /var/www/365wzs/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-11-29 22:02:22 Error: [MissingActionException] Action AdminController::<pre class=() could not be found.
+#0 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(AdminController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}

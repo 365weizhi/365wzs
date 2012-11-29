@@ -35,7 +35,7 @@ class AdminController extends AppController{
 	/**
 	* ======================== Item method Below above category method ===========================
 	*/
-	public function itemsadd($url){
+	public function itemsadd(){
 	    if(isset($_POST['urls'])){
 		$record;
 		$arr = preg_split("/([^\S]+)\n/", $_POST['urls']);
@@ -54,6 +54,10 @@ class AdminController extends AppController{
 		    }
 		}
 	    }
+	}
+
+	public function itemslist(){
+	    $this->set('data', $this->Item->find('all'));
 	}
 
 	/**
