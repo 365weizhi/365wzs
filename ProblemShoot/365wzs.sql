@@ -71,12 +71,13 @@ DROP TABLE IF EXISTS `365wzs_favors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `365wzs_favors` (
-  `id` int(128) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `item_id` int(128) NOT NULL,
-  `status` int(1) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `descs` varchar(128) NOT NULL,
+  `click_count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,6 +86,7 @@ CREATE TABLE `365wzs_favors` (
 
 LOCK TABLES `365wzs_favors` WRITE;
 /*!40000 ALTER TABLE `365wzs_favors` DISABLE KEYS */;
+INSERT INTO `365wzs_favors` VALUES (1,1,1,'hello',0);
 /*!40000 ALTER TABLE `365wzs_favors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,8 +98,8 @@ DROP TABLE IF EXISTS `365wzs_items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `365wzs_items` (
-  `id` int(128) unsigned NOT NULL AUTO_INCREMENT,
-  `num_iid` int(11) NOT NULL,
+  `id` int(128) NOT NULL AUTO_INCREMENT,
+  `num_iid` varchar(50) NOT NULL,
   `nick` varchar(128) NOT NULL,
   `title` varchar(128) NOT NULL,
   `cid` int(128) NOT NULL,
@@ -105,7 +107,7 @@ CREATE TABLE `365wzs_items` (
   `click_url` varchar(512) NOT NULL,
   `shop_click_url` varchar(512) NOT NULL,
   `pic_url` varchar(128) NOT NULL,
-  `thumb_id` varchar(128) NOT NULL,
+  `thumb` int(1) DEFAULT '0',
   `price` float NOT NULL,
   `item_location` varchar(128) NOT NULL,
   `commission_rate` float DEFAULT NULL,
@@ -114,8 +116,9 @@ CREATE TABLE `365wzs_items` (
   `commission_volume` float DEFAULT NULL,
   `volume` int(11) DEFAULT NULL,
   `click_count` int(128) DEFAULT '0',
+  PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +127,7 @@ CREATE TABLE `365wzs_items` (
 
 LOCK TABLES `365wzs_items` WRITE;
 /*!40000 ALTER TABLE `365wzs_items` DISABLE KEYS */;
-INSERT INTO `365wzs_items` VALUES (1,1,'','',1,1,'','','','1',1,'1',1,1,'',1,1,1);
+INSERT INTO `365wzs_items` VALUES (26,'16466838268','y1983827741','2012æ–°æ¬¾è€å…‹ç™»å±±å¥³éž‹2018åŠ ç»’ NIKEåŠ æ¯›ç§‹å†¬æ¬¾å¤šè‰²ä¼‘é—²è¿åŠ¨çŽ°è´§',50012036,50012036,'http://s.click.taobao.com/t?e=zGU34CA7K%2BPkqB07S4%2FK0CITy7klxn%2F7bvn0ay1DdMFcTPSdVR%2FMm1IKi15%2FIzi1W%2Bb%2FzExp%2BYlkNr9Cu1DUftHFKfnUkrWFtPQUIcG9vCRyDRPM5HLy31QlzEegTyDhBJhwi3JNAhObFyWIAgth19mqP8Kuy62y4Z43c%2BrH5%2FNVdZIVocS9OYqJdBTAKeUO%2FKU%3D&spm=2014.12673864.1.0','http://s.click.taobao.com/t?e=zGU34CA7K%2BPkqB04MQzdgG69RGcaJPb63yl1mhX76yQU9sOism%2BckgxNiYfCCJJUM2NlmDk7z2k366TQwXNQiBK3u177RSQvxP3QK15jyjrWjPOWCJsA6iGTitsjCCxw09iHPHF7WjbnUZOtcUczlFNJw0FM12Wka7vj%2FciQEQ3U9osn&spm=2014.12673864.1.0','http://img05.taobaocdn.com/bao/uploaded/i5/T1hGaJXeJpXXXk3SQ6_062744.jpg',0,568,'ç¦å»ºåŽ¦é—¨',NULL,NULL,NULL,NULL,NULL,0),(27,'17963407096','èŒ¶èŒ¶hx','æ­£å“ è€å…‹Nike Zoom Rookie penny ç°è“å–· ç¯®çƒ è¿åŠ¨ ä¹”ä¸¹éž‹ ç”·éž‹',50012031,50012031,'http://s.click.taobao.com/t?e=zGU34CA7K%2BPkqB07S4%2FK0CITy7klxn%2F7bvn0ay1DdMFcTPSdVR%2FMm1IKi15%2FIzi1W%2Bb%2FzExp%2BYlkNr9Cu1DUftHFKfnUkr7Ja4utsUx70UdOgcsOUqYDwHAnNkhANbZbCuYm7T%2FxXEWobsVlxr66yx07OVmv%2FUqO1x5aoQnX9wOQmu%2FEu%2BAVeMfnfUZwO9QpUe0%3D&spm=2014.12673864.1.0','http://s.click.taobao.com/t?e=zGU34CA7K%2BPkqB04MQzdgG69RGcaJPb63yl1mhX76yQU9sOism%2BckgxNiYfCCJJUM2NlmDk7z2k366TQwXNQiBK3u177RS9xRj12gRKXbqogpf6sptxnWIhazvuUb9yfcbb3Iny7A4I14QtXR6rB%2B2RNyKSu0MiMzJabmtI%2FJ4YBe28q&spm=2014.12673864.1.0','http://img01.taobaocdn.com/bao/uploaded/i1/T1kG29XflkXXcFn935_060132.jpg',0,949,'å¹¿ä¸œä¸œèŽž',NULL,NULL,NULL,NULL,NULL,0),(28,'20929112868','èŒ¶èŒ¶hx','æ­£å“è€å…‹ NIKE AIR JORDAN 9 RETRO AJ9é™é‡ ç¯®çƒ è¿åŠ¨ å›žåŠ› ç”·éž‹',50012031,50012031,'http://s.click.taobao.com/t?e=zGU34CA7K%2BPkqB07S4%2FK0CITy7klxn%2F7bvn0ay1DdMFcTPSdVR%2FMm1IKi15%2FIzi1W%2Bb%2FzExp%2BYlkNr9Cu1DUftHFKfnUkr7Ja4utsUx70UdOgcsOUqYDwHAnNkhANbZbCuYm7T%2FxXEWobsVlxr66yx07OVmv%2FUqO1x5aoQnX9wOQmu%2FEu%2BAVe9Ov38q5HRyXsRk%3D&spm=2014.12673864.1.0','http://s.click.taobao.com/t?e=zGU34CA7K%2BPkqB04MQzdgG69RGcaJPb63yl1mhX76yQU9sOism%2BckgxNiYfCCJJUM2NlmDk7z2k366TQwXNQiBK3u177RS9xRj12gRKXbqogpf6sptxnWIhazvuUb9yfcbb3Iny7A4I14QtXR6rB%2B2RNyKSu0MiMzJabmtI%2FJ4YBe28q&spm=2014.12673864.1.0','http://img02.taobaocdn.com/bao/uploaded/i2/T1qJT8XfhcXXXr.aE__105343.jpg',0,580,'å¹¿ä¸œä¸œèŽž',NULL,NULL,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `365wzs_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,13 +139,13 @@ DROP TABLE IF EXISTS `365wzs_posts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `365wzs_posts` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `body` text COLLATE utf8_unicode_ci,
-  `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `descs` varchar(128) NOT NULL,
+  `click_count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +154,7 @@ CREATE TABLE `365wzs_posts` (
 
 LOCK TABLES `365wzs_posts` WRITE;
 /*!40000 ALTER TABLE `365wzs_posts` DISABLE KEYS */;
-INSERT INTO `365wzs_posts` VALUES (1,'The title','Thisis the post body.','2012-11-22 11:17:13',NULL),(2,'A title once again','And the post body follows.','2012-11-22 11:17:13',NULL),(3,'Title strikes back','This is really exciting! Not.','2012-11-22 11:17:13',NULL),(4,'Test Blog','Blog input value\r\n','2012-11-22 04:12:16','2012-11-22 04:12:16'),(5,'Test Blog 2','Test blog value','2012-11-22 04:12:49','2012-11-22 04:12:49'),(6,'Test Blog 2','Test blog value','2012-11-22 04:13:03','2012-11-22 04:13:03'),(7,'test component','Session','2012-11-22 04:13:49','2012-11-22 04:13:49'),(8,'12','2','2012-11-22 05:31:25','2012-11-22 05:31:25'),(9,'12','2','2012-11-22 05:31:39','2012-11-22 05:31:39'),(10,'12123',NULL,'2012-11-22 05:31:54','2012-11-22 05:31:54'),(11,'NULL','','2012-11-22 05:31:54','2012-11-22 05:31:54');
+INSERT INTO `365wzs_posts` VALUES (1,1,1,'Test the first time',0),(2,1,1,'helloworld',0);
 /*!40000 ALTER TABLE `365wzs_posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,7 +198,7 @@ CREATE TABLE `365wzs_users` (
   `password` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,6 +207,7 @@ CREATE TABLE `365wzs_users` (
 
 LOCK TABLES `365wzs_users` WRITE;
 /*!40000 ALTER TABLE `365wzs_users` DISABLE KEYS */;
+INSERT INTO `365wzs_users` VALUES (1,'username','5f4dcc3b5aa765d61d8327deb882cf99','test@qq.com'),(2,'username','5f4dcc3b5aa765d61d8327deb882cf99','email@qq.com'),(3,'username2','5f4dcc3b5aa765d61d8327deb882cf99','email@qq.com');
 /*!40000 ALTER TABLE `365wzs_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -216,4 +220,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-29 19:15:06
+-- Dump completed on 2012-12-09 11:21:34
