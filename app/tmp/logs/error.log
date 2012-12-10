@@ -888,3 +888,148 @@
 #1 /var/www/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(AdminController), Object(CakeRequest), Object(CakeResponse))
 #2 /var/www/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2012-12-09 11:32:34 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+#0 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Datasource/DboSource.php(261): Mysql->connect()
+#1 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/ConnectionManager.php(101): DboSource->__construct(Array)
+#2 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(3157): ConnectionManager::getDataSource('default')
+#3 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(1092): Model->setDataSource('default')
+#4 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(3179): Model->setSource('items')
+#5 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(2630): Model->getDataSource()
+#6 /Users/Aquietzero/Sites/365wzs/app/Controller/MainController.php(6): Model->find('all')
+#7 [internal function]: MainController->index()
+#8 /Users/Aquietzero/Sites/365wzs/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MainController), Array)
+#9 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#10 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(MainController), Object(CakeRequest), Object(CakeResponse))
+#11 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /Users/Aquietzero/Sites/365wzs/index.php(42): require('/Users/Aquietze...')
+#13 {main}
+2012-12-09 11:32:35 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+#0 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Datasource/DboSource.php(261): Mysql->connect()
+#1 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/ConnectionManager.php(101): DboSource->__construct(Array)
+#2 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(3157): ConnectionManager::getDataSource('default')
+#3 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(1092): Model->setDataSource('default')
+#4 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(3179): Model->setSource('items')
+#5 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(2630): Model->getDataSource()
+#6 /Users/Aquietzero/Sites/365wzs/app/Controller/MainController.php(6): Model->find('all')
+#7 [internal function]: MainController->index()
+#8 /Users/Aquietzero/Sites/365wzs/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MainController), Array)
+#9 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#10 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(MainController), Object(CakeRequest), Object(CakeResponse))
+#11 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /Users/Aquietzero/Sites/365wzs/index.php(42): require('/Users/Aquietze...')
+#13 {main}
+2012-12-09 11:32:48 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+#0 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Datasource/DboSource.php(261): Mysql->connect()
+#1 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/ConnectionManager.php(101): DboSource->__construct(Array)
+#2 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(3157): ConnectionManager::getDataSource('default')
+#3 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(1092): Model->setDataSource('default')
+#4 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(3179): Model->setSource('items')
+#5 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(2630): Model->getDataSource()
+#6 /Users/Aquietzero/Sites/365wzs/app/Controller/MainController.php(6): Model->find('all')
+#7 [internal function]: MainController->index()
+#8 /Users/Aquietzero/Sites/365wzs/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MainController), Array)
+#9 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#10 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(MainController), Object(CakeRequest), Object(CakeResponse))
+#11 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /Users/Aquietzero/Sites/365wzs/index.php(42): require('/Users/Aquietze...')
+#13 {main}
+2012-12-09 11:32:49 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+#0 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Datasource/DboSource.php(261): Mysql->connect()
+#1 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/ConnectionManager.php(101): DboSource->__construct(Array)
+#2 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(3157): ConnectionManager::getDataSource('default')
+#3 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(1092): Model->setDataSource('default')
+#4 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(3179): Model->setSource('items')
+#5 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(2630): Model->getDataSource()
+#6 /Users/Aquietzero/Sites/365wzs/app/Controller/MainController.php(6): Model->find('all')
+#7 [internal function]: MainController->index()
+#8 /Users/Aquietzero/Sites/365wzs/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MainController), Array)
+#9 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#10 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(MainController), Object(CakeRequest), Object(CakeResponse))
+#11 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /Users/Aquietzero/Sites/365wzs/index.php(42): require('/Users/Aquietze...')
+#13 {main}
+2012-12-09 12:09:28 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+#0 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Datasource/DboSource.php(261): Mysql->connect()
+#1 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/ConnectionManager.php(101): DboSource->__construct(Array)
+#2 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(3157): ConnectionManager::getDataSource('default')
+#3 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(1092): Model->setDataSource('default')
+#4 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(3179): Model->setSource('items')
+#5 /Users/Aquietzero/Sites/365wzs/lib/Cake/Model/Model.php(2630): Model->getDataSource()
+#6 /Users/Aquietzero/Sites/365wzs/app/Controller/MainController.php(6): Model->find('all')
+#7 [internal function]: MainController->index()
+#8 /Users/Aquietzero/Sites/365wzs/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MainController), Array)
+#9 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#10 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(MainController), Object(CakeRequest), Object(CakeResponse))
+#11 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /Users/Aquietzero/Sites/365wzs/index.php(42): require('/Users/Aquietze...')
+#13 {main}
+2012-12-09 21:39:11 Error: [MissingActionException] Action AdminController::items() could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(AdminController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-12-09 21:39:18 Error: [MissingActionException] Action AdminController::item() could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/Aquietzero/Sites/365wzs/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(AdminController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-12-10 21:59:45 Error: Fatal Error (4): parse error, expecting `'('' in [/Users/Aquietzero/Sites/365wzs/app/View/Main/index.ctp, line 2]
+2012-12-10 21:59:45 Error: [FatalErrorException] parse error, expecting `'(''
+#0 /Users/Aquietzero/Sites/365wzs/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(4, 'parse error, ex...', '/Users/Aquietze...', 2)
+#1 [internal function]: ErrorHandler::handleError(4, 'parse error, ex...', '/Users/Aquietze...', 2, Array)
+#2 /Users/Aquietzero/Sites/365wzs/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 4, 'parse error, ex...', '/Users/Aquietze...', 2, Array)
+#3 /Users/Aquietzero/Sites/365wzs/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-12-10 21:59:52 Error: Fatal Error (4): parse error, expecting `'('' in [/Users/Aquietzero/Sites/365wzs/app/View/Main/index.ctp, line 2]
+2012-12-10 21:59:52 Error: [FatalErrorException] parse error, expecting `'(''
+#0 /Users/Aquietzero/Sites/365wzs/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(4, 'parse error, ex...', '/Users/Aquietze...', 2)
+#1 [internal function]: ErrorHandler::handleError(4, 'parse error, ex...', '/Users/Aquietze...', 2, Array)
+#2 /Users/Aquietzero/Sites/365wzs/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 4, 'parse error, ex...', '/Users/Aquietze...', 2, Array)
+#3 /Users/Aquietzero/Sites/365wzs/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-12-10 22:00:09 Error: Fatal Error (4): parse error, expecting `'('' in [/Users/Aquietzero/Sites/365wzs/app/View/Main/index.ctp, line 2]
+2012-12-10 22:00:09 Error: [FatalErrorException] parse error, expecting `'(''
+#0 /Users/Aquietzero/Sites/365wzs/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(4, 'parse error, ex...', '/Users/Aquietze...', 2)
+#1 [internal function]: ErrorHandler::handleError(4, 'parse error, ex...', '/Users/Aquietze...', 2, Array)
+#2 /Users/Aquietzero/Sites/365wzs/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 4, 'parse error, ex...', '/Users/Aquietze...', 2, Array)
+#3 /Users/Aquietzero/Sites/365wzs/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-12-10 22:00:18 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-10 22:00:39 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-10 22:01:08 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-10 22:01:50 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-10 22:02:09 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-10 22:02:22 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-10 22:02:37 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-10 22:03:06 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-10 22:03:08 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-10 22:03:19 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-10 22:03:37 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-10 22:03:59 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

@@ -62,9 +62,9 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'localhost',
+		'host' => '127.0.0.1',
 		'login' => 'root',
-		'password' => 'loveyou1234',
+		'password' => '479479',
 		'database' => '365wzs',
 		'prefix' => '365wzs_',
 		//'encoding' => 'utf8',
@@ -73,9 +73,9 @@ class DATABASE_CONFIG {
 	public $test = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'localhost',
+		'host' => '127.0.0.1',
 		'login' => 'root',
-		'password' => 'loveyou1234',
+		'password' => '479479',
 		'database' => '365wzs',
 		'prefix' => '365wzs_',
 		//'encoding' => 'utf8',

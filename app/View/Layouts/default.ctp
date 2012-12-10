@@ -30,10 +30,15 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('zero');
 
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
+        echo $this->Html->script('jquery-1.8.3.min');
+        echo $this->Html->script('jquery.masonry.min');
+		echo $this->Html->script('zero');
+
+		# echo $this->fetch('meta');
+		# echo $this->fetch('css');
+		# echo $this->fetch('script');
 	?>
 </head>
 <body>
@@ -42,9 +47,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
 		</div>
 		<div id="content">
-
 			<?php echo $this->Session->flash(); ?>
-
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
