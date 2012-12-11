@@ -1033,3 +1033,39 @@
 2012-12-10 22:03:59 Error: [MissingControllerException] Controller class <preClass=Controller could not be found.
 #0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2012-12-11 21:20:32 Error: [MissingControllerException] Controller class 包邮秋冬新款哥弟面料大码女裤松紧腰弹力小脚裤铅笔裤打底裤靴裤Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-11 21:20:32 Error: [MissingControllerException] Controller class 新款欧美风复古系带马丁靴厚底坡跟短靴女及裸靴子高跟罗马靴Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-11 21:20:32 Error: [MissingControllerException] Controller class 2012秋冬新款韩版显瘦大码小脚哈伦裤女裤休闲裤长裤潮哈伦裤子Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-11 21:20:32 Error: [MissingControllerException] Controller class 呛口小辣椒新秀欧美明星气质尖头羊皮罗马绑带铆钉高跟女单鞋Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-11 21:20:32 Error: [MissingControllerException] Controller class 重磅推荐简约时尚欧美罗马金属装饰夹脚平底凉鞋潮流女Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-11 21:20:32 Error: [MissingControllerException] Controller class 韩国代购正品女鞋2012秋季新品欧美罗马铆钉流行高跟短靴骑士靴Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-11 21:20:32 Error: [MissingControllerException] Controller class 欧美明星昕薇朋克磨砂绒面铆钉刺猬内增高跟鞋系带罗马及裸靴短靴Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-11 21:20:32 Error: [MissingControllerException] Controller class 倩诺伊2012新款欧美时尚铆钉刺猬鞋超高跟鞋镶镏钉单鞋女鞋Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-11 21:20:32 Error: [MissingControllerException] Controller class 欧美复古显瘦高跟防水台侧镂空夜店后跟个性刺猬铆钉深口坡跟单鞋Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-11 21:20:32 Error: [MissingControllerException] Controller class Gracegift手工钩织毛线短靴可爱球球平底雪地靴2010-17Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-11 21:20:32 Error: [MissingControllerException] Controller class 韩国夜店时尚漆皮超高细跟刺猬鞋防狼鞋铆钉鱼嘴撞色高跟单鞋727Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-12-11 21:20:32 Error: [MissingControllerException] Controller class 欧洲站RIVERISLAND欧美尖头铆钉金属装饰细跟超高跟鞋刺猬女单鞋Controller could not be found.
+#0 /Users/Aquietzero/Sites/365wzs/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
