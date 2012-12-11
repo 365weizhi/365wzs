@@ -1,4 +1,3 @@
-
 <div id="cascade-container">
     <?php foreach ($items as $item) { ?>
         <div class="image-block">

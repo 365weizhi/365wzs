@@ -29,11 +29,13 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		# echo $this->Html->css('cake.generic');
+		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('zero');
 
         echo $this->Html->script('jquery-1.8.3.min');
         echo $this->Html->script('jquery.masonry.min');
+        echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('zero');
 
 		# echo $this->fetch('meta');
@@ -42,23 +44,44 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	?>
 </head>
 <body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
-		</div>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">365未知数</a>
+                <ul class="nav pull-right">
+                    <li><a href="#">分享</a></li>
+                    <li class="active"><a href="#">专刊</a></li>
+                    <li><a href="#">小组</a></li>
+                    <li><a href="#">偷偷喜欢</a></li>
+                    <li><a href="#">消息</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tabbable tabbable-fixed">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">未知专刊</a></li>
+                <li><a href="#tab2" data-toggle="tab">分享天地</a></li>
+                <li><a href="#tab3" data-toggle="tab">未知小组</a></li>
+                <li><a href="#tab4" data-toggle="tab">未知达人</a></li>
+                <li><a href="#tab5" data-toggle="tab">探索未知</a></li>
+                <li><a href="#tab6" data-toggle="tab">官方活动</a></li>
+            </ul>
+        </div>
+
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false)
-				);
-			?>
-		</div>
+
+        <hr />
+        
+		<footer>
+            <p class="muted">All rights reserved by 365wzs &copy; 2012~2013</p>
+		</footer>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php # echo $this->element('sql_dump'); ?>
 </body>
 </html>

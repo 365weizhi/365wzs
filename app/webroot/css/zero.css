@@ -1,5 +1,18 @@
+body {
+    padding-top: 60px;
+}
+
+footer {
+    text-align: center;
+    clear: both;
+}
+
+#cascade-container {
+    margin: 0 auto;
+}
+
 .image-block {
-    margin: 20px;
+    margin: 10px;
     float: left;
     border: solid 1px #ddd;
     box-shadow: 0 0 5px #999;
@@ -8,3 +21,4 @@
 .image-block img {
     width: 200px;
 }
+
