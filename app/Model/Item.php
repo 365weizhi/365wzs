@@ -1,40 +1,124 @@
-<?php 
-APP::import('Vendor', 'ImageGD/Resize');
-class Item extends Model{
-	public $name = "Item";
-	
-	
-	/**
-	 * 图片大小处理先放着，后续再做
-	 * @param unknown_type $image_source_url
-	 * @param unknown_type $image_new_name
-	 */
-	public function saveImage($image_source_url,$image_new_name){
-		// 判断是否存在images目录并创建，能写到try-catch里更好
-		if(!is_dir(APP.'images')){
-			mkdir(APP.'images',0777);
-		}
-		
-        if(preg_match("/jpg/i",$image_source_url)){
-            $src_im = imagecreatefromjpeg($image_source_url);
-            if(!$src_im){
-                throw new Exception("载入jpeg图片错误！");
-            }
-            return resizeImage($src_im,230,230,'images/',$image_new_name,'.jpg');
-        }else if(preg_match("/png/i",$image_source_url)){
-            $src_im = imagecreatefrompng($image_source_url);
-            if(!$src_im){
-                throw new Exception("载入png图片错误！");
-            }
-            return resizeImage($src_im,230,230,'images/',$image_new_name,'.png');
-        }else if(preg_match("/gif/i",$image_source_url)){
-            $src_im = imagecreatefromgif($image_source_url);
-            if(!$src_im){
-                throw new Exception("载入gif图片错误！");
-            }
-            return resizeImage($src_im,230,230,'images/',$image_new_name,'.gif');
-        }
-        throw new Exception("无法识别的图片类型！");
-	}
+<?php
+App::uses('AppModel', 'Model');
+/**
+ * Item Model
+ *
+ * @property Content $Content
+ * @property Favor $Favor
+ * @property Like $Like
+ * @property Message $Message
+ * @property Post $Post
+ * @property Category $Category
+ */
+class Item extends AppModel {
+
+/**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'title';
+
+
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'Content' => array(
+			'className' => 'Content',
+			'foreignKey' => 'content_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Favor' => array(
+			'className' => 'Favor',
+			'foreignKey' => 'item_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Like' => array(
+			'className' => 'Like',
+			'foreignKey' => 'item_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Message' => array(
+			'className' => 'Message',
+			'foreignKey' => 'item_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Post' => array(
+			'className' => 'Post',
+			'foreignKey' => 'item_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
+
+/**
+ * hasAndBelongsToMany associations
+ *
+ * @var array
+ */
+	public $hasAndBelongsToMany = array(
+		'Category' => array(
+			'className' => 'Category',
+			'joinTable' => 'items_categories',
+			'foreignKey' => 'item_id',
+			'associationForeignKey' => 'category_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		)
+	);
+
 }
-?>

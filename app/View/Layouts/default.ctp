@@ -29,7 +29,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<?php
 		echo $this->Html->meta('icon');
 
-		# echo $this->Html->css('cake.generic');
+		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('zero');
 
@@ -38,9 +38,9 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('zero');
 
-		# echo $this->fetch('meta');
-		# echo $this->fetch('css');
-		# echo $this->fetch('script');
+		echo $this->fetch('meta');
+		echo $this->fetch('css');
+		echo $this->fetch('script');
 	?>
 </head>
 <body>

@@ -1,7 +1,7 @@
 <form method="post">
-    <input type="text" name="User[username]" />
-    <input type="password" name="User[password]" />
-    <input type="email" name="User[email]" />
+    <input type="text" name="username" />
+    <input type="password" name="password" />
+    <input type="email" name="email" />
     <button type="submit" >Submit</button>
 <form>
 
