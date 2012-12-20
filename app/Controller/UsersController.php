@@ -21,6 +21,17 @@ class UsersController extends AppController {
         }
     }
 
+    public function users(){
+        $this->autoRender = false;
+        $this->User->recursive = -1;
+        $users = $this->User->find("all", array(
+            'fields'=>array(
+                'User.id',
+                'User.username'
+            )
+        ));
+        echo json_encode($users);
+    }
 
  /**
  * not Support user visit all users pages now

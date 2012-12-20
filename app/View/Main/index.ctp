@@ -8,6 +8,9 @@
             <a href="<?php echo $this->webroot."likes/add/".$item['Item']['id'];?>" >
             Like(<?php echo $item['Item']['like_count'];?>)
             </a>
+            <a href="<?php echo $this->webroot."messages/add/".$item['Item']['id'];?>">
+            @
+            </a>
                 <img src="<?php echo $item['Item']['pic_url']; ?>" alt="" />
             </div>
             <div class="image-info">
