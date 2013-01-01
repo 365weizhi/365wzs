@@ -1,8 +1,10 @@
-app/Config/
-app/tmp/
-lib/Cake/Console/Templates/skel/tmp/
-plugins/
-vendors/
+app/Config/database.php
+app/Config/database.php.default
+app/Vendor
+app/tmp
+lib
+plugins
+vendors
 build
 dist
 .DS_Store
