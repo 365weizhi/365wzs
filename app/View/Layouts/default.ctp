@@ -49,10 +49,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             <div class="container">
                 <?php echo $this->Html->link('365未知数', array('controller'=>'main', 'action'=>'index'), array('class'=>'brand'))?>
                 <ul class="nav pull-right">
-                    <li><a href="#">分享</a></li>
                     <li class="active"><a href="#">专刊</a></li>
                     <li><a href="#">小组</a></li>
-                    <li><a href="#">偷偷喜欢</a></li>
                     <li><a href="#">消息</a></li>
                     <li><?php echo $this->Html->link('登陆', array('controller'=>'users', 'action'=>'login')); ?></li>
                     <li><?php echo $this->Html->link('注册', array('controller'=>'users', 'action'=>'register')); ?></li>

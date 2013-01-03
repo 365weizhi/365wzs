@@ -1,108 +1,14 @@
 <div class="items view">
-<h2><?php  echo __('Item'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Num Iid'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['num_iid']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Nick'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['nick']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Title'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['title']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Cid'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['cid']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Content Id'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['content_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Click Url'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['click_url']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Shop Click Url'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['shop_click_url']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Pic Url'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['pic_url']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Thumb'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['thumb']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Price'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['price']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Item Location'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['item_location']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Commission Rate'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['commission_rate']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Commission'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['commission']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Commission Num'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['commission_num']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Commission Volume'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['commission_volume']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Volume'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['volume']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Click Count'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['click_count']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Rank'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['rank']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Description'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['description']); ?>
-			&nbsp;
-		</dd>
-	</dl>
+    <p><?php echo h($item['Item']['title']); ?></p>
+    
+    <img src="<?php echo h($item['Item']['pic_url']); ?>">
+    <a href="<?php echo h($item['Item']['click_url']); ?>">Click URL</a>
+    <a href="<?php echo h($item['Item']['shop_click_url']); ?>">Shop Click URL</a>
+    
+    <p>价钱：￥<?php echo h($item['Item']['price']); ?></p>
+    <p>位置：<?php echo h($item['Item']['item_location']); ?></p>
 </div>
+
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>

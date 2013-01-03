@@ -8,8 +8,7 @@
     <label>密码</label>
     <input type="password" name="password" placeholder="求密码...">
 
-    <div>
-        <button type="submit" class="btn">求验证</button>
-    </div>
+    <br />
+    <button type="submit" class="btn btn-block">求验证</button>
   </fieldset>
 </form>

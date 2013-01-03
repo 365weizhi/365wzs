@@ -1,9 +1,11 @@
 <form method="post">
     <input type="hidden" value=<?php echo $this->Session->read("user_id");?> name="user_id"/>
     <input type="hidden" value=<?php echo $item_id;?> name="item_id"/>
-    description:
+
+    <label class="control-label">Description:</label>
     <textarea name="description"></textarea>
-    <br/>
+
+    <label class="control-label">Contents:</label>
     <select name="content_id">
         <?php
         foreach($contents as $content){
@@ -11,21 +13,10 @@
         }
         ?>
     </select>
-    <br/>
-    <button type="submit" >Submit</button>
+
+    <br />
+    <button class="btn" type="submit" >Submit</button>
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!--
@@ -41,6 +32,7 @@
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
+-->
 
 
 <!--

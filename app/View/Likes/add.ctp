@@ -1,11 +1,11 @@
 <form method="post">
-    Add Like:
-    <br/>
     <input type="hidden" name="user_id" value="<?php echo $this->Session->read("user_id");?>">
     <input type="hidden" name="item_id" value="<?php echo $item_id;?>">
-    <textarea name="description"></textarea>
+
+    <label>Add Like:</label>
+    <textarea name="description" rows="5"></textarea>
     <br/>
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn">Submit</button>
 </form>
 
 <!--

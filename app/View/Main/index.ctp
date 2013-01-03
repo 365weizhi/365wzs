@@ -11,7 +11,9 @@
             <a href="<?php echo $this->webroot."messages/add/".$item['Item']['id'];?>">
             @
             </a>
+            <a href="<?php echo $this->webroot."items/view/".$item['Item']['id'];?>">
                 <img src="<?php echo $item['Item']['pic_url']; ?>" alt="" />
+            </a>
             </div>
             <div class="image-info">
                 <strong>地区:<?php echo $item['Item']['item_location']; ?>&nbsp;&nbsp;&nbsp;价格:<?php echo $item['Item']['price'] ?></strong>
