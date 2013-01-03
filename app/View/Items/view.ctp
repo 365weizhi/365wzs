@@ -1,7 +1,15 @@
 <div class="items view">
     <p><?php echo h($item['Item']['title']); ?></p>
     
+    <a href="<?php echo $this->webroot."favors/add/".$item['Item']['id']; ?>" >
+        Favor(<?php echo $item['Item']['favor_count'];?>)
+    </a>
+    <a href="<?php echo $this->webroot."likes/add/".$item['Item']['id'];?>" >
+        Like(<?php echo $item['Item']['like_count'];?>)
+    </a>
+
     <img src="<?php echo h($item['Item']['pic_url']); ?>">
+
     <a href="<?php echo h($item['Item']['click_url']); ?>">Click URL</a>
     <a href="<?php echo h($item['Item']['shop_click_url']); ?>">Shop Click URL</a>
     
