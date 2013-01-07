@@ -32,4 +32,13 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	public $uid;
+	
+    function beforeFilter(){
+        if($this->Session->check("username") && $this->Session->check("user_id")){
+        	$this->uid = $this->Session->read("user_id");
+        }else{
+            $this->redirect("/users/login");
+        }
+    }
 }

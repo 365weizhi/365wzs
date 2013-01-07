@@ -7,6 +7,32 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
     public $uses = array('User', 'Registration','Content');
+    
+    public function test(){
+    	$this->autoRender= false;
+    }
+    
+    public function send($email, $username, $message){
+    	$this->autoRender = false;
+    	App::import('Vendor', 'JPhpMailer'); 
+		$mail = new JPhpMailer;
+		$mail->CharSet="UTF-8";
+		$mail->IsSMTP();
+//		$mail->HeaderLine($name, $value)
+		$mail->Host = 'smtp.qq.com';
+		$mail->SMTPAuth = true;
+		$mail->Username = 'billqiang@qq.com';
+		$mail->Password = 'wen3101914';
+		$mail->SetFrom('billqiang@qq.com', "365未知树");
+		$mail->Subject = '365未知树 - 官方邮件';
+		//$mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
+		
+		$mail->MsgHTML($message);
+		$mail->AddAddress($email, $username);
+		$mail->Send();
+		$this->Session->setFlash(__('This account has been created, please verify email.'));
+		$this->redirect("/");
+    }
 
     function beforeFilter(){
         $username = $this->Session->read('username');
@@ -137,9 +163,12 @@ class UsersController extends AppController {
                 $content['Content']['name'] = "default";
                 $content['Content']['user_id'] = $new_user['User']['id'];
                 if($this->Content->save($content)){
-                    $this->Session->setFlash(__('Create Default content successful.'));
+                    //$this->Session->setFlash(__('Create Default content successful.'));
                 }
+                $this->Session->write('user_id', $new_user['User']['id']);
+                $this->Session->write('username', $new_user['User']['username']);
                 $this->Session->setFlash(__('User account activate successful.'));
+                $this->redirect('/');
             }
         }
         $this->redirect('login');
@@ -158,11 +187,10 @@ class UsersController extends AppController {
             $user['Registration'] = $arr;
 
             // First check Registerations Table whether has register once
-            $userinfo_1 = $this->Registration->find('first', 
+            $isExist = $this->Registration->find('first', 
                 array('conditions'=>array('Registration.username'=>$_POST['username']))
             );
-
-            if(isset($useinfo['User'])){
+            if(isset($isExist['User'])){
                 $this->Session->setFlash(__('You must confirm your email first'));
             }
             else {
@@ -173,10 +201,23 @@ class UsersController extends AppController {
                     $this->Session->setFlash(__('This username exist, please type in another one.')); 
                 }
                 else{
+                	
                     // Save user in Registeration first and active it later
-                    if ($this->Registration->save($user)) {
+                    if ($obj = $this->Registration->save($user)) {
+                    	$home = "http://".$_SERVER['SERVER_NAME']."/365wzs/";
+                    	$url = $home."users/active/".$obj['Registration']['activekey'];
+                    	$message="您好：".'<br>'."
+								您的邮箱已经成功在 $home 上被登记为用户邮箱，".'<br>'."
+								且用户名为：{$user['Registration']['username']}。".'<br>'."
+								----------------------------------------------------------------------".'<br>'."
+								欢迎您的加入, 请点击以下链接激活账号：<br><a href='$url'>$url</a>								
+								".'<br>'."
+								".'<br>'."
+								365未知树  管理团队.".'<br>'."
+								$home";
+                    	$this->send($user['Registration']['email'], $user['Registration']['username'], $message);
+                    	
                         $this->Session->setFlash(__('This account has been created, please verify email.'));
-#				        $this->redirect(array('action' => 'index'));
 			        } else {
 				        $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
                     }

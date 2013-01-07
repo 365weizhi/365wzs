@@ -35,24 +35,29 @@ class ProphetController extends AppController{
 	/**
 	* ======================== Item method Below above category method ===========================
 	*/
+	public function itemadd($num_iid){
+		$this->autoRender = false;
+		
+		print_r($this->getItemById($num_iid));
+	}
+	
 	public function itemsadd(){
 	    if(isset($_POST['urls'])){
-		    $record;
 		    $arr = preg_split("/([^\S]+)\n/", $_POST['urls']);
 	        $api = new TopApi();
-		foreach($arr as $row){
-		   //echo $row;
-		    $num_iid = $api->get_id($row);
-		    $resq = $api->fetch($num_iid);
-		    $resq['item']['id'] = '';
-		    $resq['item']['num_iid'] = $num_iid;
-		    if($resq != false && $this->Item->save($resq['item'])){
-		    	$record['success'][] = $num_iid;		
-		    }
-		    else{
-			    $record['failed'][] = $num_iid;	
-		    }
-		}
+			foreach($arr as $row){
+			   //echo $row;
+			    $num_iid = $api->get_id($row);
+			    $resq = $api->fetch($num_iid);
+			    $resq['item']['id'] = '';
+			    $resq['item']['num_iid'] = $num_iid;
+			    if($resq != false && $this->Item->save($resq['item'])){
+			    	$record['success'][] = $num_iid;		
+			    }
+			    else{
+				    $record['failed'][] = $num_iid;	
+			    }
+			}
 	    }
 	}
 
@@ -65,9 +70,9 @@ class ProphetController extends AppController{
 	*/
 	public function getItemById($num_iid){
 	    if(isset($num_iid)){
-		$api = new TopApi();
-		$resq = $api->fetch($num_iid);
-		return $resq;
+			$api = new TopApi();
+			$resq = $api->fetch($num_iid);
+			return $resq;
 	    }
 	}
 
@@ -107,13 +112,12 @@ class ProphetController extends AppController{
 	*/
 	public function category($cid=0){
 		if(isset($_POST['data'])){
-		    $this->addcat($_POST['data']['cid'], $_POST['data']['content'], $_POST['data']['category']);
-		    #$this->addcon($_POST['data']['cid'], $_POST['data']['content']);
+		    $this->addCategory($_POST['data']['cid'], $_POST['data']['content'], $_POST['data']['category']);
 		    $this->redirect('mancon');
 		}
 		$api = new TopApi();
-                $data['parent_cid'] = $cid;
-                $data['resq'] = $api->getCats($cid)->item_cats;
+        $data['parent_cid'] = $cid;
+        $data['resq'] = $api->getCats($cid)->item_cats;
 		$this->set('data', $data);
 	}
 
@@ -122,7 +126,6 @@ class ProphetController extends AppController{
 	* manage content in our database;
 	*/
 	public function mancon($cid = 0){
-		//$this->set("content", $this->Content->find("all"));
 		$this->set("category", $this->Category->find("all"));
 	}
 
@@ -131,11 +134,9 @@ class ProphetController extends AppController{
 	*/
 	function delcon($cid){
 		if($this->Category->delete($cid)){
-		    //return true;
 		    $this->redirect("mancon");
 		}
 		else {
-		    //return false;
      		$this->redirect('/pages/error');
 		}
 	}
@@ -143,11 +144,11 @@ class ProphetController extends AppController{
 	/**
 	* Add Category from Taobao into our database;
 	*/
-	function addcat($cid, $name, $nick){
+	function addCategory($cid, $name, $nick){
 		$arr = array();
-		$arr['id'] = $cid;
-        $arr['name'] = $name;
-        $arr['nick'] = $nick;
+		$arr['Category']['id'] = $cid;
+        $arr['Category']['name'] = $name;
+        $arr['Category']['nick'] = $nick;
 		if($this->Category->save($arr))
 		    return true;
 		else

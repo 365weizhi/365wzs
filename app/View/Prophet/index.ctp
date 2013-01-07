@@ -58,6 +58,7 @@ if(!$search){
     }
     else {
 	foreach($data['resq']->taobaoke_item as $taobaoke_item){
+		pr($taobaoke_item);
 ?>
 	<li>
 	<a href='<?php echo $taobaoke_item->click_url; ?>'
@@ -66,11 +67,14 @@ if(!$search){
 		data-price='<?php echo $taobaoke_item->price;?>' 
 		data-commission='<?php echo $taobaoke_item->commission; ?>' 
 		data-sellernick='<?php echo $taobaoke_item->nick; ?>'
-	><img src="<?php echo $taobaoke_item->pic_url?>" alt="<?php echo $taobaoke_item->title;?>"/></a>
+	>
+		<img src="<?php echo $taobaoke_item->pic_url."_120x120.jpg";?>" alt="<?php echo $taobaoke_item->title;?>"/>
+	</a>
 	<p>
 	    <span class="right"><?php echo $taobaoke_item->volume; ?>件/30天</span>
 	    <span><?php echo $taobaoke_item->commission; ?></span> /
 	    <span><?php echo $taobaoke_item->price;?></span>
+	    <a href="<?php echo $this->webroot."prophet/itemadd/".$taobaoke_item->num_iid?>" class="btn btn-info">添加</a>
 	</p>
 	</li>
 <?php

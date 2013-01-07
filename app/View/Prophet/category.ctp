@@ -21,7 +21,7 @@ foreach($data['resq']->item_cat as $item){
 	   <input type='submit' value='Add' />
 	</th>";
    if($item->is_parent == 'true'){
- 	echo "<th><a href='".$this->webroot."admin/category/".$item->cid."'>".$item->name."</th>";
+ 	echo "<th><a href='".$this->webroot."prophet/category/".$item->cid."'>".$item->name."</th>";
    }
    else {
    	echo "<th>".$item->name."</th>";

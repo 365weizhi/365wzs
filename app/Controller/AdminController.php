@@ -39,7 +39,7 @@ class AdminController extends AppController{
 	    if(isset($_POST['urls'])){
 		$record;
 		$arr = preg_split("/([^\S]+)\n/", $_POST['urls']);
-	        $api = new TopApi();
+        $api = new TopApi();
 		foreach($arr as $row){
 		   //echo $row;
 		    $num_iid = $api->get_id($row);
@@ -47,10 +47,10 @@ class AdminController extends AppController{
 		    $resq['item']['id'] = '';
 		    $resq['item']['num_iid'] = $num_iid;
 		    if($resq != false && $this->Item->save($resq['item'])){
-			$record['success'][] = $num_iid;		
+				$record['success'][] = $num_iid;		
 		    }
 		    else{
-			$record['failed'][] = $num_iid;	
+				$record['failed'][] = $num_iid;	
 		    }
 		}
 	    }

@@ -1,24 +1,10 @@
-<div class="contents form">
-<?php echo $this->Form->create('Content'); ?>
+<form method="post">
 	<fieldset>
-		<legend><?php echo __('Add Content'); ?></legend>
-	<?php
-		echo $this->Form->input('name');
-		echo $this->Form->input('user_id');
-	?>
+		<pre>后期添加是否上传专刊图片。</pre>
+		<legend>添加个人专刊</legend>
+		<input type="text" placeHolder="专刊名称" name="name"/>
+		<input type="text" placeHolder="描述亲" name="description"/>
+		<input class="btn btn-success" type="submit" value="确定" />
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+</form>
 
-		<li><?php echo $this->Html->link(__('List Contents'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Favors'), array('controller' => 'favors', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Favor'), array('controller' => 'favors', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Items'), array('controller' => 'items', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Item'), array('controller' => 'items', 'action' => 'add')); ?> </li>
-	</ul>
-</div>

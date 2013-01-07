@@ -62,14 +62,14 @@ class LikesController extends AppController {
         $item_id = $id;
         $this->Item->id = $item_id;
         $like = $this->Like->query("select count(*) as count from 365wzs_likes where item_id=$item_id and user_id=$user_id");
-
+		//pr($like);
         if(!$this->Item->exists()){
             $this->Session->setFlash(__('Wanna Shared item not exists'));
             $this->redirect('/');
         }
         else if($like[0][0]['count'] > 0){
             // this judge for whether have shared this items
-            $this->Session->setFlash(__('Already Shared this item.'));
+            $this->Session->setFlash(__('已经偷偷喜欢啦.'));
             $this->redirect("/");
         }
         else{

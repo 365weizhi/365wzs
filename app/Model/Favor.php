@@ -29,14 +29,14 @@ class Favor extends AppModel {
 			'className' => 'User',
 			'foreignKey' => 'user_id',
 			'conditions' => '',
-			'fields' => '',
+			'fields' => 'id, username, email',
 			'order' => ''
 		),
 		'Item' => array(
 			'className' => 'Item',
 			'foreignKey' => 'item_id',
 			'conditions' => '',
-			'fields' => '',
+			'fields' => 'id, num_iid, title, nick , description, click_url, pic_url, item_location, favor_count, like_count',
 			'order' => ''
 		),
 		'Content' => array(

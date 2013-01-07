@@ -2,22 +2,25 @@
     <?php foreach ($items as $item) { ?>
         <div class="image-block">
             <div class="image">
-            <a href="<?php echo $this->webroot."favors/add/".$item['Item']['id']; ?>" >
-            Favor(<?php echo $item['Item']['favor_count'];?>)
+            <a href="<?php echo $this->webroot."favors/add/".$item['id']; ?>" >
+            Favor(<?php echo $item['favor_count'];?>)
             </a>
-            <a href="<?php echo $this->webroot."likes/add/".$item['Item']['id'];?>" >
-            Like(<?php echo $item['Item']['like_count'];?>)
+            <a href="<?php echo $this->webroot."likes/add/".$item['id'];?>" >
+            Like(<?php echo $item['like_count'];?>)
             </a>
-            <a href="<?php echo $this->webroot."messages/add/".$item['Item']['id'];?>">
+            <a href="<?php echo $this->webroot."messages/add/".$item['id'];?>">
             @
             </a>
-            <a href="<?php echo $this->webroot."items/view/".$item['Item']['id'];?>">
-                <img src="<?php echo $item['Item']['pic_url']; ?>" alt="" />
+            <a href="<?php echo $this->webroot."items/view/".$item['id'];?>">
+                <img src="<?php echo $item['pic_url']; ?>" alt="" />
             </a>
             </div>
             <div class="image-info">
-                <strong>地区:<?php echo $item['Item']['item_location']; ?>&nbsp;&nbsp;&nbsp;价格:<?php echo $item['Item']['price'] ?></strong>
-                <p><?php echo $item['Item']['title']; ?></p>
+                <?php 
+                if($item['favor_count'] > 0){
+	                echo " <strong>".$item['username']."&nbsp;第一个分享</strong>";
+                }
+                ?>            
             </div>
         </div>
     <?php } ?>
