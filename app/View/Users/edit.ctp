@@ -1,7 +1,7 @@
 
 <form method="post">
   <fieldset>
-    <legend>ç¨æ·ä¿¡æ¯</legend>
+    <legend>用户信息</legend>
 
     <label>ç¨æ·å</label>
     <input type="text" name="username" placeholder="æ±è³å...">
