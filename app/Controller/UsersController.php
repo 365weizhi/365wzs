@@ -120,11 +120,11 @@ class UsersController extends AppController {
         $userinfo['User']['email'] = "test@test.com";
 
         $id = $this->User->save($userinfo);
-        pr($id);
+        // pr($id);
 
         $id = $this->Session->read("user_id");
 		$this->User->id = $id;
-        pr($this->User->read(null, $id));
+        // pr($this->User->read(null, $id));
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
 		}

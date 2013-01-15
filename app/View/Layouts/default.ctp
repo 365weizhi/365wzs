@@ -52,8 +52,20 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                     <li class="active"><a href="#">专刊</a></li>
                     <li><a href="#">小组</a></li>
                     <li><a href="#">消息</a></li>
+                    <?php
+                        if ($this->Session->check('username') && $this->Session->check('user_id')) {
+                            $username = $this->Session->read('username');
+                            echo '<li>' . $this->Html->link($username, array('controller'=>'users', 'action'=>'view')) . '</li>';
+                            echo '<li>' . $this->Html->link('注销', array('controller'=>'users', 'action'=>'logout')) . '</li>';
+                        } else {
+                            echo '<li>' . $this->Html->link('登陆', array('controller'=>'users', 'action'=>'login')) . '</li>';
+                            echo '<li>' . $this->Html->link('注册', array('controller'=>'users', 'action'=>'register')).'</li>';
+                        }
+                    ?>
+                    <!--
                     <li><?php echo $this->Html->link('登陆', array('controller'=>'users', 'action'=>'login')); ?></li>
                     <li><?php echo $this->Html->link('注册', array('controller'=>'users', 'action'=>'register')); ?></li>
+                    -->
                 </ul>
             </div>
         </div>

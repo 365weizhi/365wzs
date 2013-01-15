@@ -1,21 +1,20 @@
+
 <form method="post">
-username:
-<input type="text" name="username"/>
-<br/>
-password:
-<input type="password" name="password"/>
-<br/>
-email:
-<input type="email" name="email"/>
-<br/>
-####Add profile structure below later####
-<br/>
-<br/>
-<br/>
-<br/>
-################################
-<br/>
-<button type=Submit>Submit</button>
+  <fieldset>
+    <legend>ç¨æ·ä¿¡æ¯</legend>
+
+    <label>ç¨æ·å</label>
+    <input type="text" name="username" placeholder="æ±è³å...">
+
+    <label>å¯ç </label>
+    <input type="password" name="password" placeholder="æ±å¯ç ...">
+
+    <label>é®ç®±å°å</label>
+    <input type="email" name="email" placeholder="æ±é®ç®±...">
+
+    <br />
+    <button type="submit" class="btn btn-block">æ±éªè¯</button>
+  </fieldset>
 </form>
 
 
