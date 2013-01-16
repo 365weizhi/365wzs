@@ -78,7 +78,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                 <li><a href="<?php echo $this->webroot."shares"?>" data-toggle="tab">分享天地</a></li>
                 <li><a href="<?php echo $this->webroot."contentfavors"?>" data-toggle="tab">特色专刊</a></li>
                 <li><a href="<?php echo $this->webroot."contents"?>" data-toggle="tab">我的专刊</a></li>
-                <li><a href="<?php echo $this->webroot."contentlikes"?>" data-toggle="tab">偷偷喜欢</a></li>
+                <li><a href="<?php echo $this->webroot."likes"?>" data-toggle="tab">偷偷喜欢</a></li>
                 <li><a href="#tab3" data-toggle="tab">未知小组</a></li>
                 <li><a href="#tab4" data-toggle="tab">未知达人</a></li>
                 <li><a href="#tab5" data-toggle="tab">探索未知</a></li>

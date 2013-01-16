@@ -1,0 +1,4 @@
+1. 设置页面编码<meta 为utf-8
+2. MySQL只支持  set names 'utf8' 无横杠
+
+3. 对于Cakephp需要在Database.php 中设置字符编码 'encoding'=>'utf8' 等效于setnames

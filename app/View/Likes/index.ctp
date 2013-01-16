@@ -1,12 +1,28 @@
-<?php
-foreach($likes as $like){
-    echo "like description: ".$like['Like']['description']."<br>";
-    echo "Item Detail".$like['Item']['title']."<br>";
-    echo "--------------------------------------<br>";
-}
-echo "--------------------------------------<br>";
-pr($likes[0]);
-?>
+<div id="cascade-container">
+    <?php foreach ($likes as $like) { ?>
+        <div class="image-block">
+            <div class="image">
+            <a href="<?php echo $this->webroot."items/view/".$like['Item']['id'];?>">
+                <img src="
+                <?php 
+                	if(empty($like['Item']['pic_url']))
+                		echo $this->webroot."img/default.jpg";
+                	else 
+                		echo $like['Item']['pic_url']; 
+                ?>
+                " alt="" 
+                />
+            </a>
+            </div>
+            <div class="image-info">
+                <?php 
+                	echo $like['Like']['description'];
+                ?>
+            </div>
+        </div>
+    <?php } ?>
+</div>
+
 
 
 

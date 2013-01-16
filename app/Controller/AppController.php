@@ -21,6 +21,7 @@
  */
 
 App::uses('Controller', 'Controller');
+App::uses('UserComponent', 'Controller/Component');
 
 /**
  * Application Controller
@@ -33,10 +34,13 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	public $uid;
+	public $username;
 	
     function beforeFilter(){
+    	parent::beforeFilter();
         if($this->Session->check("username") && $this->Session->check("user_id")){
         	$this->uid = $this->Session->read("user_id");
+        	$this->username = $this->Session->read("username");
         }else{
             $this->redirect("/users/login");
         }
