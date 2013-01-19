@@ -1,0 +1,364 @@
+-- phpMyAdmin SQL Dump
+-- version 2.10.3
+-- http://www.phpmyadmin.net
+-- 
+-- 主机: localhost
+-- 生成日期: 2013 年 01 月 19 日 08:28
+-- 服务器版本: 5.0.51
+-- PHP 版本: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-- 
+-- 数据库: `365wzs`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_categories`
+-- 
+
+CREATE TABLE `365wzs_categories` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(128) character set utf8 NOT NULL,
+  `nick` varchar(128) character set utf8 default NULL,
+  `pic_url` varchar(255) character set utf8 default NULL,
+  `favor_count` int(11) default '0',
+  `like_count` int(11) default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50050548 ;
+
+-- 
+-- 导出表中的数据 `365wzs_categories`
+-- 
+
+INSERT INTO `365wzs_categories` VALUES (50026555, '购物券/提货券', '购物券/提货券', NULL, 0, 0);
+INSERT INTO `365wzs_categories` VALUES (50050547, '鲜花/礼品', '鲜花/礼品', NULL, 0, 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_contents`
+-- 
+
+CREATE TABLE `365wzs_contents` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(128) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `description` varchar(255) default '默认专刊',
+  `pic_url` varchar(255) default NULL,
+  `favor_count` int(11) default '0',
+  `like_count` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- 
+-- 导出表中的数据 `365wzs_contents`
+-- 
+
+INSERT INTO `365wzs_contents` VALUES (1, 'default', 2, '默认专刊', 'http://img03.taobaocdn.com/bao/uploaded/i3/T19Ma2XaXgXXXro2c._112152.jpg', 0, 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_content_favors`
+-- 
+
+CREATE TABLE `365wzs_content_favors` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL,
+  `content_id` int(11) NOT NULL,
+  `description` varchar(255) default NULL,
+  `click_count` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- 导出表中的数据 `365wzs_content_favors`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_content_likes`
+-- 
+
+CREATE TABLE `365wzs_content_likes` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL,
+  `content_id` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `click_count` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- 导出表中的数据 `365wzs_content_likes`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_favors`
+-- 
+
+CREATE TABLE `365wzs_favors` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `description` varchar(255) default NULL,
+  `click_count` int(11) default '0',
+  `content_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- 导出表中的数据 `365wzs_favors`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_follows`
+-- 
+
+CREATE TABLE `365wzs_follows` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL,
+  `follow_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- 导出表中的数据 `365wzs_follows`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_forums`
+-- 
+
+CREATE TABLE `365wzs_forums` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `time` varchar(50) NOT NULL,
+  `type` varchar(25) default '普通',
+  `count` int(11) NOT NULL default '0',
+  `replies` int(11) NOT NULL default '0',
+  `weight` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- 导出表中的数据 `365wzs_forums`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_forum_posts`
+-- 
+
+CREATE TABLE `365wzs_forum_posts` (
+  `id` int(11) NOT NULL auto_increment,
+  `forum_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `comment` text NOT NULL,
+  `time` varchar(50) NOT NULL,
+  `count` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- 导出表中的数据 `365wzs_forum_posts`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_items`
+-- 
+
+CREATE TABLE `365wzs_items` (
+  `id` int(128) NOT NULL auto_increment,
+  `num_iid` varchar(50) NOT NULL,
+  `nick` varchar(128) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `cid` int(128) NOT NULL,
+  `content_id` int(128) default NULL,
+  `click_url` varchar(512) NOT NULL,
+  `shop_click_url` varchar(512) NOT NULL,
+  `pic_url` varchar(128) NOT NULL,
+  `price` float NOT NULL,
+  `item_location` varchar(128) NOT NULL,
+  `commission_rate` float default NULL,
+  `commission` float default NULL,
+  `commission_num` varchar(50) default NULL,
+  `commission_volume` float default NULL,
+  `volume` int(11) default NULL,
+  `click_count` int(128) default '0',
+  `rank` int(5) default NULL,
+  `description` varchar(255) default NULL,
+  `like_count` int(11) default '0',
+  `favor_count` int(11) default '0',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `num_iid` (`num_iid`),
+  KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- 导出表中的数据 `365wzs_items`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_items_categories`
+-- 
+
+CREATE TABLE `365wzs_items_categories` (
+  `id` int(11) NOT NULL auto_increment,
+  `item_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- 导出表中的数据 `365wzs_items_categories`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_likes`
+-- 
+
+CREATE TABLE `365wzs_likes` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `description` varchar(255) character set utf8 default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- 导出表中的数据 `365wzs_likes`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_messages`
+-- 
+
+CREATE TABLE `365wzs_messages` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL,
+  `notice_user_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `message` varchar(255) character set utf8 NOT NULL,
+  `status` int(2) default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- 导出表中的数据 `365wzs_messages`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_posts`
+-- 
+
+CREATE TABLE `365wzs_posts` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `comment` varchar(128) NOT NULL,
+  `time` varchar(50) NOT NULL,
+  `click_count` int(11) default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- 导出表中的数据 `365wzs_posts`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_profiles`
+-- 
+
+CREATE TABLE `365wzs_profiles` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL,
+  `pic_url` varchar(255) character set utf8 default NULL,
+  `description` varchar(255) character set utf8 default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- 导出表中的数据 `365wzs_profiles`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_registrations`
+-- 
+
+CREATE TABLE `365wzs_registrations` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `username` varchar(128) character set utf8 NOT NULL,
+  `password` varchar(128) character set utf8 NOT NULL,
+  `email` varchar(128) character set utf8 NOT NULL,
+  `status` varchar(1) character set utf8 default '0',
+  `activekey` varchar(128) character set utf8 NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- 导出表中的数据 `365wzs_registrations`
+-- 
+
+INSERT INTO `365wzs_registrations` VALUES (1, NULL, 'jonny', '4297f44b13955235245b2497399d7a93', 'billqiang@qq.com', '0', 'f5d52b151b53a78463ae024500e1d771');
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `365wzs_users`
+-- 
+
+CREATE TABLE `365wzs_users` (
+  `id` int(11) NOT NULL auto_increment,
+  `username` varchar(128) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+-- 
+-- 导出表中的数据 `365wzs_users`
+-- 
+
+INSERT INTO `365wzs_users` VALUES (1, 'test', 'test', 'test@test.com');
+INSERT INTO `365wzs_users` VALUES (2, 'jonny', '4297f44b13955235245b2497399d7a93', 'billqiang@qq.com');
