@@ -9,7 +9,11 @@ class ForumsController extends AppController{
     }
     
     public function add(){
-    	
+    	if(isset($_POST['Forum'])){
+    		if(!empty($_POST['Forum']['title'])){
+    			
+    		}
+    	}
     }
 } 
 ?>
