@@ -20,6 +20,8 @@ class FavorsController extends AppController {
     }
     
     public function create($item_id){
+    	//$this->autoRender = false;
+    	$this->layout = 'ajax';
     	$form = "	
 			<form method='post'>
 		    <input type='hidden' value='".$this->uid. "name='user_id'/>
@@ -48,6 +50,7 @@ class FavorsController extends AppController {
     		<button class='btn' type='submit' >Submit</button>
 			</form>";
     	echo $form;
+    	$this->render('create');
     } 
 
 /**
