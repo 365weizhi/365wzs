@@ -6,7 +6,7 @@ App::uses('AppController', 'Controller');
  * @property User $User
  */
 class UsersController extends AppController {
-    public $uses = array('User', 'Registration','Content');
+    public $uses = array('User', 'Profile', 'Registration','Content');
     
     public function test(){
     	$this->autoRender= false;
@@ -26,7 +26,6 @@ class UsersController extends AppController {
 		$mail->SetFrom('billqiang@qq.com', "365未知树");
 		$mail->Subject = '365未知树 - 官方邮件';
 		//$mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
-		
 		$mail->MsgHTML($message);
 		$mail->AddAddress($email, $username);
 		$mail->Send();
@@ -49,6 +48,7 @@ class UsersController extends AppController {
 
     public function users(){
         $this->autoRender = false;
+        //pr($this->Profile->find("all"));
         $this->User->recursive = -1;
         $users = $this->User->find("all", array(
             'fields'=>array(
@@ -160,9 +160,13 @@ class UsersController extends AppController {
         }else{
             $userinfo['User'] = $account['Registration'];
             if($new_user = $this->User->save($userinfo)){
+            	// 增加一个默认专刊
                 $content['Content']['name'] = "default";
                 $content['Content']['user_id'] = $new_user['User']['id'];
-                if($this->Content->save($content)){
+                // 添加用户个人信息
+                $profile['Profile']['user_id'] = $new_user['User']['id'];
+                
+                if($this->Content->save($content) && $this->Profile->sace($profile)){
                     //$this->Session->setFlash(__('Create Default content successful.'));
                 }
                 $this->Session->write('user_id', $new_user['User']['id']);
