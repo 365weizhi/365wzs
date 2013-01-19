@@ -83,17 +83,17 @@ hr {
   box-shadow: 0 0 5px #999;
   width: 200px;
 }
-#container #content .image-block strong {
+#container #content strong {
   color: #007;
 }
-#container #content .image-block p {
+#container #content p {
   clear: both;
 }
-#container #content .image-block .image {
+#container #content .image {
   margin: 10px;
   z-index: 0;
 }
-#container #content .image-block .image-info {
+#container #content .image-info {
   background: #eee;
   padding: 10px;
 }

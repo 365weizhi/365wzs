@@ -1,0 +1,20 @@
+.zform {
+  display: block;
+  background: url("../img/background.png");
+  width: 350px;
+  height: auto;
+  margin: auto;
+  padding: 20px;
+  border: solid 1px #ddd;
+  box-shadow: 0 0 20px #999;
+  border-radius: 5px;
+}
+.zform textarea {
+  padding: 3px;
+  width: 344px;
+  height: 200px;
+}
+.zform select {
+  width: 350px;
+  height: auto;
+}

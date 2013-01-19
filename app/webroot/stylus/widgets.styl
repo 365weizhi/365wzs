@@ -1,0 +1,22 @@
+@import helper
+
+$form-width = 350px
+$form-padding = 20px
+$textarea-padding = 3px
+$textarea-height = 200px
+
+.zform
+  display block
+  background url('../img/background.png')
+  size $form-width auto
+  margin auto
+  padding $form-padding
+  border solid 1px #ddd
+  box-shadow 0 0 20px #999
+  border-radius 5px
+  textarea
+    padding $textarea-padding
+    size ($form-width - 2*$textarea-padding) $textarea-height
+  select
+    size $form-width auto
+

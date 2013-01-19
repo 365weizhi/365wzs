@@ -20,18 +20,7 @@ class FavorsController extends AppController {
     }
     
     public function create($item_id){
-        $this->autoRender = false;
-    	$form = "	
-			<form method='post'>
-		    <input type='hidden' value='".$this->uid. "name='user_id'/>
-		    <input type='hidden' value='".$item_id."' name='item_id'/>
-		    <label class='control-label'>Description:</label>
-		    <textarea name='description'></textarea>
-		
-		    <label class='control-label'>Contents:</label>
-		    <select name='content_id'>
-		    ";
-    	
+        $this->layout = 'ajax';
         $contents = $this->Content->find('all',
             array(
                 'conditions'=>array(
@@ -39,16 +28,9 @@ class FavorsController extends AppController {
                 )
             )
         );
-        foreach($contents as $content){
-            $options = "<option value='".$content['Content']['id']."'>".$content['Content']['name']."</option>";
-            $form .= $options;
-        }
-        $form .= "
-        	</select>
-		    <br />
-    		<button class='btn' type='submit' >Submit</button>
-			</form>";
-    	echo $form;
+        $this->set('contents', $contents);
+        $this->set('uid', $this->uid);
+        $this->set('item_id', $item_id);
     } 
 
 /**

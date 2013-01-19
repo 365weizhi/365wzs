@@ -34,11 +34,12 @@ var Zhelper = {
     createLikeForm: function(parent, button) {
         var item_id = $(button).parent().find('.item-id').val();
         $.ajax({
-            url: '/favor/create/' + item_id,
+            url: baseurl + '/favors/create/' + item_id,
             success: function(data) {
-                console.log(data);
-                // .trigger('spinner.stop');
+                var $form = $(data);
+                parent.setWidget($form);
+                $form.trigger('spinner.stop');
             }
-        })
+        });
     }
 }

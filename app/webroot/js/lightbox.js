@@ -20,6 +20,11 @@ var Lightbox = (function() {
             this.$content.on({
                 'spinner.stop': function(e) {
                     ZSpinner.stop();
+                },
+                'like.click': function(e, button) {
+                    console.log('here');
+                    Zhelper.createLikeForm(Lightbox, button);
+                    self.show();
                 }
             });
         },

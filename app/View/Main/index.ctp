@@ -1,9 +1,11 @@
 <div id="cascade-container">
     <?php foreach ($items as $item) { ?>
         <div class="image-block">
+            <div class="image">
             <a href="<?php echo $this->webroot."items/view/".$item['id'];?>">
                 <img src="<?php echo $item['pic_url']; ?>" alt="" />
             </a>
+            </div>
             <div class="image-info">
                 <input class="item-id" type="hidden" value="<?php echo $item['id']; ?>">
                 <a class="favor">

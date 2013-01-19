@@ -1,8 +1,10 @@
+var baseurl = '/~Aquietzero/365wzs';
+
 $(function() {
 
     // Initialize the cascade container.
     var $container = $('#cascade-container');
-    $container.imagesLoaded( function(){
+    $container.imagesLoaded(function(){
         $container.masonry({
             itemSelector : '.image-block'
         });
@@ -39,7 +41,10 @@ $(function() {
     });    
 
     $('.favor').click(function() {
+        // console.log(this);
+        // $(this).trigger('like.click', this);
         Zhelper.createLikeForm(Lightbox, this);
+        Lightbox.show();
     });
 
 });

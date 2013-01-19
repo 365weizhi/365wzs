@@ -32,6 +32,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		// echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('helper');
+		echo $this->Html->css('lightbox');
+		echo $this->Html->css('widgets');
 		echo $this->Html->css('365wzs');
 
         // Libraries.
@@ -46,7 +48,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         echo $this->Html->script('zhelper');
         echo $this->Html->script('lightbox');
         echo $this->Html->script('spinner');
-		echo $this->Html->script('zero');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -106,5 +107,9 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		</footer>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
+
+    <?php
+		echo $this->Html->script('zero');
+    ?>
 </body>
 </html>
