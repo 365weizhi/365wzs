@@ -25,7 +25,5 @@ class MainController extends AppController{
 		}
     	$this->set("items", $rt_obj);
     }
-
-
 }
 ?>

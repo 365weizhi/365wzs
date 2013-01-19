@@ -34,22 +34,21 @@ class PostsController extends AppController {
 
 /**
  * add method
- *
+ * 使用ajax来添加评论内容
  * @return void
  */
 	public function add() {
+		$this->autoRender = false;
 		if ($this->request->is('post')) {
 			$this->Post->create();
+			$post = $this->request->data;
+			$post['Post']['time'] = date("Y-m-d H:i:s");
 			if ($this->Post->save($this->request->data)) {
-				$this->Session->setFlash(__('The post has been saved'));
+				echo "success";
 				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The post could not be saved. Please, try again.'));
 			}
 		}
-		$users = $this->Post->User->find('list');
-		$items = $this->Post->Item->find('list');
-		$this->set(compact('users', 'items'));
+		echo "failed";
 	}
 
 /**

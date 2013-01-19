@@ -25,11 +25,20 @@ class ItemsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->Item->recursive = -1;
 		$this->Item->id = $id;
 		if (!$this->Item->exists()) {
-			throw new NotFoundException(__('Invalid item'));
+			throw new NotFoundException(__('不存在该商品.'));
 		}
-		$this->set('item', $this->Item->read(null, $id));
+		$item = $this->Item->read(null, $id);
+		$posts = $this->Item->Post->find("all", array(
+			'conditions'=>array(
+				'item_id'=>$id
+			)
+		));
+		$this->set('uid', $this->uid);
+		$this->set('item', $item);
+		$this->set('posts', $posts);
 	}
 
 /**
