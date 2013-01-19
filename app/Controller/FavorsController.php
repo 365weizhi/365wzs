@@ -70,10 +70,11 @@ class FavorsController extends AppController {
  * @param string $id
  * @return void
  */
-    public function add($item_id) {
+    public function add() {
         //$this->Item->recursive = -1;
         //$this->Favor->recursive = -1;
         //$this->Content->recursive = -1;
+        $item_id = $_POST['item_id'];
         
         $item = $this->Item->find("first", array(
         	'conditions'=>array(
