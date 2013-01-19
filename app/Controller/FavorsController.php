@@ -18,6 +18,37 @@ class FavorsController extends AppController {
         $favors = $this->Favor->find('all');
 		$this->set('favors', $favors);//$this->paginate());
     }
+    
+    public function create($item_id){
+    	$form = "	
+			<form method='post'>
+		    <input type='hidden' value='".$this->uid. "name='user_id'/>
+		    <input type='hidden' value='".$item_id."' name='item_id'/>
+		    <label class='control-label'>Description:</label>
+		    <textarea name='description'></textarea>
+		
+		    <label class='control-label'>Contents:</label>
+		    <select name='content_id'>
+		    ";
+    	
+        $contents = $this->Content->find('all',
+            array(
+                'conditions'=>array(
+                    'user_id'=>$this->uid,
+                )
+            )
+        );
+        foreach($contents as $content){
+            $options = "<option value='".$content['Content']['id']."'>".$content['Content']['name']."</option>";
+            $form .= $options;
+        }
+        $form .= "
+        	</select>
+		    <br />
+    		<button class='btn' type='submit' >Submit</button>
+			</form>";
+    	echo $form;
+    } 
 
 /**
  * view method
@@ -40,9 +71,9 @@ class FavorsController extends AppController {
  * @return void
  */
     public function add($item_id) {
-        $this->Item->recursive = -1;
-        $this->Favor->recursive = -1;
-        $this->Content->recursive = -1;
+        //$this->Item->recursive = -1;
+        //$this->Favor->recursive = -1;
+        //$this->Content->recursive = -1;
         
         $item = $this->Item->find("first", array(
         	'conditions'=>array(
@@ -53,13 +84,14 @@ class FavorsController extends AppController {
         $favor = $this->Favor->query("select count(*) as count from 365wzs_favors where item_id=$item_id and user_id={$this->uid}");
 
         if(!$item){
-            $this->Session->setFlash(__('该商品不存在.'));
-            $this->redirect('/');
+        	$message = __('该商品不存在.');
+            //$this->Session->setFlash(__('该商品不存在.'));
+            //$this->redirect('/');
         } 
-        //else if($item['Item']['favor_count'] > 0){
         else if($favor[0][0]['count'] > 0){
-            $this->Session->setFlash(__('已分享该商品.'));
-            $this->redirect("/");
+        	$message = __('已分享该商品.');
+            //$this->Session->setFlash(__('已分享该商品.'));
+            //$this->redirect("/");
         }
         else {
           	if ($this->request->is('post')) {
@@ -74,13 +106,17 @@ class FavorsController extends AppController {
                 }
                 
 		    	if ($favor_rlt) {
-			    	$this->Session->setFlash(__('分享成功.'));
+			    	//$this->Session->setFlash(__('分享成功.'));
                     $this->Item->query("update 365wzs_items set favor_count=favor_count+1 where id = $item_id");
-			    	$this->redirect('/');
+                    $message = __('分享成功.');
+			    	//$this->redirect('/');
 			    } else {
-			    	$this->Session->setFlash(__('分享失败,请稍后重试.'));
+			    	//$this->Session->setFlash(__('分享失败,请稍后重试.'));
+			    	$message = __('分享失败,请稍后重试.');
                 }
 		    }
+		    echo $message;
+		    /*
             $contents = $this->Content->find('all',
                 array(
                     'conditions'=>array(
@@ -89,7 +125,7 @@ class FavorsController extends AppController {
                 )
             );
             $this->set(compact('contents', 'item_id'));
-            
+            */
         }
 	}
 
