@@ -34,7 +34,7 @@ var Zhelper = {
     createLikeForm: function(parent, button) {
         var item_id = $(button).parent().find('.item-id').val();
         $.ajax({
-            url: baseurl + '/favors/create/' + item_id,
+            url: baseurl + '/favors/add/' + item_id,
             success: function(data) {
                 var $form = $(data);
                 parent.setWidget($form);
