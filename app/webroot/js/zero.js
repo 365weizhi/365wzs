@@ -1,5 +1,6 @@
 $(function() {
 
+    // Initialize the cascade container.
     var $container = $('#cascade-container');
     $container.imagesLoaded( function(){
         $container.masonry({
@@ -7,6 +8,10 @@ $(function() {
         });
     });
 
+    // Initialize lightbox
+    $('body').append(Lightbox.$el);
+
+    // Initialize the scroll event.
     $(window).scroll(function() {
         var scrollTop = $(window).scrollTop();
 
@@ -32,5 +37,9 @@ $(function() {
             $('#container').css('marginTop', '0px');
         }
     });    
+
+    $('.favor').click(function() {
+        Zhelper.createLikeForm(Lightbox, this);
+    });
 
 });

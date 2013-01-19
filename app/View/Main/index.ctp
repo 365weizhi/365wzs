@@ -5,14 +5,15 @@
                 <img src="<?php echo $item['pic_url']; ?>" alt="" />
             </a>
             <div class="image-info">
-                <a href="<?php echo $this->webroot."favors/add/".$item['id']; ?>" >
-                Favor(<?php echo $item['favor_count'];?>)
+                <input class="item-id" type="hidden" value="<?php echo $item['id']; ?>">
+                <a class="favor">
+                喜欢(<?php echo $item['favor_count'];?>)
                 </a>
                 <a href="<?php echo $this->webroot."likes/add/".$item['id'];?>" >
-                Like(<?php echo $item['like_count'];?>)
+                偷偷喜欢(<?php echo $item['like_count'];?>)
                 </a>
                 <a href="<?php echo $this->webroot."messages/add/".$item['id'];?>">
-                @
+                分享
                 </a>
                 <br />
                 <?php 

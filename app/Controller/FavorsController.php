@@ -20,6 +20,7 @@ class FavorsController extends AppController {
     }
     
     public function create($item_id){
+        $this->autoRender = false;
     	$form = "	
 			<form method='post'>
 		    <input type='hidden' value='".$this->uid. "name='user_id'/>

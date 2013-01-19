@@ -34,9 +34,18 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->css('helper');
 		echo $this->Html->css('365wzs');
 
-        echo $this->Html->script('jquery-1.8.3.min');
-        echo $this->Html->script('jquery.masonry.min');
+        // Libraries.
+        echo $this->Html->script('vendor/jquery-1.8.3.min');
+        echo $this->Html->script('vendor/jquery.masonry.min');
         //echo $this->Html->script('bootstrap.min');
+        echo $this->Html->script('vendor/spin.min');
+        echo $this->Html->script('vendor/jquery.spin');
+        echo $this->Html->script('vendor/underscore-min');
+
+        // User defined.
+        echo $this->Html->script('zhelper');
+        echo $this->Html->script('lightbox');
+        echo $this->Html->script('spinner');
 		echo $this->Html->script('zero');
 
 		echo $this->fetch('meta');
