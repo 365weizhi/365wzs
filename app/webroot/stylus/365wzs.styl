@@ -1,0 +1,89 @@
+@import helper
+
+body
+  margin 0
+  background url('../img/background.png')
+
+hr
+  border-top solid 1px #aaa
+
+#header
+  z-index 1000
+  size 100% auto
+  text-align center
+  background url('../img/background.png')
+  margin 0
+  padding 0
+  #logo
+    position fixed
+    top 0
+    left 0
+    size 10% auto
+    margin -20px auto auto 40px
+    background #ddd
+    opacity 0.5
+    border-radius 350px
+    display table-cell
+    text-align center
+    vertical-align middle
+    padding 40px 10px
+
+  #navigator
+    size 50% auto
+    overflow hidden
+    margin 50px auto auto auto
+    .item
+      size 12.5% auto
+      display inline-block
+      float left
+      img
+        size 70% 70%
+        background rgba(0, 0, 0, 0.4)
+      p
+        border-top solid 2px rgba(100, 100, 100, 0.6)
+        padding 5px 0 10px 0
+        size 90% auto
+        color #666
+        margin auto
+        text-shadow 1px 0 1px white
+        box-shadow 0 1px 0 white inset
+      &:hover
+        cursor pointer
+        img
+          background rgba(48, 144, 255, 0.8)
+        p  
+          border-top solid 2px #39f
+          color #39f
+
+#container
+  background none
+  margin auto
+  size 70% auto
+  #content
+    background none
+    .image-block
+        margin 10px
+        padding 0
+        float left
+        border solid 1px #ccc
+        box-shadow 0 0 5px #999
+        width 200px
+    
+    .image-block strong
+        color #007
+    
+    .image-block p
+        clear both
+    
+    .image-block .image
+        margin 10px
+        z-index 0
+    
+    .image-block .image-info
+        background #eee
+        padding 10px
+
+#footer
+  text-align center
+  clear both
+
