@@ -19,7 +19,7 @@ class LikesController extends AppController {
 
 /**
  * index method
- *
+ * 测试使用
  * @return void
  */
     public function index() {
@@ -34,23 +34,11 @@ class LikesController extends AppController {
 	}
 
 /**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		$this->Like->id = $id;
-		if (!$this->Like->exists()) {
-			throw new NotFoundException(__('Invalid like'));
-		}
-		$this->set('like', $this->Like->read(null, $id));
-	}
-
-/**
  * add method
- *
+ * ajax function.
+ * return object
+ * 			code
+ * 			message
  * @return void
  */
     public function add($id) {
@@ -62,82 +50,53 @@ class LikesController extends AppController {
         $item_id = $id;
         $this->Item->id = $item_id;
         $like = $this->Like->query("select count(*) as count from 365wzs_likes where item_id=$item_id and user_id=$user_id");
-		//pr($like);
+		$rt_obj = array();
+		
+        $rt_obj['code'] = 'fail';
         if(!$this->Item->exists()){
-            $this->Session->setFlash(__('Wanna Shared item not exists'));
+        	$rt_obj['message'] = "商品不存在.";
             $this->redirect('/');
         }
         else if($like[0][0]['count'] > 0){
-            // this judge for whether have shared this items
-            $this->Session->setFlash(__('已经偷偷喜欢啦.'));
+        	$rt_obj['code'] = "success";
+       		$rt_obj['message'] = "已分享该商品.";
             $this->redirect("/");
         }
         else{
-            if ($this->request->is('post')) {
-                $this->Like->create();
-                #pr($this->request->data);
-                $like['Like'] = $this->request->data;
-			    if ($this->Like->save($like)) {
-				    $this->Session->setFlash(__('The like has been saved'));
-                    // Add count for counting likes
-                    $this->Item->query("update 365wzs_items set like_count=like_count+1 where id = $item_id");
-				    $this->redirect("/");
-			    } else {
-				    $this->Session->setFlash(__('The like could not be saved. Please, try again.'));
-                }
-		    }
-            $this->set(compact('item_id'));
-        }
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		$this->Like->id = $id;
-		if (!$this->Like->exists()) {
-			throw new NotFoundException(__('Invalid like'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Like->save($this->request->data)) {
-				$this->Session->setFlash(__('The like has been saved'));
-				$this->redirect(array('action' => 'index'));
+            $this->Like->create();
+			$like['Like'] = $this->request->data;
+			if ($this->Like->save($like)) {
+                $this->Item->query("update 365wzs_items set like_count=like_count+1 where id = $item_id");
+				$rt_obj['code'] = "success";
+				$rt_obj['message'] = "成功啦";
+				$this->redirect("/");
 			} else {
-				$this->Session->setFlash(__('The like could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->request->data = $this->Like->read(null, $id);
-		}
-		$users = $this->Like->User->find('list');
-		$items = $this->Like->Item->find('list');
-		$this->set(compact('users', 'items'));
+				$rt_obj['message'] = "好像有点问题哦，等下再试试";
+            }
+        }
+        echo json_encode($rt_obj);
 	}
 
 /**
  * delete method
- *
- * @throws MethodNotAllowedException
- * @throws NotFoundException
- * @param string $id
- * @return void
+ * 删除偷偷喜欢的商品
+ * @param string $item_id
  */
-	public function delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
-		$this->Like->id = $id;
+	public function delete($item_id = null) {
+		$this->Like->id = $item_id;
+		$rt_obj = array();
+		$rt_obj['code'] = "fail";
 		if (!$this->Like->exists()) {
-			throw new NotFoundException(__('Invalid like'));
+			$rt_obj['message'] = "商品不存在.";
 		}
 		if ($this->Like->delete()) {
-			$this->Session->setFlash(__('Like deleted'));
-			$this->redirect(array('action' => 'index'));
+			$rt_obj['message'] = "删除成功.";
+			//$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Like was not deleted'));
-		$this->redirect(array('action' => 'index'));
+		else {
+			$rt_obj['message'] = "删除失败.";
+		}
+		//$this->redirect(array('action' => 'index'));
+		echo json_encode($rt_obj);
 	}
 }

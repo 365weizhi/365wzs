@@ -48,59 +48,43 @@ class FavorsController extends AppController {
  * @return void
  */
     public function add($item_id) {
-        if (!$this->request->is('post') ) {
-			$this->layout = 'ajax';
-	        $contents = $this->Content->find('all',
-	            array(
-	                'conditions'=>array(
-	                    'user_id'=>$this->uid,
-	                )
-	            )
-	        );
-	        $this->set('uid', $this->uid);
-	        $this->set('item_id', $item_id);
-	    	$this->set('contents', $contents);
-	    	$this->render('_form');
-        }
-    	else{
-    		$this->autoRender = false; 
-	        $item = $this->Item->find("first", array(
-	        	'conditions'=>array(
-	        		'id'=>$item_id,
-	        	)
-	        ));
-	        
-	        $favor = $this->Favor->query("select count(*) as count from 365wzs_favors where item_id=$item_id and user_id={$this->uid}");
-	        if(!$item){
-	        	$message = __('该商品不存在.');
-	        } 
-	        else if($favor[0][0]['count'] > 0){
-	        	$message = __('已分享该商品.');
-	        }
-	        else {
-	          	if ($this->request->is('post')) {
-	          		// 添加喜欢的商品到自己的专刊中
-	                $favor['Favor'] = $this->request->data;
-	                $favor_rlt = $this->Favor->save($favor);
-	                // 判断是否需要刷新专刊的封面
-	                $content = $this->Content->read(null, $favor['Favor']['content_id']);
-	                if(empty($content['Content']['pic_url'])){
-	                	$content['Content']['pic_url'] = $item['Item']['pic_url'];
-	                	$this->Content->save($content);
-	                }
-	                
-			    	if ($favor_rlt) {
-	                    $this->Item->query("update 365wzs_items set favor_count=favor_count+1 where id = $item_id");
-	                    $message = __('分享成功.');
-				    } else {
-				    	$message = __('分享失败,请稍后重试.');
-	                }
-			    }
-			    echo $message;
-	        }
-    	}
+		$this->autoRender = false; 
+        $item = $this->Item->find("first", array(
+        	'conditions'=>array(
+        		'id'=>$item_id,
+        	)
+        ));
         
-    }
+        $favor = $this->Favor->query("select count(*) as count from 365wzs_favors where item_id=$item_id and user_id={$this->uid}");
+        if(!$item){
+        	$message = __('该商品不存在.');
+        } 
+        else if($favor[0][0]['count'] > 0){
+        	$message = __('已分享该商品.');
+        }
+        else {
+          	if ($this->request->is('post')) {
+          		// 添加喜欢的商品到自己的专刊中
+                $favor['Favor'] = $this->request->data;
+                $favor_rlt = $this->Favor->save($favor);
+	                // 判断是否需要刷新专刊的封面
+                $content = $this->Content->read(null, $favor['Favor']['content_id']);
+                if(empty($content['Content']['pic_url'])){
+                	$content['Content']['pic_url'] = $item['Item']['pic_url'];
+                	$this->Content->save($content);
+                }
+                
+		    	if ($favor_rlt) {
+                    $this->Item->query("update 365wzs_items set favor_count=favor_count+1 where id = $item_id");
+                    $message = __('分享成功.');
+			    } else {
+			    	$message = __('分享失败,请稍后重试.');
+                }
+		    }
+			    echo $message;
+        }
+       
+	}
 
 /**
  * edit method

@@ -110,6 +110,9 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
     <?php
 		echo $this->Html->script('zero');
+		
+		echo $this->Site->username();
+		echo $this->Site->user_id();
     ?>
 </body>
 </html>

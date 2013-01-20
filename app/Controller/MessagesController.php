@@ -58,6 +58,35 @@ class MessagesController extends AppController {
 
     }
 /**
+ * add method
+ * 添加消息
+ * @return void
+ */
+    public function add($item_id) {
+    	$this->autoRender = false;
+    	
+        $user_id = $this->Session->read("user_id");
+        $rt_obj = array();
+        $rt_obj['code'] = "fail";
+        if(!isset($item_id)){
+        	$rt_obj['message'] = "商品不存在.";
+            //$this->redirect("/");
+        }
+        else if ($this->request->is('post')) {
+            $message['Message'] = $this->request->data;
+            if($message['Message']['notice_user_id'] == ''){
+            	$rt_obj['message'] = "通知的用户不存在.";
+            } else if($this->Message->save($message)){
+            	$rt_obj['code'] = "success";
+            	$rt_obj['message'] = "发送成功.";
+            } else {
+            	$rt_obj['message'] = "发送消息失败,等等再试试";
+            }
+		}
+		echo json_encode($rt_obj);
+	}
+
+/**
  * index method
  *
  * @return void
@@ -88,36 +117,6 @@ class MessagesController extends AppController {
  */
 
 
-/**
- * add method
- *
- * @return void
- */
-    public function add($item_id) {
-        $user_id = $this->Session->read("user_id");
-        if(!isset($item_id)){
-            $this->Session->setFlash(__('Please select a item.'));
-            $this->redirect("/");
-        }
-        else if ($this->request->is('post')) {
-            $message['Message'] = $this->request->data;
-
-            if($message['Message']['notice_user_id'] == ''){
-                $this->Session->setFlash(__('Please select a noticed user.'));
-            } else if($this->Message->save($message)){
-                $this->Session->setFlash(__('Message saved.'));
-                $this->redirect('/');
-            } else {
-				$this->Session->setFlash(__('The message could not be saved. Please, try again.'));
-            }
-		}
-		$this->set(compact('user_id', 'item_id'));
-	}
-
-/**
- * edit method
- * not support edit others' message
- */
 
 /**
  * delete method
@@ -128,102 +127,6 @@ class MessagesController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
-		$this->Message->id = $id;
-		if (!$this->Message->exists()) {
-			throw new NotFoundException(__('Invalid message'));
-		}
-		if ($this->Message->delete()) {
-			$this->Session->setFlash(__('Message deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Message was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
-
-/**
- * admin_index method
- *
- * @return void
- */
-	public function admin_index() {
-		$this->Message->recursive = 0;
-		$this->set('messages', $this->paginate());
-	}
-
-/**
- * admin_view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function admin_view($id = null) {
-		$this->Message->id = $id;
-		if (!$this->Message->exists()) {
-			throw new NotFoundException(__('Invalid message'));
-		}
-		$this->set('message', $this->Message->read(null, $id));
-	}
-
-/**
- * admin_add method
- *
- * @return void
- */
-	public function admin_add() {
-		if ($this->request->is('post')) {
-			$this->Message->create();
-			if ($this->Message->save($this->request->data)) {
-				$this->Session->setFlash(__('The message has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The message could not be saved. Please, try again.'));
-			}
-		}
-		$users = $this->Message->User->find('list');
-		$items = $this->Message->Item->find('list');
-		$this->set(compact('users', 'items'));
-	}
-
-/**
- * admin_edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function admin_edit($id = null) {
-		$this->Message->id = $id;
-		if (!$this->Message->exists()) {
-			throw new NotFoundException(__('Invalid message'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Message->save($this->request->data)) {
-				$this->Session->setFlash(__('The message has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The message could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->request->data = $this->Message->read(null, $id);
-		}
-		$users = $this->Message->User->find('list');
-		$items = $this->Message->Item->find('list');
-		$this->set(compact('users', 'items'));
-	}
-
-/**
- * admin_delete method
- *
- * @throws MethodNotAllowedException
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}
