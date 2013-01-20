@@ -19,10 +19,9 @@
                     <?php echo $this->Html->image('favor.png') ?>
                     <span class="number"><?php echo $item['favor_count'];?></span>
                 </a>
-                <br />
                 <?php 
                 if($item['favor_count'] > 0){
-	                echo " <strong>".$item['username']."&nbsp;第一个分享</strong>";
+	                echo " <strong>".$item['username']."</strong>";
                 }
                 ?>            
             </div>

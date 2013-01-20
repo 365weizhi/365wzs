@@ -1,6 +1,8 @@
 var baseurl = '/365wzs';
 
 $(function() {
+    // Initialize show message widget.
+    Zhelper.showMessage(Lightbox);
 
     // Initialize the cascade container.
     var $container = $('#cascade-container');
@@ -12,6 +14,32 @@ $(function() {
 
     // Initialize lightbox
     $('body').append(Lightbox.$el);
+
+    // Adjustment
+    adjustment();
+    var listenResizeEvent = function() {
+        var self = this;
+        var rtime = new Date(1, 1, 2000, 12,00,00);
+        var timeout = false;
+        var delta = 200;
+        $(window).resize(function() {
+            rtime = new Date();
+            if (timeout === false) {
+                timeout = true;
+                setTimeout(resizeend, delta);
+            }
+        });
+
+        function resizeend() {
+            if (new Date() - rtime < delta) {
+                setTimeout(resizeend, delta);
+            } else {
+                timeout = false;
+                adjustment();
+            }               
+        }
+    }
+    listenResizeEvent();
 
     // Initialize the scroll event.
     $(window).scroll(function() {
@@ -29,14 +57,14 @@ $(function() {
                 borderBottom: 'solid 1px #ddd',
                 boxShadow: '0 0 10px #ddd'
             });
-            $('#container').css('marginTop', offset + 20 + 'px');
+            $('#slider').css('marginTop', offset + 20 + 'px');
         } else {
             $('#header').css({ 
                 position: 'static',
                 border: 'none',
                 boxShadow: 'none'
             });
-            $('#container').css('marginTop', '0px');
+            $('#slider').css('marginTop', '0px');
         }
     });    
 
@@ -50,3 +78,14 @@ $(function() {
     });
 
 });
+
+function adjustment() {
+    var $first_block = $($('.image-block')[0]);
+    var content_width = $('#cascade-container').width();
+    var unit_width = $first_block.width();
+    var margin = 10;
+
+    var num = Math.floor(content_width / (unit_width + 2*margin));
+    var padding = (content_width - num * (unit_width + 2*margin)) / 2;
+    $('#cascade-container').css('paddingLeft', padding - 5);
+}
