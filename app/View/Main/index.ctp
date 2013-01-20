@@ -22,7 +22,7 @@
                 <br />
                 <?php 
                 if($item['favor_count'] > 0){
-	                echo " <strong>".$item['username']."&nbsp;第一个分享</strong>";
+	                echo " <strong>".$item['username']."</strong>";
                 }
                 ?>            
             </div>

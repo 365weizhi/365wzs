@@ -82,10 +82,9 @@ class FavorsController extends AppController {
 			    	$message = __('分享失败,请稍后重试.');
                 }
 		    }
-            //    echo $message;
-            $this->Session->setFlash($message);
-            $this->redirect("/");
         }
+        $this->Session->setFlash($message);
+        $this->redirect("/");
 	}
 
 /**

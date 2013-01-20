@@ -53,5 +53,19 @@ var Zhelper = {
                 $form.trigger('spinner.stop');
             }
         });
+    },
+
+    showMessage: function(parent) {
+        var $message = $('#message');
+        if ($message.html() != '') {
+            var $messagebox = this.create('div');
+            $messagebox
+                .width(300)
+                .height(150)
+                .addClass('messagebox')
+                .html($message.html());
+            parent.show();
+            parent.setWidget($messagebox);
+        }
     }
 }

@@ -1,6 +1,8 @@
 var baseurl = '/~Aquietzero/365wzs';
 
 $(function() {
+    // Initialize show message widget.
+    Zhelper.showMessage(Lightbox);
 
     // Initialize the cascade container.
     var $container = $('#cascade-container');
