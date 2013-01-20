@@ -59,6 +59,15 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         <div id="logo">
             <h1>365</h1>
         </div>
+        <div id="user-panel">
+            <?php if($this->Site->username() == '') { ?>
+                <a href="<?php echo $this->webroot.'users/register'; ?>">注册</a>
+                <a href="<?php echo $this->webroot.'users/login'; ?>">登陆</a>
+            <?php } else { ?>
+                <a href="<?php echo $this->webroot.'users/view/'.$this->Site->user_id(); ?>"><?php echo $this->Site->username(); ?></a>
+                <a href="<?php echo $this->webroot.'users/logout'; ?>">注销</a>
+            <?php } ?>
+        </div>
         <div id="navigator">
             <div class="item <?php if($this->request->params['controller'] == 'main') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot.'main'; ?>">

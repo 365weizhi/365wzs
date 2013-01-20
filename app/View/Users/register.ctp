@@ -2,13 +2,11 @@
   <fieldset>
     <legend>注册</legend>
 
-    <label>用户名</label>
+    <br />
     <input type="text" name="username" placeholder="求芳名...">
-
-    <label>密码</label>
+    <br />
     <input type="password" name="password" placeholder="求密码...">
-
-    <label>邮箱地址</label>
+    <br />
     <input type="email" name="email" placeholder="求邮箱...">
 
     <div>

@@ -32,6 +32,19 @@ a:hover {
   vertical-align: middle;
   padding: 40px 10px;
 }
+#header #user-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 10px 30px;
+}
+#header #user-panel a {
+  padding: 5px;
+  color: #666;
+}
+#header #user-panel a:hover {
+  color: #39f;
+}
 #header #navigator {
   width: 50%;
   height: auto;

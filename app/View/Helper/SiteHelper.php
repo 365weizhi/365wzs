@@ -12,7 +12,7 @@ class SiteHelper extends AppHelper{
 		if($this->isLogin())
 			return $this->Session->read("username");
 		else 
-			return "guest";
+			return '';
 	}
 	
 	public function user_id(){
