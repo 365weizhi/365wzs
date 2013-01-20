@@ -9,5 +9,7 @@ build
 dist
 .DS_Store
 tags
-
+.htaccess
+app/.htaccess
+app/webroot/.htaccess
 *.swp
