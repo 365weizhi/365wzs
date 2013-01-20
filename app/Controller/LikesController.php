@@ -9,10 +9,11 @@ class LikesController extends AppController {
     public $uses = array('Like', 'Item');
 
     function beforeFilter(){
-        if($this->Session->check("username") && $this->Session->check("user_id")){
-        
+    	$isLogin = $this->isLogin();
+        if($isLogin){
+        	
         }else{
-            $this->redirect("/users/login");
+            $this->redirect("/ajax/login");
         }
     }
 
@@ -42,7 +43,7 @@ class LikesController extends AppController {
  * @return void
  */
     public function add($id) {
-        $user_id = $this->Session->read('user_id');
+        $user_id = $this->uid;
         $this->Item->recursive = -1;
         $this->Like->recursive = -1;
 
@@ -50,17 +51,13 @@ class LikesController extends AppController {
         $item_id = $id;
         $this->Item->id = $item_id;
         $like = $this->Like->query("select count(*) as count from 365wzs_likes where item_id=$item_id and user_id=$user_id");
-		$rt_obj = array();
 		
         $rt_obj['code'] = 'fail';
         if(!$this->Item->exists()){
-        	$rt_obj['message'] = "商品不存在.";
-            $this->redirect('/');
+        	$message = "商品不存在.";
         }
         else if($like[0][0]['count'] > 0){
-        	$rt_obj['code'] = "success";
-       		$rt_obj['message'] = "已分享该商品.";
-            $this->redirect("/");
+       		$message = "已分享该商品.";
         }
         else{
             $this->Like->create();
@@ -68,13 +65,14 @@ class LikesController extends AppController {
 			if ($this->Like->save($like)) {
                 $this->Item->query("update 365wzs_items set like_count=like_count+1 where id = $item_id");
 				$rt_obj['code'] = "success";
-				$rt_obj['message'] = "成功啦";
-				$this->redirect("/");
+				$message = "成功啦";
 			} else {
-				$rt_obj['message'] = "好像有点问题哦，等下再试试";
+				$message = "好像有点问题哦，等下再试试";
             }
         }
-        echo json_encode($rt_obj);
+        $this->Session->setFlash($message);
+
+        $this->redirect("/");
 	}
 
 /**
@@ -87,16 +85,16 @@ class LikesController extends AppController {
 		$rt_obj = array();
 		$rt_obj['code'] = "fail";
 		if (!$this->Like->exists()) {
-			$rt_obj['message'] = "商品不存在.";
+			$message = "商品不存在.";
 		}
 		if ($this->Like->delete()) {
-			$rt_obj['message'] = "删除成功.";
-			//$this->redirect(array('action' => 'index'));
+			$this->Item->query("update 365wzs_items set like_count=like_count-1 where id = $item_id");
+			$message = "删除成功.";
 		}
 		else {
-			$rt_obj['message'] = "删除失败.";
+			$message = "删除失败.";
 		}
-		//$this->redirect(array('action' => 'index'));
-		echo json_encode($rt_obj);
+		$this->Session->setFlash($message);
+		$this->redirect("/");
 	}
 }

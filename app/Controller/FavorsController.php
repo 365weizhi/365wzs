@@ -9,12 +9,13 @@ class FavorsController extends AppController {
     public $uses = array('Favor', 'Content', 'Item');
 
     function beforeFilter(){
-        if($this->view == 'add' && !$this->isLogin()){
-            $this->redirect("/ajax/login");
+    	$isLogin = $this->isLogin();
+        if($this->view == 'index'){
         }
-        parent::beforeFilter();
+        else if(!$isLogin){
+        	$this->redirect('/ajax/login');
+        }
     }
-
 
 /**
  * index method
