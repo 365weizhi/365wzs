@@ -51,7 +51,7 @@ class FavorsController extends AppController {
 		$this->autoRender = false; 
         $item = $this->Item->find("first", array(
         	'conditions'=>array(
-        		'id'=>$item_id,
+        		'Item.id'=>$item_id,
         	)
         ));
         
