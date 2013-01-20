@@ -94,6 +94,16 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             </div>
         </div>
     </div>
+    <div id="slider">
+        <div id="slide-wrapper">
+            <div class="slide">
+                <div class="content">
+                </div>
+                <div class="image">
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="container">
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>

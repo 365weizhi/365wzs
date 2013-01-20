@@ -73,7 +73,10 @@ hr {
   height: auto;
 }
 #container #content {
-  background: none;
+  text-align: center;
+  margin: 0 auto;
+  clear: both;
+  width: 95%;
 }
 #container #content .image-block {
   margin: 10px;
@@ -83,7 +86,7 @@ hr {
   box-shadow: 0 0 2px #bbb;
   width: 200px;
   border-radius: 5px;
-  background: -webkit-linear-gradient(bottom, #dedede, #efefef 90%);
+  background: -webkit-linear-gradient(bottom, #eee, #efefef 90%, #fff 100%);
 }
 #container #content strong {
   color: #007;
@@ -104,14 +107,31 @@ hr {
   padding: 10px;
   border-radius: 5px;
 }
-#container #content .image-info .favor {
-  width: 50px;
-  height: 50px;
-  background: #000;
+#container #content .image-info .favor,
+#container #content .image-info .like,
+#container #content .image-info .at {
+  vertical-align: middle;
+  float: right;
+  margin: 0 5px;
 }
-#container #content .image-info .favor:hover {
+#container #content .image-info .favor img,
+#container #content .image-info .like img,
+#container #content .image-info .at img {
+  width: 18px;
+  height: 18px;
+}
+#container #content .image-info .favor .number,
+#container #content .image-info .like .number,
+#container #content .image-info .at .number {
+  vertical-align: bottom;
+  color: #999;
+  text-shadow: 1px 0 1px #fff;
+}
+#container #content .image-info .favor:hover,
+#container #content .image-info .like:hover,
+#container #content .image-info .at:hover {
   cursor: pointer;
-  background: url("../img/favor-hover.png");
+  text-decoration: none;
 }
 #footer {
   text-align: center;

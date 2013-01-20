@@ -2,8 +2,8 @@
 
 $form-width = 350px
 $form-padding = 20px
-$textarea-padding = 3px
 $textarea-height = 200px
+$input-padding = 3px
 
 .zform
   display block
@@ -14,9 +14,12 @@ $textarea-height = 200px
   border solid 1px #ddd
   box-shadow 0 0 20px #999
   border-radius 5px
+  input
+    padding $input-padding
+    size ($form-width - 2*$input-padding) auto
   textarea
-    padding $textarea-padding
-    size ($form-width - 2*$textarea-padding) $textarea-height
+    padding $input-padding
+    size ($form-width - 2*$input-padding) $textarea-height
   select
     size $form-width auto
 

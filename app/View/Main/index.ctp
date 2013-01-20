@@ -8,13 +8,16 @@
             </div>
             <div class="image-info">
                 <input class="item-id" type="hidden" value="<?php echo $item['id']; ?>">
-                <a class="favor"></a>
-                <span>(<?php echo $item['favor_count'];?>)</span>
-                <a href="<?php echo $this->webroot."likes/add/".$item['id'];?>" >
-                偷偷喜欢(<?php echo $item['like_count'];?>)
+                <a class="at">
+                    <?php echo $this->Html->image('at.png') ?>
                 </a>
-                <a href="<?php echo $this->webroot."messages/add/".$item['id'];?>">
-                分享
+                <a class="like" >
+                    <?php echo $this->Html->image('like.png') ?>
+                    <span class="number"><?php echo $item['like_count'];?></span>
+                </a>
+                <a class="favor">
+                    <?php echo $this->Html->image('favor.png') ?>
+                    <span class="number"><?php echo $item['favor_count'];?></span>
                 </a>
                 <br />
                 <?php 
