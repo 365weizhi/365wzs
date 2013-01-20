@@ -1,4 +1,4 @@
-var baseurl = '/~Aquietzero/365wzs';
+var baseurl = '/365wzs';
 
 $(function() {
 
