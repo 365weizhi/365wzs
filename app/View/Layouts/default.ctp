@@ -60,37 +60,53 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             <h1>365</h1>
         </div>
         <div id="navigator">
-            <div class="item">
-                <a><?php echo $this->Html->image('home.png') ?></a>
-                <p>首页</p>
+            <div class="item <?php if($this->request->params['controller'] == 'main') echo 'active'; ?>">
+                <a href="<?php echo $this->webroot.'main'; ?>">
+                    <?php echo $this->Html->image('home.png') ?>
+                    <p>首页</p>
+                </a>
+            </div>
+            <div class="item <?php if($this->request->params['controller'] == 'shares') echo 'active'; ?>">
+                <a href="<?php echo $this->webroot.'shares'; ?>">
+                    <?php echo $this->Html->image('share.png') ?>
+                    <p>分享天地</p>
+                </a>
             </div>
             <div class="item">
-                <a><?php echo $this->Html->image('share.png') ?></a>
-                <p>分享天地</p>
+                <a>
+                    <?php echo $this->Html->image('unknown.png') ?>
+                    <p>未知专刊</p>
+                </a>
+            </div>
+            <div class="item <?php if($this->request->params['controller'] == 'contentfavors') echo 'active'; ?>">
+                <a href="<?php echo $this->webroot.'contentfavors'; ?>">
+                    <?php echo $this->Html->image('special.png') ?>
+                    <p>特色专刊</p>
+                </a>
             </div>
             <div class="item">
-                <a><?php echo $this->Html->image('unknown.png') ?></a>
-                <p>未知专刊</p>
+                <a>
+                    <?php echo $this->Html->image('group.png') ?>
+                    <p>未知小组</p>
+                </a>
             </div>
             <div class="item">
-                <a><?php echo $this->Html->image('special.png') ?></a>
-                <p>特色专刊</p>
+                <a>
+                    <?php echo $this->Html->image('superman.png') ?>
+                    <p>分享达人</p>
+                </a>
             </div>
             <div class="item">
-                <a><?php echo $this->Html->image('group.png') ?></a>
-                <p>未知小组</p>
+                <a>
+                    <?php echo $this->Html->image('discover.png') ?>
+                    <p>发现未知</p>
+                </a>
             </div>
             <div class="item">
-                <a><?php echo $this->Html->image('superman.png') ?></a>
-                <p>分享达人</p>
-            </div>
-            <div class="item">
-                <a><?php echo $this->Html->image('discover.png') ?></a>
-                <p>发现未知</p>
-            </div>
-            <div class="item">
-                <a><?php echo $this->Html->image('activity.png') ?></a>
-                <p>官方活动</p>
+                <a>
+                    <?php echo $this->Html->image('activity.png') ?>
+                    <p>官方活动</p>
+                </a>
             </div>
         </div>
     </div>
@@ -120,7 +136,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
     <?php
 		echo $this->Html->script('zero');
-		
+
 		echo $this->Site->username();
 		echo $this->Site->user_id();
     ?>

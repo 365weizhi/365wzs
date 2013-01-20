@@ -41,9 +41,11 @@ $(function() {
     });    
 
     $('.favor').click(function() {
-        // console.log(this);
-        // $(this).trigger('like.click', this);
         Zhelper.createLikeForm(Lightbox, this);
+        Lightbox.show();
+    });
+    $('.at').click(function() {
+        Zhelper.createAtForm(Lightbox, this);
         Lightbox.show();
     });
 

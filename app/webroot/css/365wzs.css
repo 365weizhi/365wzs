@@ -5,6 +5,9 @@ body {
 hr {
   border-top: solid 1px #aaa;
 }
+a:hover {
+  text-decoration: none;
+}
 #header {
   z-index: 1000;
   width: 100%;
@@ -65,6 +68,13 @@ hr {
 #header #navigator .item:hover p {
   border-top: solid 2px #39f;
   color: #39f;
+}
+#header #navigator .item.active img {
+  background: rgba(0,48,144,0.8);
+}
+#header #navigator .item.active p {
+  border-top: solid 2px #039;
+  color: #039;
 }
 #container {
   background: none;
