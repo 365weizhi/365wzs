@@ -6,14 +6,14 @@ App::uses('AppModel', 'Model');
  * @property User $User
  * @property Item $Item
  */
-class Forum extends AppModel {
+class Group extends AppModel {
 
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'comment';
+	public $displayField = 'name';
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -30,10 +30,26 @@ class Forum extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		),
-		'Group' => array(
-			'className' => 'Group',
-			'foreignKey' => 'group_id',
 		)
 	);
+	public $hasMany = array(
+		'UserGroup' => array(
+			'className' => 'UserGroup',
+			'foreignKey' => 'group_id',
+		),
+		'Forum' => array(
+			'className' => 'Forum',
+			'foreignKey' => 'group_id',
+			//'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+	);
 }
+
