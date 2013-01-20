@@ -46,10 +46,6 @@ class AppController extends Controller {
 	
     function beforeFilter(){
     	parent::beforeFilter();
-        if($this->isLogin()){
-        	
-        }else{
-            $this->redirect("/users/login");
-        }
+    	$this->isLogin();
     }
 }
