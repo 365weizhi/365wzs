@@ -37,6 +37,8 @@ class AppController extends Controller {
 	
 	function isLogin(){
 		if($this->Session->check("username") && $this->Session->check("user_id")){
+        	$this->uid = $this->Session->read("user_id");
+        	$this->username = $this->Session->read("username");
 			return true;
 		}
 		return false;
@@ -45,8 +47,7 @@ class AppController extends Controller {
     function beforeFilter(){
     	parent::beforeFilter();
         if($this->isLogin()){
-        	$this->uid = $this->Session->read("user_id");
-        	$this->username = $this->Session->read("username");
+        	
         }else{
             $this->redirect("/users/login");
         }
