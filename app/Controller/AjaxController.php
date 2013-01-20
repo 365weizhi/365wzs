@@ -4,12 +4,14 @@ class AjaxController extends AppController{
 	public $layout = 'ajax';
 	
 	function beforeFilter(){
+		$isLogin = $this->isLogin();
         if($this->view == 'favor'){
         }
         else if($this->view == 'message'){
         }
-        else
-            parent::beforeFilter();
+        else {
+        	parent::beforeFilter();
+        }
 	}
 	
 	public function login(){
