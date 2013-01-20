@@ -66,6 +66,7 @@ class FavorsController extends AppController {
           	if ($this->request->is('post')) {
           		// 添加喜欢的商品到自己的专刊中
                 $favor['Favor'] = $this->request->data;
+                $favor['Favor']['user_id'] = $this->uid;
                 $favor_rlt = $this->Favor->save($favor);
 	                // 判断是否需要刷新专刊的封面
                 $content = $this->Content->read(null, $favor['Favor']['content_id']);
@@ -81,9 +82,10 @@ class FavorsController extends AppController {
 			    	$message = __('分享失败,请稍后重试.');
                 }
 		    }
-			    echo $message;
+            //    echo $message;
+            $this->Session->setFlash($message);
+            $this->redirect("/");
         }
-       
 	}
 
 /**
