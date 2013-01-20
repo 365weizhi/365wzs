@@ -129,6 +129,8 @@ a:hover {
 #container #content .image-info {
   padding: 10px;
   border-radius: 5px;
+  clear: both;
+  overflow: hidden;
 }
 #container #content .image-info .favor,
 #container #content .image-info .like,
@@ -155,6 +157,11 @@ a:hover {
 #container #content .image-info .at:hover {
   cursor: pointer;
   text-decoration: none;
+}
+#container #content .image-info strong {
+  padding-left: 10px;
+  color: #666;
+  float: left;
 }
 #footer {
   text-align: center;

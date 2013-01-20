@@ -19,7 +19,6 @@
                     <?php echo $this->Html->image('favor.png') ?>
                     <span class="number"><?php echo $item['favor_count'];?></span>
                 </a>
-                <br />
                 <?php 
                 if($item['favor_count'] > 0){
 	                echo " <strong>".$item['username']."</strong>";
