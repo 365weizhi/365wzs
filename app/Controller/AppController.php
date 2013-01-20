@@ -21,7 +21,6 @@
  */
 
 App::uses('Controller', 'Controller');
-App::uses('UserComponent', 'Controller/Component');
 
 /**
  * Application Controller

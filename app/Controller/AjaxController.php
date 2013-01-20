@@ -1,12 +1,13 @@
 <?php
 class AjaxController extends AppController{
-	public $uses = array("User");
+	public $uses = array("User", "Content");
+	public $layout = 'ajax';
+	
 	function beforeFilter(){
 		
 	}
 	
 	public function login(){
-		$this->layout='ajax';
 		if($this->request->is("post")){
 			$this->autoRender = false;
 			if(isset($_POST['username']) && isset($_POST['password'])){
@@ -29,5 +30,23 @@ class AjaxController extends AppController{
 		}
 	}
 	
+	public function favor($item_id){
+        $contents = $this->Content->find('all',
+            array(
+                'conditions'=>array(
+                    'user_id'=>$this->uid,
+                )
+            )
+        );
+        $this->set('uid', $this->uid);
+        $this->set('item_id', $item_id);
+    	$this->set('contents', $contents);
+    	$this->render('favor');
+	}
+	
+	public function message($item_id){
+		$user_id = $this->uid;
+		$this->set(compact('user_id', 'item_id'));
+	}
 }
 ?>
