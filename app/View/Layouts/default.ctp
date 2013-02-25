@@ -71,7 +71,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         </div>
         <div id="navigator">
             <div class="item <?php if($this->request->params['controller'] == 'main') echo 'active'; ?>">
-                <a href="<?php echo $this->webroot.'main'; ?>">
+                <a href="<?php echo $this->webroot; ?>">
                     <?php echo $this->Html->image('home.png') ?>
                     <p>首页</p>
                 </a>
@@ -94,8 +94,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                     <p>特色专刊</p>
                 </a>
             </div>
-            <div class="item">
-                <a>
+            <div class="item <?php if($this->request->params['controller'] == 'groups' || $this->request->params['controller'] == 'forums') echo 'active'; ?>">
+                <a href="<?php echo $this->webroot.'groups'; ?>">
                     <?php echo $this->Html->image('group.png') ?>
                     <p>未知小组</p>
                 </a>
@@ -120,6 +120,25 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             </div>
         </div>
     </div>
+    <?php 
+    	if($this->request->params['controller'] == "main"){
+    ?>
+    <div id="slider">
+        <div class="slide-wrapper">
+            <div class="slide">
+                <div class="content">
+                    <h1>今日主题</h1>
+                    <p>连衣裙是一个品种的总称，是人们，特别是年轻女孩喜欢的夏装之一。 连衣裙在各种款式造型中被誉为“款式皇后”，是变化莫测、种类最多、最受青睐的款式。根据穿着对象的不同，可有童式连衣裙和成人连衣裙。在上衣和裙体上可以变化的各种因素几乎都可以组合构成连衣裙的样式。连衣裙还可以根据造型的需要，形成各种不同的轮廓和腰节位置。</p>
+                </div>
+                <div class="image">
+                    <?php echo $this->Html->image('ad.jpg') ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php 
+    	}
+    ?>
     <div id="container">
 		<div id="content">
             <div id="message"><?php echo $this->Session->flash(); ?></div>
@@ -130,7 +149,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         
 		<div id="footer">
             <p class="muted">All rights reserved by 365wzs &copy; 2012~2013</p>
-		</footer>
+		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
 
