@@ -1,0 +1,140 @@
+@font-face {
+  font-family: CenturyGothic;
+  src: url("/static/font/CenturyGothic/GOTHIC.ttf");
+}
+@font-face {
+  font-family: CenturyGothicBold;
+  src: url("/static/font/CenturyGothic/GOTHICB.ttf");
+}
+.button {
+  font-family: CenturyGothic;
+  font-size: 0.8em;
+  color: #fff;
+  text-shadow: 0 0 2px rgba(255,255,255,0.7);
+  border: solid 1px #aaa;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  background: -webkit-linear-gradient(bottom, #4cd2ff, #7df 100%);
+  background: -moz-linear-gradient(bottom, #4cd2ff, #7df 100%);
+  padding: 2px 25px;
+  margin: 20px 0;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.product-author {
+  position: relative;
+  margin: 10px auto;
+}
+.product-author .author-avatar {
+  width: 40px;
+  height: 40px;
+}
+.product-author .author-avatar img {
+  border-radius: 5px;
+}
+.product-author .author-name {
+  color: #999;
+  text-shadow: 1px 0 1px #fff;
+  padding-left: 5px;
+}
+.product-author .author-name .name {
+  color: #777;
+}
+.product-author .product-title {
+  color: #666;
+  padding-left: 5px;
+  font-weight: bold;
+}
+.product-wrapper .product {
+  position: relative;
+}
+.product-wrapper .product .image {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 0 1px #666 inset;
+}
+.product-wrapper .product .image img {
+  width: 96%;
+  height: auto;
+}
+.product-wrapper .product .image .operations {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  clear: both;
+}
+.product-wrapper .product .image .operations a {
+  color: #999;
+  text-shadow: 1px 0 0 #fff;
+}
+.product-wrapper .product .image .operations a img {
+  width: 15px;
+  height: 15px;
+  vertical-align: text-bottom;
+}
+.product-wrapper .product .image .operations a:hover {
+  color: #666;
+  cursor: pointer;
+}
+.product-wrapper .product .image .operations a.favor {
+  font-weight: bold;
+  color: #666;
+  float: left;
+}
+.product-wrapper .product .image .operations a.favor:hover {
+  color: #333;
+}
+.product-wrapper .product .image .operations a.like {
+  float: right;
+  margin: 0 10px;
+}
+.product-wrapper .product .image .operations a.at {
+  float: right;
+}
+.product-wrapper .product .description {
+  color: #666;
+}
+.product-wrapper .product .description p {
+  margin: 10px;
+}
+.product-wrapper .product .operation,
+.product-wrapper .product .buy {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.product-wrapper .product .operation a.buy-button,
+.product-wrapper .product .buy a.buy-button {
+  font-weight: bold;
+  font-size: 1.8em;
+  margin: 0 10px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: block;
+  color: #000;
+  border-radius: 5px;
+  background: -webkit-linear-gradient(top, #d64d93, #ab2e66 100%);
+  -webkit-transition: background-color 0.5s ease;
+  -moz-transition: background-color 0.5s ease;
+  -ms-transition: background-color 0.5s ease;
+  -o-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+  box-shadow: 0 0 5px #666;
+}
+.product-wrapper .product .operation a.buy-button:hover,
+.product-wrapper .product .buy a.buy-button:hover {
+  background: -webkit-linear-gradient(top, #ab2e66, #d64d93, 100%);
+}
+.comments {
+  margin-top: 35px;
+}

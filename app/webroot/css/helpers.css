@@ -1,0 +1,37 @@
+/* 
+ * Here defines a bunch of mixins for convenience.
+ */
+@font-face {
+  font-family: CenturyGothic;
+  src: url("/static/font/CenturyGothic/GOTHIC.ttf");
+}
+@font-face {
+  font-family: CenturyGothicBold;
+  src: url("/static/font/CenturyGothic/GOTHICB.ttf");
+}
+/*
+background-linear-gradient(stops...)
+  background -webkit-linear-gradient(stops)
+  background -moz-linear-gradient(stops)
+  background -ms-linear-gradient(stops)
+  background -o-linear-gradient(stops)
+  background linear-gradient(stops)
+  */
+.button {
+  font-family: CenturyGothic;
+  font-size: 0.8em;
+  color: #fff;
+  text-shadow: 0 0 2px rgba(255,255,255,0.7);
+  border: solid 1px #aaa;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  background: -webkit-linear-gradient(bottom, #4cd2ff, #7df 100%);
+  background: -moz-linear-gradient(bottom, #4cd2ff, #7df 100%);
+  padding: 2px 25px;
+  margin: 20px 0;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}

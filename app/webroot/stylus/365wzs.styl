@@ -1,4 +1,4 @@
-@import helper
+@import helpers
 
 body
   margin 0
@@ -78,21 +78,17 @@ a:hover
 #container
   background none
   margin auto
-  size 70% auto
-  #content
-    text-align center
-    margin 0 auto
-    clear both
-    width 95%
-    .image-block
-      margin 10px
-      padding 0
-      float left
-      border solid 1px #ccc
-      box-shadow 0 0 2px #bbb
-      width 200px
-      border-radius 5px
-      background -webkit-linear-gradient(bottom, #eee, #efefef 90%, white 100%)
+  clear both
+  size $full auto
+  .image-block
+    margin 10px
+    padding 0
+    float left
+    border solid 1px #ccc
+    box-shadow 0 0 2px #bbb
+    width 200px
+    border-radius 5px
+    background -webkit-linear-gradient(bottom, #eee, #efefef 90%, white 100%)
     strong
       color #007
     p
@@ -128,5 +124,6 @@ a:hover
         float left
 
 #footer
+  size 100% auto
   text-align center
   clear both

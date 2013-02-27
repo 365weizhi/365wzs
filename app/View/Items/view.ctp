@@ -1,48 +1,69 @@
-<div >
-<!-- 可以用$item = $item['Item'] 就可以少写几个字符 -->
-    <p><?php echo h($item['Item']['description']); ?></p>
-    
-    <a href="<?php echo $this->webroot."favors/add/".$item['Item']['id']; ?>" >
-        Favor(<?php echo $item['Item']['favor_count'];?>)
-    </a>
-    <a href="<?php echo $this->webroot."likes/add/".$item['Item']['id'];?>" >
-        Like(<?php echo $item['Item']['like_count'];?>)
-    </a>
-    <a href="<?php echo $this->webroot."messages/add/".$item['Item']['id'];?>" >
-    	@
-    </a>
-	<br>
-    <img src="<?php echo h($item['Item']['pic_url'])."_400x400.jpg"; ?>">
-    <br>
+<div class="column-3">
+    <div class="column-3 product-author">
+        <table>
+            <tr>
+                <td class="author-avatar" rowspan="2">
+                    <a><?php echo $this->Html->image('default-avatar.jpg') ?></a>
+                </td>
+                <td class="author-name">分享来自: <span class="name">Zero</span></td>
+            </tr>
+            <tr>
+                <td class="product-title"><?php echo $item['Item']['title']; ?></td>
+            </tr>
+        </table>
+    </div>
+    <div class="column-3 product-wrapper">
+        <div class="column-3 product">
+            <div class="column-2 image">
+                <img src="<?php echo h($item['Item']['pic_url'])."_480x480.jpg"; ?>">
+                <div class="operations">
+                    <a class="at">
+                        <?php echo $this->Html->image('at.png') ?>告诉好友
+                    </a>
+                    <a class="like" >
+                        <?php echo $this->Html->image('like.png') ?>
+                        <span class="number"><?php echo $item['Item']['like_count'];?> 偷偷喜欢</span>
+                    </a>
+                    <a class="favor">
+                        <?php echo $this->Html->image('favor.png') ?>
+                        <span class="number"><?php echo $item['Item']['favor_count'];?> 喜欢</span>
+                    </a>
+                </div>
+            </div>
+            <div class="column-1 description">
+                <p>丽江地处我国西南边陲，位于云南省西北部地区。居于青藏高原南端、横断山脉向云贵高原北部云岭山脉过渡的衔接地段，兼有两种以上地形特征。境内地形地貌多样，含高原雪山、河谷、深峡、草甸、平坝相结合的地貌特征及自然景观资源，同时气候变化显著。 丽江历史悠久，很早就有人类活动的足迹，是我国古人类活动的地区之一。 丽江自古以来就是我国西南交通贸易大动脉南方“丝绸之路”和由西藏入境的“茶马古道”的中转站。两条古道既是中原至东南亚的南来北往的贸易通道，又是沟通中原文化和外来文化影响的传送渠道。 丽江是纳西族的家园，是我国唯一的一个纳西族自治县，同时还居住着白、彝、僳僳、普米族等少数民族。 丽江的文化以开放、大方、兼容并蓄为重要特征。纳西族人民长期以来创造并延续保持下来的东巴文化，是世界民族文化的一枝璀璨的奇葩，是人类共同的文化遗产！</p>
 
-    <a href="<?php echo h($item['Item']['click_url']); ?>">Click URL</a>
-    <a href="<?php echo h($item['Item']['shop_click_url']); ?>">Shop Click URL</a>
-    
-    <p>价钱：<?php echo h($item['Item']['price']); ?></p>
-    <p>位置：<?php echo h($item['Item']['item_location']); ?></p>
+                <!--
+                <p>价钱：<?php echo $item['Item']['price']; ?></p>
+                <p>位置：<?php echo $item['Item']['item_location']; ?></p>
+                -->
+            </div>
+            <div class="column-1 buy">
+                <a class="buy-button" href="<?php echo $item['Item']['shop_click_url']; ?>">现在去购买!</a>
+            </div>
+        </div>
+    </div>
+    <div class="column-3 related-product"></div>
+    <div class="column-3 comments">
+        <p>评论:</p>
+        <?php 
+        foreach($posts as $post){
+        	$post = $post['Post'];
+        	echo $post['comment'];
+        	echo "<br>";
+        } ?>
+    </div>
+    <div class="column-3 comment">
+    添加评论：
+    <form method="post" action="<?php echo $this->webroot."Posts/add"; ?>">
+    <input type="hidden" name="Post[item_id]" value="<?php echo $item['Item']['id'];?>" />
+    <input type="hidden" name="Post[user_id]" value="<?php echo $uid;?>" />
+    <textarea name="Post[comment]"></textarea>
+    <input type="submit" value="评论" />
+    </form> 
+    </div>
 </div>
-<div>
-评论内容：
-<br>
-<?php 
-foreach($posts as $post){
-	$post = $post['Post'];
-	echo $post['comment'];
-	echo "<br>";
-?>
 
+<div class="column-1">
+</div>
 
-<?php 
-}
-?>
-</div>
-<br>
-<div>
-添加评论：
-<form method="post" action="<?php echo $this->webroot."Posts/add"; ?>">
-<input type="hidden" name="Post[item_id]" value="<?php echo $item['Item']['id'];?>" />
-<input type="hidden" name="Post[user_id]" value="<?php echo $uid;?>" />
-<textarea name="Post[comment]"></textarea>
-<input type="submit" value="评论" />
-</form> 
-</div>

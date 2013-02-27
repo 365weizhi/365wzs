@@ -24,41 +24,27 @@
 .pull-right {
   float: right;
 }
-.zform {
-  display: block;
-  background: url("../img/background.png");
-  width: 350px;
+.column-1 {
+  float: left;
+  width: 250px;
   height: auto;
-  margin: auto;
-  padding: 20px;
-  border: solid 1px #ddd;
-  box-shadow: 0 0 20px #999;
-  border-radius: 5px;
+  margin: 0;
 }
-.zform input {
-  padding: 3px;
-  width: 344px;
+.column-2 {
+  float: left;
+  width: 500px;
   height: auto;
+  margin: 0;
 }
-.zform textarea {
-  padding: 3px;
-  width: 344px;
-  height: 200px;
-}
-.zform select {
-  width: 350px;
+.column-3 {
+  float: left;
+  width: 750px;
   height: auto;
+  margin: 0;
 }
-#message {
-  display: none;
-}
-.messagebox {
-  background: url("../img/background.png");
-  margin: 0 auto;
-  width: 300px;
-  height: 150px;
-  text-align: center;
-  border: solid 1px #ddd;
-  box-shadow: 0 0 20px #999;
-  border-radius: 5px;
+.column-4 {
+  float: left;
+  width: 1000px;
+  height: auto;
+  margin: 0;
 }

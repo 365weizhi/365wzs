@@ -1,0 +1,136 @@
+/* 
+ * Here defines a bunch of mixins for convenience.
+ */
+@font-face
+  font-family CenturyGothic
+  src url(/static/font/CenturyGothic/GOTHIC.ttf)
+
+@font-face
+  font-family CenturyGothicBold
+  src url(/static/font/CenturyGothic/GOTHICB.ttf)
+
+$black = #000
+$white = #fff
+
+$grey1  = #111
+$grey2  = #222
+$grey3  = #333
+$grey4  = #444
+$grey5  = #555
+$grey6  = #666
+$grey7  = #777
+$grey8  = #888
+$grey9  = #999
+$grey10 = #aaa
+$grey11 = #bbb
+$grey12 = #ccc
+$grey13 = #ddd
+$grey14 = #eee
+
+$light-grey = #b2b2b2
+$light-blue = #cedbe4
+$light-pink = #fbafdc
+$dark-pink  = #ffafdc
+$purple     = #7181bc
+
+$transparent = rgba(0, 0, 0, 0)
+
+$full = 1000px
+$half = $full / 2
+$quater = $full / 4
+
+vendor(prop, args...)
+  -webkit-{prop} args 
+  -moz-{prop} args
+  -ms-{prop} args
+  -o-{prop} args 
+  {prop} args
+
+size(w, h)
+  width w
+  height h
+
+fix-size(w, h)
+  min-width w
+  max-width w
+  min-height h
+  max-height h
+
+align-center()
+  display table-cell
+  vertical-align middle
+  text-align center
+
+linkfix()
+  color black
+  text-decoration none
+
+absolute-top(t=0, l=0)
+  position absolute
+  top t
+  left l
+
+absolute-bottom(b=0, l=0)
+  position absolute
+  bottom b
+  left l
+
+absolute-top-right(t=0, r=0)
+  position absolute
+  top t
+  right r
+
+absolute-bottom-right(b=0, r=0)
+  position absolute
+  bottom b
+  right r
+
+fixed-top(t=0, l=0)
+  position fixed
+  top t
+  left l
+
+fixed-top-right(t=0, r=0)
+  position fixed
+  top t
+  right r
+
+fixed-bottom(b=0, l=0)
+  position fixed
+  bottom b
+  left l
+
+background-transition(t)
+  vendor(transition, background-color, t, ease)
+
+textarea-transition(t)
+  vendor(transition, border, t, ease)
+  vendor(transition, box-shadow, t ease)
+
+/*
+background-linear-gradient(stops...)
+  background -webkit-linear-gradient(stops)
+  background -moz-linear-gradient(stops)
+  background -ms-linear-gradient(stops)
+  background -o-linear-gradient(stops)
+  background linear-gradient(stops)
+  */
+
+.button
+  font-family CenturyGothic
+  font-size 0.8em
+  color white
+  text-shadow 0 0 2px rgba(255, 255, 255, 0.7)
+  border solid 1px $grey10
+  box-shadow 0 0 2px rgba(0, 0, 0, 0.2)
+  background -webkit-linear-gradient(bottom, #4cd2ff, #77ddff 100%)
+  background -moz-linear-gradient(bottom, #4cd2ff, #77ddff 100%)
+  padding 2px 25px
+  margin 20px 0
+
+.pull-left
+  float left
+
+.pull-right
+  float right
+
