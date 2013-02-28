@@ -1,0 +1,37 @@
+@import helpers
+
+#slices
+  position relative
+  border solid 10px white
+  size $full 350px
+  overflow hidden
+  box-shadow 0 0 5px $grey9
+  .slice
+    overflow hidden
+    size ($full/6) 400px
+    border solid 2px white
+    img
+      height 350px
+    .slice-info
+      absolute-bottom 40px 0
+      size 100% 0
+      background rgba(0, 0, 0, 0.5)
+      color white
+      text-align center
+      padding-top 10px
+      -webkit-transition height 0.3s
+    &:hover
+      .slice-info
+        height 40px
+  .slice-1
+    absolute-top 0 0
+  .slice-2
+    absolute-top 0 ($full/6)
+  .slice-3
+    absolute-top 0 ($full/3)
+  .slice-4
+    absolute-top 0 ($full/2)
+  .slice-5
+    absolute-top 0 ($full*2/3)
+  .slice-6
+    absolute-top 0 ($full*5/6)

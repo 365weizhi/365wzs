@@ -37,6 +37,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->css('widgets');
 		echo $this->Html->css('365wzs');
 		echo $this->Html->css('view');
+		echo $this->Html->css('content-favors');
 
         // Libraries.
         echo $this->Html->script('vendor/jquery-1.8.3.min');

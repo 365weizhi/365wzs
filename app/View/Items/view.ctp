@@ -50,6 +50,7 @@
     </div>
     <div class="column-3 related-product"></div>
     <div class="column-3 comments">
+        <p class="section-title">评论:</p>
         <div class="comment">
             <div class="avatar">
                 <a><?php echo $this->Html->image('avatars/avatar1.jpg'); ?></a>
@@ -78,8 +79,8 @@
         } ?>
         -->
     </div>
-    <div class="column-3 comment">
-        添加评论：
+    <div class="column-3 commenter">
+        <p class="section-title">添加评论：</p>
         <form method="post" action="<?php echo $this->webroot."Posts/add"; ?>">
             <input type="hidden" name="Post[item_id]" value="<?php echo $item['Item']['id'];?>" />
             <input type="hidden" name="Post[user_id]" value="<?php echo $uid;?>" />

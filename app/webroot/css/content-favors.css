@@ -1,0 +1,88 @@
+@font-face {
+  font-family: CenturyGothic;
+  src: url("/static/font/CenturyGothic/GOTHIC.ttf");
+}
+@font-face {
+  font-family: CenturyGothicBold;
+  src: url("/static/font/CenturyGothic/GOTHICB.ttf");
+}
+.button {
+  font-family: CenturyGothic;
+  font-size: 0.8em;
+  color: #fff;
+  text-shadow: 0 0 2px rgba(255,255,255,0.7);
+  border: solid 1px #aaa;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  background: -webkit-linear-gradient(bottom, #4cd2ff, #7df 100%);
+  background: -moz-linear-gradient(bottom, #4cd2ff, #7df 100%);
+  padding: 2px 25px;
+  margin: 20px 0;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+#slices {
+  position: relative;
+  border: solid 10px #fff;
+  width: 1000px;
+  height: 350px;
+  overflow: hidden;
+  box-shadow: 0 0 5px #999;
+}
+#slices .slice {
+  overflow: hidden;
+  width: 166.66666666666666px;
+  height: 400px;
+  border: solid 2px #fff;
+}
+#slices .slice img {
+  height: 350px;
+}
+#slices .slice .slice-info {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  text-align: center;
+  padding-top: 10px;
+  -webkit-transition: height 0.3s;
+}
+#slices .slice:hover .slice-info {
+  height: 40px;
+}
+#slices .slice-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#slices .slice-2 {
+  position: absolute;
+  top: 0;
+  left: 166.66666666666666px;
+}
+#slices .slice-3 {
+  position: absolute;
+  top: 0;
+  left: 333.3333333333333px;
+}
+#slices .slice-4 {
+  position: absolute;
+  top: 0;
+  left: 500px;
+}
+#slices .slice-5 {
+  position: absolute;
+  top: 0;
+  left: 666.6666666666666px;
+}
+#slices .slice-6 {
+  position: absolute;
+  top: 0;
+  left: 833.3333333333334px;
+}

@@ -24,6 +24,11 @@
 .pull-right {
   float: right;
 }
+.section-title {
+  margin-top: 50px;
+  font-weight: bold;
+  text-shadow: 1px 0 1px #fff;
+}
 .product-author {
   position: relative;
   margin: 10px auto;
@@ -146,9 +151,6 @@
   vertical-align: text-bottom;
   margin: 0 0 0 5px;
 }
-.comments {
-  margin-top: 35px;
-}
 .magazines .magazine-group-title {
   margin-top: 30px;
   color: #999;
@@ -191,8 +193,7 @@
 .comments .comment {
   border-bottom: solid 1px #ccc;
   box-shadow: 0 1px 1px #fff;
-  margin: 20px;
-  margin-left: 0;
+  margin: 20px 20px 0 0;
 }
 .comments .comment .avatar {
   float: left;
@@ -213,4 +214,7 @@
 }
 .comments .comment .content .comment-content {
   color: #999;
+}
+.commenter textarea {
+  margin: 0 20px 0 0;
 }
