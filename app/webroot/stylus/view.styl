@@ -58,8 +58,6 @@
       color $grey6
       p
         margin 10px
-    .operation
-
     .buy
       absolute-bottom-right 0 0
       a.buy-button
@@ -78,6 +76,67 @@
         box-shadow 0 0 5px $grey6
         &:hover
           background -webkit-linear-gradient(top, #ab2e66, #d64d93, 100%)
+    .shares
+      padding 0 10px
+      absolute-bottom-right -25px 0
+      text-align right
+      color $grey9
+      img
+        size 15px 15px
+        vertical-align text-bottom
+        margin 0 0 0 5px
 
 .comments
   margin-top 35px
+
+.magazines
+  .magazine-group-title
+    margin-top 30px
+    color $grey9
+    strong
+      color $grey6
+  .magazine
+    size 90% auto
+    padding-top 1px
+    padding-bottom 1px
+    background white
+    text-align center
+    box-shadow 0 0 1px $grey6 inset
+    margin-top 10px
+    .magazine-image-wrapper
+      box-shadow 0 0 1px $grey6
+      margin 12px
+      size 90% 100px
+      clear both
+      overflow hidden
+      img
+        float left
+        size 50% auto
+    .magazine-title
+      display block
+      color $grey9
+      margin 10px
+      &:hover
+        color $grey6
+        cursor pointer
+
+.comments
+  .comment
+    border-bottom solid 1px $grey12
+    box-shadow 0 1px 1px white
+    margin 20px
+    margin-left 0
+    .avatar
+      float left
+      img
+        size 40px 40px
+        border-radius 5px
+    .content
+      margin-left 50px
+      .author-name
+        font-weight bold
+        color $grey6
+        text-shadow 1px 0 1px white
+        margin-bottom 0
+      .comment-content
+        color $grey9

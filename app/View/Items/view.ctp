@@ -15,7 +15,7 @@
     <div class="column-3 product-wrapper">
         <div class="column-3 product">
             <div class="column-2 image">
-                <img src="<?php echo h($item['Item']['pic_url'])."_480x480.jpg"; ?>">
+                <img src="<?php echo h($item['Item']['pic_url'])."_480x480.jpg"; ?>" />
                 <div class="operations">
                     <a class="at">
                         <?php echo $this->Html->image('at.png') ?>告诉好友
@@ -41,29 +41,91 @@
             <div class="column-1 buy">
                 <a class="buy-button" href="<?php echo $item['Item']['shop_click_url']; ?>">现在去购买!</a>
             </div>
+            <div class="column-1 shares">
+                一键分享到
+                <a><?php echo $this->Html->image('qq.png'); ?></a>
+                <a><?php echo $this->Html->image('weibo.png'); ?></a>
+            </div>
         </div>
     </div>
     <div class="column-3 related-product"></div>
     <div class="column-3 comments">
+        <div class="comment">
+            <div class="avatar">
+                <a><?php echo $this->Html->image('avatars/avatar1.jpg'); ?></a>
+            </div>
+            <div class="content">
+                <p class="author-name">张小敏</p>
+                <p class="comment-content">这个东西真是好啊，好到不得了了。</p>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="avatar">
+                <a><?php echo $this->Html->image('avatars/avatar2.jpg'); ?></a>
+            </div>
+            <div class="content">
+                <p class="author-name">李小红</p>
+                <p class="comment-content">看起来是真心的觉得不错，很粉嫩，布料摸起来很柔软，总之就是满意啦 2.布料很柔软，质量还不错，买的XL的，有点太太了，睡衣大点无所谓啦，整体还是很满意 3.这个睡衣穿起来很舒适，洗过一次还是比较舒适，只是担心会起球，不过已经超值了，卖家服务态度也很好，不错的家居服，我妈说像小朋友穿的。。。4.很可爱。喜欢。</p>
+            </div>
+        </div>
+        <!--
         <p>评论:</p>
         <?php 
         foreach($posts as $post){
         	$post = $post['Post'];
         	echo $post['comment'];
-        	echo "<br>";
+        	echo "<br />";
         } ?>
+        -->
     </div>
     <div class="column-3 comment">
-    添加评论：
-    <form method="post" action="<?php echo $this->webroot."Posts/add"; ?>">
-    <input type="hidden" name="Post[item_id]" value="<?php echo $item['Item']['id'];?>" />
-    <input type="hidden" name="Post[user_id]" value="<?php echo $uid;?>" />
-    <textarea name="Post[comment]"></textarea>
-    <input type="submit" value="评论" />
-    </form> 
+        添加评论：
+        <form method="post" action="<?php echo $this->webroot."Posts/add"; ?>">
+            <input type="hidden" name="Post[item_id]" value="<?php echo $item['Item']['id'];?>" />
+            <input type="hidden" name="Post[user_id]" value="<?php echo $uid;?>" />
+            <textarea name="Post[comment]"></textarea>
+            <input type="submit" value="评论" />
+        </form> 
     </div>
 </div>
 
-<div class="column-1">
-</div>
+<div class="column-1 magazines">
+    <p class="magazine-group-title">最新<strong>专刊</strong></p>
+    <div class="magazine">
+        <div class="magazine-image-wrapper">
+            <a><?php echo $this->Html->image('static/bag1.jpg') ?></a>
+            <a><?php echo $this->Html->image('static/bag2.jpg') ?></a>
+        </div>
+        <a class="magazine-title">西藏特色牛仔包</a>
+    </div>
 
+    <p class="magazine-group-title">推荐<strong>专刊</strong></p>
+    <div class="magazine">
+        <div class="magazine-image-wrapper">
+            <a><?php echo $this->Html->image('static/dress1.jpg') ?></a>
+            <a><?php echo $this->Html->image('static/dress2.jpg') ?></a>
+        </div>
+        <a class="magazine-title">西欧春夏悠闲连衣裙</a>
+    </div>
+    <div class="magazine">
+        <div class="magazine-image-wrapper">
+            <a><?php echo $this->Html->image('static/boot1.jpg') ?></a>
+            <a><?php echo $this->Html->image('static/boot2.jpg') ?></a>
+        </div>
+        <a class="magazine-title">韩国人气韩版淑女毛毛鞋磁两穿款粗高跟绒面</a>
+    </div>
+    <div class="magazine">
+        <div class="magazine-image-wrapper">
+            <a><?php echo $this->Html->image('static/coat1.jpg') ?></a>
+            <a><?php echo $this->Html->image('static/coat2.jpg') ?></a>
+        </div>
+        <a class="magazine-title">秋冬女装羊羔毛加厚连帽棉衣</a>
+    </div>
+    <div class="magazine">
+        <div class="magazine-image-wrapper">
+            <a><?php echo $this->Html->image('static/accessories1.jpg') ?></a>
+            <a><?php echo $this->Html->image('static/accessories2.jpg') ?></a>
+        </div>
+        <a class="magazine-title">地中海翡翠首饰</a>
+    </div>
+</div>

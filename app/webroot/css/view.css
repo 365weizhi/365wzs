@@ -105,13 +105,11 @@
 .product-wrapper .product .description p {
   margin: 10px;
 }
-.product-wrapper .product .operation,
 .product-wrapper .product .buy {
   position: absolute;
   bottom: 0;
   right: 0;
 }
-.product-wrapper .product .operation a.buy-button,
 .product-wrapper .product .buy a.buy-button {
   font-weight: bold;
   font-size: 1.8em;
@@ -131,10 +129,88 @@
   transition: background-color 0.5s ease;
   box-shadow: 0 0 5px #666;
 }
-.product-wrapper .product .operation a.buy-button:hover,
 .product-wrapper .product .buy a.buy-button:hover {
   background: -webkit-linear-gradient(top, #ab2e66, #d64d93, 100%);
 }
+.product-wrapper .product .shares {
+  padding: 0 10px;
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+  text-align: right;
+  color: #999;
+}
+.product-wrapper .product .shares img {
+  width: 15px;
+  height: 15px;
+  vertical-align: text-bottom;
+  margin: 0 0 0 5px;
+}
 .comments {
   margin-top: 35px;
+}
+.magazines .magazine-group-title {
+  margin-top: 30px;
+  color: #999;
+}
+.magazines .magazine-group-title strong {
+  color: #666;
+}
+.magazines .magazine {
+  width: 90%;
+  height: auto;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 0 1px #666 inset;
+  margin-top: 10px;
+}
+.magazines .magazine .magazine-image-wrapper {
+  box-shadow: 0 0 1px #666;
+  margin: 12px;
+  width: 90%;
+  height: 100px;
+  clear: both;
+  overflow: hidden;
+}
+.magazines .magazine .magazine-image-wrapper img {
+  float: left;
+  width: 50%;
+  height: auto;
+}
+.magazines .magazine .magazine-title {
+  display: block;
+  color: #999;
+  margin: 10px;
+}
+.magazines .magazine .magazine-title:hover {
+  color: #666;
+  cursor: pointer;
+}
+.comments .comment {
+  border-bottom: solid 1px #ccc;
+  box-shadow: 0 1px 1px #fff;
+  margin: 20px;
+  margin-left: 0;
+}
+.comments .comment .avatar {
+  float: left;
+}
+.comments .comment .avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+}
+.comments .comment .content {
+  margin-left: 50px;
+}
+.comments .comment .content .author-name {
+  font-weight: bold;
+  color: #666;
+  text-shadow: 1px 0 1px #fff;
+  margin-bottom: 0;
+}
+.comments .comment .content .comment-content {
+  color: #999;
 }
