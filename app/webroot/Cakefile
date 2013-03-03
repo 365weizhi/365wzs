@@ -1,0 +1,72 @@
+fs     = require 'fs'
+{exec} = require 'child_process'
+
+appFiles  = [
+    # omit src/ and .coffee to make the below lines a little shorter
+]
+
+cssFiles = [
+]
+
+debugCoffee = ->
+    child = exec 'coffee --watch --compile --output js/ coffee/', (err, stdout, stderr) ->
+        throw err if err?
+    child.stdout.on 'data', (data) ->
+        console.log data
+
+debugStylus = ->
+    child = exec 'stylus -w stylus/ -o css/', (err, stdout, stderr) ->
+        throw err if err?
+    child.stdout.on 'data', (data) ->
+        console.log data
+
+task 'build:debug', 'Watch project on the change.', ->
+    debugCoffee()
+    debugStylus()
+
+task 'build:app', 'Build single application file from source files in coffee/', ->
+    exec 'coffee --compile --output js/ coffee/', (err, stdout, stderr) ->
+        throw err if err?
+        appContents = new Array remaining = appFiles.length
+            for file, index in appFiles then do (file, index) ->
+                fs.readFile "#{file}.js", 'utf8', (err, fileContents) ->
+                    throw err if err?
+                    appContents[index] = fileContents
+                    process() if --remaining is 0
+        process = ->
+            fs.writeFile 'build/application.js', appContents.join('\n\n'), 'utf8', (err) ->
+                exec 'uglifyjs -o build/application.js build/application.js', (err, stdout, stderr) ->
+                    throw err if err?
+                throw err if err?
+
+task 'build:css', 'Build single css file from source files in stylus/', ->
+    exec 'stylus stylus/ --out css/', (err, stdout, stderr) ->
+        throw err if err?
+        cssContents = new Array remaining = cssFiles.length
+            for file, index in cssFiles then do (file, index) ->
+                fs.readFile "#{file}.css", 'utf8', (err, fileContents) ->
+                    throw err if err?
+                    cssContents[index] = fileContents
+                    process() if --remaining is 0
+        process = ->
+            fs.writeFile 'build/application.css', cssContents.join('\n\n'), 'utf8', (err) ->
+                exec 'cleancss -o build/application.css build/application.css', (err, stdout, stderr) ->
+                     throw err if err?
+                throw err if err?
+
+# task 'build:app', 'Build single application file from source files in coffee/', ->
+#     appContents = new Array remaining = appFiles.length
+#         for file, index in appFiles then do (file, index) ->
+#             fs.readFile "coffee/#{file}.coffee", 'utf8', (err, fileContents) ->
+#                 throw err if err?
+#                 appContents[index] = fileContents
+#                 process() if --remaining is 0
+#     process = ->
+#         fs.writeFile 'build/application.coffee', appContents.join('\n\n'), 'utf8', (err) ->
+#             throw err if err?
+#             exec 'coffee --compile build/application.coffee', (err, stdout, stderr) ->
+#                 throw err if err?
+#                 console.log stdout + stderr
+#                 fs.unlink 'build/application.coffee', (err) ->
+#                     throw err if err?
+#                     console.log 'Done.'

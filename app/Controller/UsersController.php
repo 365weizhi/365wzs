@@ -169,7 +169,7 @@ class UsersController extends AppController {
                 // 添加用户个人信息
                 $profile['Profile']['user_id'] = $new_user['User']['id'];
                 
-                if($this->Content->save($content) && $this->Profile->sace($profile)){
+                if($this->Content->save($content) && $this->Profile->save($profile)){
                     //$this->Session->setFlash(__('Create Default content successful.'));
                 }
                 $this->Session->write('user_id', $new_user['User']['id']);
