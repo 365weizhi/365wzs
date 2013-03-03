@@ -24,47 +24,56 @@
     font-weight bold
 
 .product-wrapper
+  background rgba(255, 255, 255, 0.5)
+  box-shadow 0 0 1px $grey6 inset
+  padding 1px 
   .product
     position relative
     .image
       position relative
       padding-top 10px
       padding-bottom 10px
-      background white
       text-align center
-      box-shadow 0 0 1px $grey6 inset
+      // background url('../img/image-wrapper-bg.jpg')
+      // box-shadow 0 0 1px $grey6 inset
       img
-        size 96% auto
-      .operations
-        size 100% auto
-        absolute-bottom -25px 0
-        clear both
-        a
-          color $grey9
-          text-shadow 1px 0 0 white
-          img
-            size 15px 15px
-            vertical-align text-bottom
-          &:hover
-            color $grey6
-            cursor pointer
-        a.favor
-          font-weight bold
+        // size 96% auto
+    .operations
+      absolute-bottom-right 65px 0
+      margin-right 10px
+      clear both
+      a
+        color $grey9
+        text-shadow 1px 0 0 white
+        img
+          size 15px 15px
+          vertical-align text-bottom
+        &:hover
           color $grey6
-          float left
-          &:hover
-            color $grey3
-        a.like
-          float right
-          margin 0 10px
-        a.at
-          float right
+          cursor pointer
+      a.favor
+        font-weight bold
+        color $grey6
+        float left
+        &:hover
+          color $grey3
+      a.like
+        float right
+        margin 0 10px
+      a.at
+        float right
     .description
       color $grey6
       p
-        margin 10px
+        margin 20px
+      .tags
+        color white
+        .tag
+          padding 3px 10px
+          border-radius 3px
+          background rgba(0, 208, 256, 0.5)
     .buy
-      absolute-bottom-right 0 0
+      absolute-bottom-right 10px 0
       a.buy-button
         font-weight bold
         font-size 1.8em
@@ -94,6 +103,7 @@
 .magazines
   .magazine-group-title
     margin-top 30px
+    margin-left 20px
     color $grey9
     strong
       color $grey6
@@ -101,10 +111,11 @@
     size 90% auto
     padding-top 1px
     padding-bottom 1px
-    background white
+    background rgba(255, 255, 255, 0.5)
     text-align center
     box-shadow 0 0 1px $grey6 inset
     margin-top 10px
+    margin-left 20px
     .magazine-image-wrapper
       box-shadow 0 0 1px $grey6
       margin 12px

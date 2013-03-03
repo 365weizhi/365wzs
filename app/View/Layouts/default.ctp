@@ -40,12 +40,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->css('content-favors');
 
         // Libraries.
-        echo $this->Html->script('vendor/jquery-1.8.3.min');
-        echo $this->Html->script('vendor/jquery.masonry.min');
+        echo $this->Html->script('../vendor/jquery-1.8.3.min');
+        echo $this->Html->script('../vendor/jquery.masonry.min');
         //echo $this->Html->script('bootstrap.min');
-        echo $this->Html->script('vendor/spin.min');
-        echo $this->Html->script('vendor/jquery.spin');
-        echo $this->Html->script('vendor/underscore-min');
+        echo $this->Html->script('../vendor/spin.min');
+        echo $this->Html->script('../vendor/jquery.spin');
+        echo $this->Html->script('../vendor/underscore-min');
 
         // User defined.
         echo $this->Html->script('zhelper');
@@ -140,7 +140,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<?php echo $this->element('sql_dump'); ?>
 
     <?php
-		echo $this->Html->script('zero');
+		echo $this->Html->script('app');
     ?>
 </body>
 </html>

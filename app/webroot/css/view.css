@@ -53,6 +53,11 @@
   padding-left: 5px;
   font-weight: bold;
 }
+.product-wrapper {
+  background: rgba(255,255,255,0.5);
+  box-shadow: 0 0 1px #666 inset;
+  padding: 1px;
+}
 .product-wrapper .product {
   position: relative;
 }
@@ -60,59 +65,60 @@
   position: relative;
   padding-top: 10px;
   padding-bottom: 10px;
-  background: #fff;
   text-align: center;
-  box-shadow: 0 0 1px #666 inset;
 }
-.product-wrapper .product .image img {
-  width: 96%;
-  height: auto;
-}
-.product-wrapper .product .image .operations {
-  width: 100%;
-  height: auto;
+.product-wrapper .product .operations {
   position: absolute;
-  bottom: -25px;
-  left: 0;
+  bottom: 65px;
+  right: 0;
+  margin-right: 10px;
   clear: both;
 }
-.product-wrapper .product .image .operations a {
+.product-wrapper .product .operations a {
   color: #999;
   text-shadow: 1px 0 0 #fff;
 }
-.product-wrapper .product .image .operations a img {
+.product-wrapper .product .operations a img {
   width: 15px;
   height: 15px;
   vertical-align: text-bottom;
 }
-.product-wrapper .product .image .operations a:hover {
+.product-wrapper .product .operations a:hover {
   color: #666;
   cursor: pointer;
 }
-.product-wrapper .product .image .operations a.favor {
+.product-wrapper .product .operations a.favor {
   font-weight: bold;
   color: #666;
   float: left;
 }
-.product-wrapper .product .image .operations a.favor:hover {
+.product-wrapper .product .operations a.favor:hover {
   color: #333;
 }
-.product-wrapper .product .image .operations a.like {
+.product-wrapper .product .operations a.like {
   float: right;
   margin: 0 10px;
 }
-.product-wrapper .product .image .operations a.at {
+.product-wrapper .product .operations a.at {
   float: right;
 }
 .product-wrapper .product .description {
   color: #666;
 }
 .product-wrapper .product .description p {
-  margin: 10px;
+  margin: 20px;
+}
+.product-wrapper .product .description .tags {
+  color: #fff;
+}
+.product-wrapper .product .description .tags .tag {
+  padding: 3px 10px;
+  border-radius: 3px;
+  background: rgba(0,208,255,0.5);
 }
 .product-wrapper .product .buy {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   right: 0;
 }
 .product-wrapper .product .buy a.buy-button {
@@ -153,6 +159,7 @@
 }
 .magazines .magazine-group-title {
   margin-top: 30px;
+  margin-left: 20px;
   color: #999;
 }
 .magazines .magazine-group-title strong {
@@ -163,10 +170,11 @@
   height: auto;
   padding-top: 1px;
   padding-bottom: 1px;
-  background: #fff;
+  background: rgba(255,255,255,0.5);
   text-align: center;
   box-shadow: 0 0 1px #666 inset;
   margin-top: 10px;
+  margin-left: 20px;
 }
 .magazines .magazine .magazine-image-wrapper {
   box-shadow: 0 0 1px #666;
