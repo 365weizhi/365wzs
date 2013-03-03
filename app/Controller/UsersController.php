@@ -89,6 +89,8 @@ class UsersController extends AppController {
  * @return void
  */
     public function login(){
+    	//pr($_SERVER);
+    	
         if(isset($_POST['username']) && isset($_POST['password'])){
             $username = $_POST['username'];
             $userinfo = $this->User->find('first', array('conditions'=>array("username" => $username)));
@@ -97,7 +99,7 @@ class UsersController extends AppController {
                 if($userinfo['User']['password'] == md5($_POST['password'])){
                     $this->Session->write('user_id', $userinfo['User']['id']);
                     $this->Session->write('username', $username);
-                    $this->redirect("/");
+                    $this->redirect($_POST['redirect']);
                 } else {
 				    $this->Session->setFlash(__('Username & password not match.'));
                 }
@@ -105,7 +107,8 @@ class UsersController extends AppController {
             else {
 				$this->Session->setFlash(__('Invalid User name.'));
             }
-        }
+        } 
+        $this->set("redirect", $this->referer("/"));
     }
 
 /**
