@@ -1,0 +1,36 @@
+.main-panel {
+	
+}
+.side-panel {
+	position: absolute;
+	float: right;
+	top: 0;
+	right: 0;
+	width: 20%;
+	height: 100%;
+	background: #ddd;
+}
+li {
+	height: 40px;
+}
+.chat-room-row {
+	margin: 0;
+}
+.chat-room {
+	list-style: none;
+	line-height: 40px;
+}
+.chat-room-avatar {
+	width: 30px;
+	height: 30px;
+	float: left;
+}
+.chat-room-name {
+	float: left;
+	height: 20px;
+	line-height: 20px;
+	position: relative;
+	margin-left: 10px;
+	padding-top: 0;
+	margin-top: 0;
+}
