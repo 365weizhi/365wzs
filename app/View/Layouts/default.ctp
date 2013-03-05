@@ -36,8 +36,9 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->css('lightbox');
 		echo $this->Html->css('widgets');
 		echo $this->Html->css('365wzs');
-		echo $this->Html->css('view');
 		echo $this->Html->css('content-favors');
+		echo $this->Html->css('view');
+		echo $this->Html->css('user');
 
         // Libraries.
         echo $this->Html->script('../vendor/jquery-1.8.3.min');

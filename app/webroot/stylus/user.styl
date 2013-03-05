@@ -1,0 +1,64 @@
+@import helpers
+
+#user-info
+  clear both
+  .avatar
+    text-align center
+    .avatar-table
+      img
+        size 100% auto
+        border-radius 5px
+        box-shadow 0 0 3px $grey6
+    .info-table
+      text-shadow 1px 0 1px white
+      .username
+        padding-left 20px
+        color $grey3
+        font-weight bold
+        font-size 1.2em
+        text-align left
+      .location
+        padding-left 20px
+        padding-bottom 20px
+        color $grey6
+        font-size 0.9em
+        text-align left
+      td
+        border-right solid 1px $grey12
+      td:last-child
+        border none
+      .number
+        color #069
+        font-weight bold
+        font-size 2em
+        text-shadow 1px 0 1px white
+    .detail-table
+      text-align left
+      .detail-info
+        padding-left 20px
+        color $grey6
+        font-size 0.9em
+
+.navigate
+  margin 20px auto
+  .navigate-table
+    text-align center
+    color $grey6
+    font-size 1.1em
+    font-weight bold
+    text-shadow 1px 0 1px white
+    td
+      padding-bottom 5px
+      border-bottom solid 3px $grey13
+      a
+        color $grey8
+    .navigate-left
+      size 100px auto
+    .navigate-left.navigate-item
+      &:hover
+        cursor pointer
+        border-bottom solid 3px $grey9
+        a
+          color black
+    .navigate-right
+      size 100px auto

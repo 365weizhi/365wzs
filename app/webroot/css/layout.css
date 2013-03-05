@@ -48,3 +48,27 @@
   height: auto;
   margin: 0;
 }
+.column-1-6 {
+  float: left;
+  width: 166.66666666666666px;
+  height: auto;
+  margin: 0;
+}
+.column-5-6 {
+  float: left;
+  width: 833.3333333333334px;
+  height: auto;
+  margin: 0;
+}
+.column-1-12 {
+  float: left;
+  width: $twelfth;
+  height: auto;
+  margin: 0;
+}
+.column-11-12 {
+  float: left;
+  width: 833.3333333333334px;
+  height: auto;
+  margin: 0;
+}

@@ -1,19 +1,21 @@
-
+<?php
+    $user = $User['User'];
+?>
 <form method="post">
   <fieldset>
     <legend>用户信息</legend>
 
-    <label>ç¨æ·å</label>
-    <input type="text" name="username" placeholder="æ±è³å...">
+    <label>用户名</label>
+    <input type="text" name="username" placeholder="<?php echo $user['username']; ?>">
 
-    <label>å¯ç </label>
-    <input type="password" name="password" placeholder="æ±å¯ç ...">
+    <label>密码</label>
+    <input type="password" name="password" placeholder="要改密码么...">
 
-    <label>é®ç®±å°å</label>
-    <input type="email" name="email" placeholder="æ±é®ç®±...">
+    <label>邮箱</label>
+    <input type="email" name="email" placeholder="<?php echo $user['email']; ?>">
 
     <br />
-    <button type="submit" class="btn btn-block">æ±éªè¯</button>
+    <button type="submit" class="btn btn-block">好啦</button>
   </fieldset>
 </form>
 

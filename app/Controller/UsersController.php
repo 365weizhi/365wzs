@@ -256,6 +256,8 @@ class UsersController extends AppController {
 		} else {
 			$this->request->data = $this->User->read(null, $id);
 		}
+
+        $this->set("User", $this->User->read());
 	}
 
 // Currently not supply user delete himself
