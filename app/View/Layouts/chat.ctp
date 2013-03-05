@@ -29,11 +29,11 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('loiter.css');
+		echo $this->Html->css('chat.css');
 		
         echo $this->Html->script('../vendor/jquery-1.8.3.min');
 		echo $this->Html->script('socket.io.js');
-		echo $this->Html->script('loiter.js');
+		echo $this->Html->script('chat.js');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
