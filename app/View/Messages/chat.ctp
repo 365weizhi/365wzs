@@ -13,5 +13,4 @@
 </div>
 
 <div class="side-panel">
-	<span id="message-count"></span>
 </div>

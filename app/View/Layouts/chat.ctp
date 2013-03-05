@@ -33,6 +33,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		
         echo $this->Html->script('../vendor/jquery-1.8.3.min');
 		echo $this->Html->script('socket.io.js');
+		echo $this->Html->script('chatHelper.js');
 		echo $this->Html->script('chat.js');
 
 		echo $this->fetch('meta');
