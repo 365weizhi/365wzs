@@ -34,6 +34,7 @@ class AjaxController extends AppController{
 	        }
 	        echo $message;
 		}
+		$this->set("redirect", $this->referer("/"));
 	}
 	
 	public function favor($item_id){

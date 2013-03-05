@@ -11,12 +11,12 @@ class MessagesController extends AppController {
  * verify whether user is login
  */
     function beforeFilter(){
-        if($this->Session->check("user_id") && $this->Session->check("username")){
-            
-        }else{
-            $this->redirect("/users/login");
-        }
-    
+		$isLogin = $this->isLogin();
+		if($this->view == "chat"){
+			
+		}else if(!$isLogin){
+			$this->redirect("/users/login");			
+		}
     }
 
 /**
@@ -140,5 +140,9 @@ class MessagesController extends AppController {
 		}
 		$this->Session->setFlash(__('Message was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+	
+	public function chat(){
+		$this->layout = 'chat';
 	}
 }
