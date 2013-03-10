@@ -35,29 +35,6 @@ $ ->
                 adjustment()
     listenResizeEvent()
 
-    # Initialize the scroll event.
-    $(window).scroll ->
-        scrollTop = $(window).scrollTop()
-
-        nav_h = $('#navigator').height()
-        p_h = $('#navigator p').height()
-        margin = parseInt($('#navigator').css('margin-top'))
-        offset = (nav_h - p_h) - 20 + margin
-
-        if scrollTop >= offset
-            $('#header').css
-                position: 'fixed'
-                top: -offset + 'px'
-                borderBottom: 'solid 1px #ddd'
-                boxShadow: '0 0 10px #ddd'
-            $('#slider').css 'marginTop', "#{offset + 20}px"
-        else
-            $('#header').css
-                position: 'static'
-                border: 'none'
-                boxShadow: 'none'
-            $('#slider').css 'marginTop', '0px'
-
     $('.favor').click ->
         console.log 'click!'
         Zhelper.createLikeForm App.Lightbox, App

@@ -2,7 +2,7 @@
 
 body
   margin 0
-  background url('../img/background.png')
+  background $grey13
 
 hr
   border-top solid 1px #aaa
@@ -14,7 +14,9 @@ a:hover
   z-index 1000
   size 100% auto
   text-align center
-  background url('../img/background.png')
+  background $grey4
+  position fixed
+  top 0
   margin 0
   padding 0
   #logo
@@ -30,54 +32,52 @@ a:hover
     text-align center
     vertical-align middle
     padding 40px 10px
-
   #user-panel
     position fixed
     top 0
     right 0
-    margin 10px 30px
+    height $header-height
+    margin-right 50px
     a
+      display inline-block
+      font-size 1.2em
+      font-weight bold
+      margin 20px auto
       padding 5px
-      color #666
+      color $grey9
       &:hover
-        color #39f
-
+        color white
   #navigator
     size 50% auto
     overflow hidden
-    margin 50px auto auto auto
+    margin 0 auto
     .item
-      size 12.5% auto
+      size 12.5% $header-height
       display inline-block
       float left
-      img
-        size 70% 70%
-        background rgba(0, 0, 0, 0.4)
-      p
-        border-top solid 2px rgba(100, 100, 100, 0.6)
+      border-bottom solid 5px $grey4
+      a
+        display block
+        font-size 1.2em
+        font-weight bold
         padding 5px 0 10px 0
+        margin 20px auto
         size 90% auto
-        color #666
-        margin auto
-        text-shadow 1px 0 1px white
-        box-shadow 0 1px 0 white inset
+        color $grey9
+        text-shadow 0 0 2px black
       &:hover
         cursor pointer
-        img
-          background rgba(48, 144, 255, 0.8)
-        p  
-          border-top solid 2px #39f
-          color #39f
+        border-bottom solid 5px $grey13
+        a  
+          color white
     .item.active
-      img
-        background rgba(0, 48, 144, 0.8)
-      p  
-        border-top solid 2px #039
-        color #039
+      border-bottom solid 5px $grey13
+      a
+        color $grey13
 
 #container
   background none
-  margin auto
+  margin 80px auto
   clear both
   size $full auto
   .image-block

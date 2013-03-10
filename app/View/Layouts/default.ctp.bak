@@ -60,6 +60,11 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 </head>
 <body>
     <div id="header">
+        <!--
+        <div id="logo">
+            <h1>365</h1>
+        </div>
+        -->
         <div id="user-panel">
             <?php if($this->Site->username() == '') { ?>
                 <a href="<?php echo $this->webroot.'users/register'; ?>">注册</a>
@@ -71,28 +76,52 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         </div>
         <div id="navigator">
             <div class="item <?php if($this->request->params['controller'] == 'main') echo 'active'; ?>">
-                <a href="<?php echo $this->webroot; ?>">首页</a>
+                <a href="<?php echo $this->webroot; ?>">
+                    <?php echo $this->Html->image('home.png') ?>
+                    <p>首页</p>
+                </a>
             </div>
             <div class="item <?php if($this->request->params['controller'] == 'shares') echo 'active'; ?>">
-                <a href="<?php echo $this->webroot.'shares'; ?>">分享天地</a>
+                <a href="<?php echo $this->webroot.'shares'; ?>">
+                    <?php echo $this->Html->image('share.png') ?>
+                    <p>分享天地</p>
+                </a>
             </div>
             <div class="item">
-                <a>未知专刊</a>
+                <a>
+                    <?php echo $this->Html->image('unknown.png') ?>
+                    <p>未知专刊</p>
+                </a>
             </div>
             <div class="item <?php if($this->request->params['controller'] == 'contentfavors') echo 'active'; ?>">
-                <a href="<?php echo $this->webroot.'contentfavors'; ?>">特色专刊</a>
+                <a href="<?php echo $this->webroot.'contentfavors'; ?>">
+                    <?php echo $this->Html->image('special.png') ?>
+                    <p>特色专刊</p>
+                </a>
             </div>
             <div class="item <?php if($this->request->params['controller'] == 'groups' || $this->request->params['controller'] == 'forums') echo 'active'; ?>">
-                <a href="<?php echo $this->webroot.'groups'; ?>">未知小组</a>
+                <a href="<?php echo $this->webroot.'groups'; ?>">
+                    <?php echo $this->Html->image('group.png') ?>
+                    <p>未知小组</p>
+                </a>
             </div>
             <div class="item">
-                <a>分享达人</a>
+                <a>
+                    <?php echo $this->Html->image('superman.png') ?>
+                    <p>分享达人</p>
+                </a>
             </div>
             <div class="item">
-                <a>发现未知</a>
+                <a>
+                    <?php echo $this->Html->image('discover.png') ?>
+                    <p>发现未知</p>
+                </a>
             </div>
             <div class="item">
-                <a>官方活动</a>
+                <a>
+                    <?php echo $this->Html->image('activity.png') ?>
+                    <p>官方活动</p>
+                </a>
             </div>
         </div>
     </div>

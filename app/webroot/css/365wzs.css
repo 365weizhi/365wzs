@@ -26,7 +26,7 @@
 }
 body {
   margin: 0;
-  background: url("../img/background.png");
+  background: #ddd;
 }
 hr {
   border-top: solid 1px #aaa;
@@ -39,7 +39,9 @@ a:hover {
   width: 100%;
   height: auto;
   text-align: center;
-  background: url("../img/background.png");
+  background: #444;
+  position: fixed;
+  top: 0;
   margin: 0;
   padding: 0;
 }
@@ -62,62 +64,60 @@ a:hover {
   position: fixed;
   top: 0;
   right: 0;
-  margin: 10px 30px;
+  height: 65px;
+  margin-right: 50px;
 }
 #header #user-panel a {
+  display: inline-block;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 20px auto;
   padding: 5px;
-  color: #666;
+  color: #999;
 }
 #header #user-panel a:hover {
-  color: #39f;
+  color: #fff;
 }
 #header #navigator {
   width: 50%;
   height: auto;
   overflow: hidden;
-  margin: 50px auto auto auto;
+  margin: 0 auto;
 }
 #header #navigator .item {
   width: 12.5%;
-  height: auto;
+  height: 65px;
   display: inline-block;
   float: left;
+  border-bottom: solid 5px #444;
 }
-#header #navigator .item img {
-  width: 70%;
-  height: 70%;
-  background: rgba(0,0,0,0.4);
-}
-#header #navigator .item p {
-  border-top: solid 2px rgba(100,100,100,0.6);
+#header #navigator .item a {
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
   padding: 5px 0 10px 0;
+  margin: 20px auto;
   width: 90%;
   height: auto;
-  color: #666;
-  margin: auto;
-  text-shadow: 1px 0 1px #fff;
-  box-shadow: 0 1px 0 #fff inset;
+  color: #999;
+  text-shadow: 0 0 2px #000;
 }
 #header #navigator .item:hover {
   cursor: pointer;
+  border-bottom: solid 5px #ddd;
 }
-#header #navigator .item:hover img {
-  background: rgba(48,144,255,0.8);
+#header #navigator .item:hover a {
+  color: #fff;
 }
-#header #navigator .item:hover p {
-  border-top: solid 2px #39f;
-  color: #39f;
+#header #navigator .item.active {
+  border-bottom: solid 5px #ddd;
 }
-#header #navigator .item.active img {
-  background: rgba(0,48,144,0.8);
-}
-#header #navigator .item.active p {
-  border-top: solid 2px #039;
-  color: #039;
+#header #navigator .item.active a {
+  color: #ddd;
 }
 #container {
   background: none;
-  margin: auto;
+  margin: 80px auto;
   clear: both;
   width: 1000px;
   height: auto;
