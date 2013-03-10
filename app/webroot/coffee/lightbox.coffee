@@ -1,37 +1,29 @@
-@App = @App ? {}
+App = window.App ? {}
+App.Views = App.Views ? {}
 
-@App.Lightbox = (->
-    class Lightbox
-        constructor: ->
-            @$wrapper = Zhelper.create 'div', id:'lightbox-wrapper'
-            @$content = Zhelper.create 'div', id:'lightbox'
-            @$wrapper.append(@$content)
-            @$el = @$wrapper
-        
-            @init()
-    
-        init: ->
-            @$wrapper.click (e) =>
-                @hide()
-            @$content.click (e) ->
-                e.stopPropagation()
-            @$content.on
-                'spinner.stop': (e) ->
-                    App.ZSpinner.stop()
+App.Views.Lightbox = (->
+    class Lightbox extends Backbone.View
+        el: '#lightbox-wrapper'
+
+        events:
+            'click': 'hide'
+            'click #lightbox' : 'stopPropagation'
+
+        initialize: ->
+            @$content = @$el.find '#lightbox'
     
         show: ->
             @$content.empty()
-            App.ZSpinner.spin()
+
             $('body').addClass 'ban-scroll'
-        
-            @$wrapper.fadeIn()
+            @$el.fadeIn()
         
         hide: ->
-            @$wrapper.fadeOut()
+            @$el.fadeOut()
             $('body').removeClass 'ban-scroll'
-        
-        trigger: (event, data) ->
-            @$content.trigger(event, data)
+
+        stopPropagation: (e) ->
+            e.stopPropagation()
         
         setWidget: ($widget) ->
             width = $(window).width()

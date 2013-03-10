@@ -26,37 +26,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
-	<?php
-		echo $this->Html->meta('icon');
-
-		// echo $this->Html->css('cake.generic');
-		echo $this->Html->css('bootstrap.min');
-		echo $this->Html->css('helpers');
-		echo $this->Html->css('layout');
-		echo $this->Html->css('lightbox');
-		echo $this->Html->css('widgets');
-		echo $this->Html->css('365wzs');
-		echo $this->Html->css('content-favors');
-		echo $this->Html->css('view');
-		echo $this->Html->css('user');
-
-        // Libraries.
-        echo $this->Html->script('../vendor/jquery-1.8.3.min');
-        echo $this->Html->script('../vendor/jquery.masonry.min');
-        //echo $this->Html->script('bootstrap.min');
-        echo $this->Html->script('../vendor/spin.min');
-        echo $this->Html->script('../vendor/jquery.spin');
-        echo $this->Html->script('../vendor/underscore-min');
-
-        // User defined.
-        echo $this->Html->script('zhelper');
-        echo $this->Html->script('lightbox');
-        echo $this->Html->script('spinner');
-
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
-	?>
 </head>
 <body>
     <div id="header">
@@ -96,6 +65,16 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             </div>
         </div>
     </div>
+
+    <div id="lightbox-wrapper">
+        <div id="lightbox"></div>
+    </div>
+    <div id="zexpo">
+        <script type="text/template" id="expo-item">
+            <img class="post-image" src="<%= src %>" alt="" />
+        </script>
+    </div>
+
     <?php 
     	if($this->request->params['controller'] == "main"){
     ?>
@@ -106,13 +85,48 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         <div id="message"><?php echo $this->Session->flash(); ?></div>
 	    <?php echo $this->fetch('content'); ?>
 	</div>
-	<div id="footer">
-        <p class="muted">All rights reserved by 365wzs &copy; 2012~2013</p>
-	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php
+		echo $this->Html->meta('icon');
 
-    <?php
+		// echo $this->Html->css('cake.generic');
+		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('helpers');
+		echo $this->Html->css('layout');
+		echo $this->Html->css('lightbox');
+		echo $this->Html->css('widgets');
+		echo $this->Html->css('365wzs');
+		echo $this->Html->css('content-favors');
+		echo $this->Html->css('view');
+		echo $this->Html->css('user');
+		echo $this->Html->css('expo');
+
+        // Libraries.
+        echo $this->Html->script('../vendor/jquery-1.8.3.min');
+        echo $this->Html->script('../vendor/jquery.masonry.min');
+        //echo $this->Html->script('bootstrap.min');
+        echo $this->Html->script('../vendor/spin.min');
+        echo $this->Html->script('../vendor/jquery.spin');
+        echo $this->Html->script('../vendor/underscore-min');
+        echo $this->Html->script('../vendor/backbone-min');
+
+        // User defined.
 		echo $this->Html->script('app');
-    ?>
+
+        echo $this->Html->script('helpers');
+        echo $this->Html->script('lightbox');
+
+        echo $this->Html->script('models/post');
+        echo $this->Html->script('collections/posts');
+        echo $this->Html->script('views/post');
+        echo $this->Html->script('views/zexpo');
+
+		echo $this->fetch('meta');
+		echo $this->fetch('css');
+		echo $this->fetch('script');
+	?>
+
+    <!--
+	<?php echo $this->element('sql_dump'); ?>
+    -->
 </body>
 </html>

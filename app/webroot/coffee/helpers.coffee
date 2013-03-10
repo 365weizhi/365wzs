@@ -1,27 +1,26 @@
-@App = @App ? {}
+App = window.App ? {}
 
-Zhelper =
+App.Helpers =
     create: (dom, attrs, content) ->
         content = content ? ''
-        $dom = $('<' + dom + '>' + '</' + dom + '>')
         $dom = $("<#{dom}></#{dom}>")
 
         for key, val of attrs
             $dom.attr key, val
 
         if dom is 'img'
-            return $dom
+            $dom
         else
             $dom.html(content)
-            return $dom
+            $dom
 
     plural: (noun, num) ->
         if num is 0
-            return "No #{noun}"
+            "No #{noun}"
         else if num is 1
-            return "1 #{noun}"
+            "1 #{noun}"
         else
-            return "#{num} #{noun}"
+            "#{num} #{noun}"
 
     createLoginForm: (parent) ->
         login_form_template = $('#login-template').html()
@@ -59,5 +58,6 @@ Zhelper =
                 .html($message.html())
             parent.show()
             parent.setWidget $messagebox
-            
-@Zhelper = Zhelper
+
+    delay: (msec, func) ->
+        setTimeout func, msec
