@@ -42,14 +42,11 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             <div class="item <?php if($this->request->params['controller'] == 'main') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot; ?>">首页</a>
             </div>
+            <div class="item <?php if($this->request->params['controller'] == 'contentfavors') echo 'active'; ?>">
+                <a href="<?php echo $this->webroot.'contentfavors'; ?>">未知专刊</a>
+            </div>
             <div class="item <?php if($this->request->params['controller'] == 'shares') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot.'shares'; ?>">分享天地</a>
-            </div>
-            <div class="item">
-                <a>未知专刊</a>
-            </div>
-            <div class="item <?php if($this->request->params['controller'] == 'contentfavors') echo 'active'; ?>">
-                <a href="<?php echo $this->webroot.'contentfavors'; ?>">特色专刊</a>
             </div>
             <div class="item <?php if($this->request->params['controller'] == 'groups' || $this->request->params['controller'] == 'forums') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot.'groups'; ?>">未知小组</a>
@@ -111,6 +108,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
         // User defined.
 		echo $this->Html->script('app');
+		echo $this->Html->script('router');
 
         echo $this->Html->script('helpers');
         echo $this->Html->script('lightbox');

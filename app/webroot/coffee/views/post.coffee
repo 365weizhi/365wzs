@@ -12,7 +12,7 @@ class PostView extends Backbone.View
             left: @model.get 'left'
         @$img = @$el.find '.post-image'
         @$img.load =>
-            App.Helpers.delay Math.random()*5000, =>
+            App.Helpers.delay Math.random()*2000, =>
                 @$el.animate top: @model.get 'top'
         @
 

@@ -1,12 +1,15 @@
 @import helpers
 
+$zexpo-width = 1000px
+$zexpo-item-size = $zexpo-width / 7
+
 #zexpo
   position relative
   size 1000px auto
   margin 100px auto
   .expo-item
     position absolute
-    size 200px 200px
+    size $zexpo-item-size $zexpo-item-size
     overflow hidden
     top -1000px
   

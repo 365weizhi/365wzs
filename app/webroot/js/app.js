@@ -4,40 +4,25 @@
 
   this.App = (_ref = window.App) != null ? _ref : {};
 
-  App.BASEURL = '/~Aquietzero/365wzs';
+  App.BASEURL = '365wzs';
 
-  App.TEST_IMAGES = ['/~Aquietzero/365wzs/img/ads/1.jpg', '/~Aquietzero/365wzs/img/ads/2.png', '/~Aquietzero/365wzs/img/ads/3.jpeg', '/~Aquietzero/365wzs/img/ads/4.jpg', '/~Aquietzero/365wzs/img/ads/5.png', '/~Aquietzero/365wzs/img/ads/6.png', '/~Aquietzero/365wzs/img/ads/7.jpg', '/~Aquietzero/365wzs/img/ads/8.png', '/~Aquietzero/365wzs/img/ads/9.jpg', '/~Aquietzero/365wzs/img/ads/10.jpg', '/~Aquietzero/365wzs/img/ads/11.jpg', '/~Aquietzero/365wzs/img/ads/12.png', '/~Aquietzero/365wzs/img/ads/13.png', '/~Aquietzero/365wzs/img/ads/14.png', '/~Aquietzero/365wzs/img/ads/15.jpg'];
+  App.TEST_IMAGES = ['/~Aquietzero/365wzs/img/ads/1.jpg', '/~Aquietzero/365wzs/img/ads/2.png', '/~Aquietzero/365wzs/img/ads/3.jpeg', '/~Aquietzero/365wzs/img/ads/4.jpg', '/~Aquietzero/365wzs/img/ads/5.png', '/~Aquietzero/365wzs/img/ads/6.png', '/~Aquietzero/365wzs/img/ads/7.jpg', '/~Aquietzero/365wzs/img/ads/8.png', '/~Aquietzero/365wzs/img/ads/9.jpg', '/~Aquietzero/365wzs/img/ads/10.jpg', '/~Aquietzero/365wzs/img/ads/11.jpg', '/~Aquietzero/365wzs/img/ads/13.png', '/~Aquietzero/365wzs/img/ads/14.png', '/~Aquietzero/365wzs/img/ads/15.jpg', '/~Aquietzero/365wzs/img/ads/16.jpg', '/~Aquietzero/365wzs/img/ads/17.png', '/~Aquietzero/365wzs/img/ads/18.jpg', '/~Aquietzero/365wzs/img/ads/20.jpg', '/~Aquietzero/365wzs/img/ads/21.jpg', '/~Aquietzero/365wzs/img/ads/23.jpg', '/~Aquietzero/365wzs/img/ads/24.png', '/~Aquietzero/365wzs/img/ads/25.png', '/~Aquietzero/365wzs/img/ads/26.png', '/~Aquietzero/365wzs/img/ads/27.jpg', '/~Aquietzero/365wzs/img/ads/28.jpg', '/~Aquietzero/365wzs/img/ads/29.jpg', '/~Aquietzero/365wzs/img/ads/30.jpg', '/~Aquietzero/365wzs/img/ads/31.jpg'];
 
   $(function() {
-    var col, cols_num, i, post, posts, postsCollection, row, src, zexpo, _i, _len, _ref1;
+    var router;
     App.Helpers.showMessage(App.Views.Lightbox);
     adjustment();
-    posts = [];
-    cols_num = 5;
-    _ref1 = App.TEST_IMAGES;
-    for (i = _i = 0, _len = _ref1.length; _i < _len; i = ++_i) {
-      src = _ref1[i];
-      row = Math.floor(i / cols_num);
-      col = i % cols_num;
-      post = {
-        top: row * 200,
-        left: col * 200,
-        src: src
-      };
-      posts.push(post);
-    }
-    postsCollection = new App.Collections.Posts(posts);
-    zexpo = new App.Views.ZExpo({
-      collection: postsCollection
-    });
-    $(document.body).append(zexpo.render().el);
     $('.favor').click(function() {
       App.Helpers.createLikeForm(App.Views.Lightbox, App);
       return App.Views.Lightbox.show();
     });
-    return $('.at').click(function() {
+    $('.at').click(function() {
       App.Helpers.createAtForm(App.Views.Lightbox, App);
       return App.Views.Lightbox.show();
+    });
+    router = new App.Router;
+    return Backbone.history.start({
+      pushState: true
     });
   });
 

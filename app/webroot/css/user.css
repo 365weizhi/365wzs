@@ -54,6 +54,8 @@
   text-align: left;
 }
 #user-info .avatar .info-table td {
+  color: #666;
+  font-size: 1.1em;
   border-right: solid 1px #ccc;
 }
 #user-info .avatar .info-table td:last-child {
@@ -84,11 +86,16 @@
   text-shadow: 1px 0 1px #fff;
 }
 .navigate .navigate-table td {
-  padding-bottom: 5px;
-  border-bottom: solid 3px #ddd;
+  vertical-align: middle;
+  padding: 5px;
+  border-top: solid 3px #bbb;
+  border-bottom: solid 3px #bbb;
 }
 .navigate .navigate-table td a {
   color: #888;
+}
+.navigate .navigate-table td.border-right {
+  border-right: solid 1px #bbb;
 }
 .navigate .navigate-table .navigate-left {
   width: 100px;
@@ -104,4 +111,27 @@
 .navigate .navigate-table .navigate-right {
   width: 100px;
   height: auto;
+}
+#users .user {
+  width: 125px;
+  height: 125px;
+  float: left;
+  overflow: hidden;
+  text-align: center;
+}
+#users .user img {
+  width: 70%;
+  height: 70%;
+  border-radius: 100%;
+  box-shadow: 0 0 5px #999;
+  -webkit-transition: -webkit-transform 0.3s ease;
+}
+#users .user img:hover {
+  cursor: pointer;
+  -webkit-transform: rotate(20deg);
+}
+#users .user p {
+  text-shadow: 1px 0 1px #fff;
+  color: #666;
+  margin-top: 5px;
 }

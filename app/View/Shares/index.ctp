@@ -1,3 +1,5 @@
+
+<!--
 <div id="cascade-container">
     <?php foreach ($shares as $item) { ?>
         <div class="image-block">
@@ -25,3 +27,4 @@
         </div>
     <?php } ?>
 </div>
+-->

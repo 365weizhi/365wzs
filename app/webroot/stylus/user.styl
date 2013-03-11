@@ -24,6 +24,8 @@
         font-size 0.9em
         text-align left
       td
+        color $grey6
+        font-size 1.1em
         border-right solid 1px $grey12
       td:last-child
         border none
@@ -48,10 +50,14 @@
     font-weight bold
     text-shadow 1px 0 1px white
     td
-      padding-bottom 5px
-      border-bottom solid 3px $grey13
+      vertical-align middle
+      padding 5px
+      border-top solid 3px $grey11
+      border-bottom solid 3px $grey11
       a
         color $grey8
+    td.border-right
+      border-right solid 1px $grey11
     .navigate-left
       size 100px auto
     .navigate-left.navigate-item
@@ -62,3 +68,22 @@
           color black
     .navigate-right
       size 100px auto
+
+#users
+  .user
+    size ($full / 8) ($full / 8)
+    float left
+    overflow hidden
+    text-align center
+    img
+      size 70% 70%
+      border-radius 100%
+      box-shadow 0 0 5px $grey9
+      -webkit-transition -webkit-transform 0.3s ease
+      &:hover
+        cursor pointer
+        -webkit-transform rotate(20deg)
+    p
+      text-shadow 1px 0 1px white
+      color $grey6
+      margin-top 5px

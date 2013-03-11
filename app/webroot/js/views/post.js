@@ -30,7 +30,7 @@
       });
       this.$img = this.$el.find('.post-image');
       this.$img.load(function() {
-        return App.Helpers.delay(Math.random() * 5000, function() {
+        return App.Helpers.delay(Math.random() * 2000, function() {
           return _this.$el.animate({
             top: _this.model.get('top')
           });

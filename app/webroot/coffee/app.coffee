@@ -1,6 +1,6 @@
 @App = window.App ? {}
 
-App.BASEURL = '/~Aquietzero/365wzs'
+App.BASEURL = '365wzs'
 App.TEST_IMAGES = [
     '/~Aquietzero/365wzs/img/ads/1.jpg'
     '/~Aquietzero/365wzs/img/ads/2.png'
@@ -13,29 +13,23 @@ App.TEST_IMAGES = [
     '/~Aquietzero/365wzs/img/ads/9.jpg'
     '/~Aquietzero/365wzs/img/ads/10.jpg'
     '/~Aquietzero/365wzs/img/ads/11.jpg'
-    '/~Aquietzero/365wzs/img/ads/12.png'
     '/~Aquietzero/365wzs/img/ads/13.png'
     '/~Aquietzero/365wzs/img/ads/14.png'
     '/~Aquietzero/365wzs/img/ads/15.jpg'
-    # '/~Aquietzero/365wzs/img/ads/16.jpg'
-    # '/~Aquietzero/365wzs/img/ads/17.png'
-    # '/~Aquietzero/365wzs/img/ads/18.jpg'
-    # '/~Aquietzero/365wzs/img/ads/19.png'
-    # '/~Aquietzero/365wzs/img/ads/20.jpg'
-    # '/~Aquietzero/365wzs/img/ads/21.jpg'
-    # '/~Aquietzero/365wzs/img/ads/22.png'
-    # '/~Aquietzero/365wzs/img/ads/23.jpg'
-    # '/~Aquietzero/365wzs/img/ads/24.png'
-    # '/~Aquietzero/365wzs/img/ads/25.png'
-    # '/~Aquietzero/365wzs/img/ads/26.png'
-    # '/~Aquietzero/365wzs/img/ads/27.jpg'
-    # '/~Aquietzero/365wzs/img/ads/28.jpg'
-    # '/~Aquietzero/365wzs/img/ads/29.jpg'
-    # '/~Aquietzero/365wzs/img/ads/30.jpg'
-    # '/~Aquietzero/365wzs/img/ads/31.jpg'
-    # '/~Aquietzero/365wzs/img/ads/32.jpg'
-    # '/~Aquietzero/365wzs/img/ads/33.jpg'
-    # '/~Aquietzero/365wzs/img/ads/33.png'
+    '/~Aquietzero/365wzs/img/ads/16.jpg'
+    '/~Aquietzero/365wzs/img/ads/17.png'
+    '/~Aquietzero/365wzs/img/ads/18.jpg'
+    '/~Aquietzero/365wzs/img/ads/20.jpg'
+    '/~Aquietzero/365wzs/img/ads/21.jpg'
+    '/~Aquietzero/365wzs/img/ads/23.jpg'
+    '/~Aquietzero/365wzs/img/ads/24.png'
+    '/~Aquietzero/365wzs/img/ads/25.png'
+    '/~Aquietzero/365wzs/img/ads/26.png'
+    '/~Aquietzero/365wzs/img/ads/27.jpg'
+    '/~Aquietzero/365wzs/img/ads/28.jpg'
+    '/~Aquietzero/365wzs/img/ads/29.jpg'
+    '/~Aquietzero/365wzs/img/ads/30.jpg'
+    '/~Aquietzero/365wzs/img/ads/31.jpg'
 ]
 
 $ ->
@@ -45,28 +39,20 @@ $ ->
     # Adjustment
     adjustment()
 
-    posts = []
-    cols_num = 5
-    for src, i in App.TEST_IMAGES
-        row = Math.floor i/cols_num
-        col = i % cols_num
-        post =
-            top: row * 200
-            left: col * 200
-            src: src
-        posts.push post
+    # postsCollection = new App.Collections.Posts posts
+    # zexpo = new App.Views.ZExpo collection: postsCollection
 
-    postsCollection = new App.Collections.Posts posts
-    zexpo = new App.Views.ZExpo collection: postsCollection
-
-    $(document.body).append zexpo.render().el
-
+    # $(document.body).append zexpo.render().el
+    
     $('.favor').click ->
         App.Helpers.createLikeForm App.Views.Lightbox, App
         App.Views.Lightbox.show()
     $('.at').click ->
         App.Helpers.createAtForm App.Views.Lightbox, App
         App.Views.Lightbox.show()
+
+    router = new App.Router
+    Backbone.history.start pushState: true
 
 initCascade = ->
     # Initialize the cascade container.
