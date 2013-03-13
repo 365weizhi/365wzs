@@ -7,6 +7,15 @@ App::uses('AppController', 'Controller');
  */
 class PostsController extends AppController {
 
+    function beforeFilter(){
+    	$isLogin = $this->isLogin();
+        if($isLogin){
+        	
+        }else{
+            $this->redirect("/users/login");
+        }
+    }
+    
 /**
  * index method
  *
@@ -43,7 +52,7 @@ class PostsController extends AppController {
 			$this->Post->create();
 			$post = $this->request->data;
 			$post['Post']['time'] = date("Y-m-d H:i:s");
-			if ($this->Post->save($this->request->data)) {
+			if ($this->Post->save($post)) {
 				echo "success";
 				$this->redirect(array('action' => 'index'));
 			}
