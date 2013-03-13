@@ -19,7 +19,10 @@ class PipeController extends AppController{
             'offset'=>$offset
         ));
         echo json_encode($items);
-        //pr($items);
+    }
+    
+    public function cover($content_id){
+    	
     }
 }
 ?>
