@@ -28,9 +28,10 @@ class Post extends AppModel {
 			'className' => 'User',
 			'foreignKey' => 'user_id',
 			'conditions' => '',
-			'fields' => '',
+			'fields' => 'id, username',
 			'order' => ''
 		),
+		/*
 		'Item' => array(
 			'className' => 'Item',
 			'foreignKey' => 'item_id',
@@ -38,5 +39,6 @@ class Post extends AppModel {
 			'fields' => '',
 			'order' => ''
 		)
+		*/
 	);
 }

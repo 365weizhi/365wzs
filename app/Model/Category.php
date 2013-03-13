@@ -25,7 +25,7 @@ class Category extends AppModel {
 	public $hasAndBelongsToMany = array(
 		'Item' => array(
 			'className' => 'Item',
-			'joinTable' => 'items_categories',
+			'joinTable' => 'category_items',
 			'foreignKey' => 'category_id',
 			'associationForeignKey' => 'item_id',
 			'unique' => 'keepExisting',

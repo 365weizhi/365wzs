@@ -106,7 +106,7 @@ class Item extends AppModel {
 	public $hasAndBelongsToMany = array(
 		'Category' => array(
 			'className' => 'Category',
-			'joinTable' => 'items_categories',
+			'joinTable' => 'category_items',
 			'foreignKey' => 'item_id',
 			'associationForeignKey' => 'category_id',
 			'unique' => 'keepExisting',
