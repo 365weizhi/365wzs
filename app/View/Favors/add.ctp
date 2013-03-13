@@ -1,7 +1,4 @@
 <form method="post">
-    <input type="hidden" value=<?php echo $this->Session->read("user_id");?> name="user_id"/>
-    <input type="hidden" value=<?php echo $item_id;?> name="item_id"/>
-
     <label class="control-label">Description:</label>
     <textarea name="description"></textarea>
 
@@ -17,7 +14,6 @@
     <br />
     <button class="btn" type="submit" >Submit</button>
 </form>
-
 
 <!--
 <?php echo $this->Form->create('Favor'); ?>

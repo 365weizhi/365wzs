@@ -34,6 +34,13 @@ class Item extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'CategoryItem' => array(
+			'className' => 'CategoryItem',
+			'foreignKey' => 'id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 
@@ -102,7 +109,6 @@ class Item extends AppModel {
  * hasAndBelongsToMany associations
  *
  * @var array
- */
 	public $hasAndBelongsToMany = array(
 		'Category' => array(
 			'className' => 'Category',
@@ -121,4 +127,5 @@ class Item extends AppModel {
 		)
 	);
 
+ */
 }
