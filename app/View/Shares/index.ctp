@@ -1,3 +1,16 @@
+<style>
+.share-input {
+	position: absolute;
+	top: 70px;
+	right: 300px;
+}
+</style>
+
+<form class="share-input" method="post" action="<?php echo $this->webroot;?>shares/add">
+<input name="url" placeHolder="粘贴淘宝商品URL" />
+<input type="submit" class="btn" />
+</form>
+
 
 <!--
 <div id="cascade-container">
