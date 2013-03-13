@@ -45,7 +45,7 @@ class FavorsController extends AppController {
  * 分享商品到用户的目录
  * 前置条件：
  * 1. 存在该商品
- * 2. 商品没被分享过
+ * 2. 商品没被分享过，且只能分享一次
  * 操作：
  * 1. 商品属性 并修改商品属性content_id、user_id、faver_count= 0
  * 2. 更新商品属性 update_time，修改商品description
