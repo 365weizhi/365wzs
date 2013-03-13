@@ -2,27 +2,26 @@
 App::uses('AppController', 'Controller');
 
 class PipeController extends AppController{
-    public $uses = array('Item');
+    public $uses = array('Item', 'CategoryItem');
     public $autoRender = false;   
 
     /**
      * Later should mantain these methods in cache.
      */
-    public function index($offset, $limit = 10){
-        $this->Item->recursive = -1;
-        $items = $this->Item->find('all', array(
+    public function index($offset = 0, $limit = 32){
+      //  $this->Item->recursive = -1;
+        $items = $this->CategoryItem->find('all', array(
             'conditions'=>array(),
-            'order'=>array('rank'),
+//            'order'=>array('rank'),
             // Should be confirm later which field are needed
-            'fileds'=>array(),
+            'fields'=>array(
+                'Item.*',
+            ),
             'limit'=>$limit,
             'offset'=>$offset
         ));
-        echo json_encode($items);
-    }
-    
-    public function cover($content_id){
-    	
+       //echo json_encode($items);
+       pr($items);
     }
 }
 ?>

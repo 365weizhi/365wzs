@@ -36,7 +36,7 @@ class Favor extends AppModel {
 			'className' => 'Item',
 			'foreignKey' => 'item_id',
 			'conditions' => '',
-			'fields' => 'id, num_iid, title, nick , description, click_url, pic_url, item_location, favor_count, like_count',
+//			'fields' => 'id, num_iid, title, nick , description, click_url, pic_url, item_location, favor_count, like_count',
 			'order' => ''
 		),
 		'Content' => array(

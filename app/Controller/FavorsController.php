@@ -10,7 +10,7 @@ class FavorsController extends AppController {
 
     function beforeFilter(){
     	$isLogin = $this->isLogin();
-        if($this->view == 'index' || $this->view == 'add'){
+        if($this->view == 'index' || $this->view == "delete"){
         }
         else if(!$isLogin){
         	$this->redirect('/ajax/login');
@@ -113,10 +113,6 @@ class FavorsController extends AppController {
 
 /**
  * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
  */
 	public function edit($id = null) {
 		$this->Favor->id = $id;
@@ -140,26 +136,49 @@ class FavorsController extends AppController {
 	}
 
 /**
- * delete method
- *
- * @throws MethodNotAllowedException
- * @throws NotFoundException
- * @param string $id
- * @return void
+ *用户删除自己分享过的商品
+ * 前置条件：
+ * 1. 存在该商品
+ * 2. 商品是用户自己分享的
+ * 操作：
+ * 1. 商品属性并修改商品属性content_id、user_id、faver_count = 0
+ * 2. 更新商品属性 update_time，修改商品description
+ * 3. 从favors删除记录
+ * 5. 修改categories的son_count++
+ * 6. 从cateogry_items中添加item
  */
 	public function delete($id = null) {
+		echo "<br><br><br><br><br>";
 		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
+			$message = "error";
 		}
-		$this->Favor->id = $id;
-		if (!$this->Favor->exists()) {
-			throw new NotFoundException(__('Invalid favor'));
+		$favor = $this->Favor->read(null, $id);
+		if(!$favor){
+			$message = "该分享记录不存在";
 		}
-		if ($this->Favor->delete()) {
-			$this->Session->setFlash(__('Favor deleted'));
-			$this->redirect(array('action' => 'index'));
+		else if($favor['Favor']['user_id'] != $this->uid){
+			$message = "这个商品不是您分享的哟~";
 		}
-		$this->Session->setFlash(__('Favor was not deleted'));
-		$this->redirect(array('action' => 'index'));
+		else {
+			// 清理Item自带的属性
+			$item = array();
+			$item['Item'] = $favor['Item'];
+			$item['Item']['content_id'] = 0;
+			$item['Item']['user_id'] = 0;
+			$item['Item']['favor_count'] = 0;
+			$item['Item']['description'] = '';
+			$item['Item']['update_time'] = '';
+			$this->Item->save($item);
+			
+			$this->Favor->delete($favor['Favor']['id']);
+			$this->Category->query("update 365wzs_categories set son_count=son_count+1 where id = 1");
+			$categoryItem = array();
+			$categoryItem['CategoryItem']['category_id'] = 1;
+			$categoryItem['CategoryItem']['item_id'] = $item['Item']['id'];
+			$this->Item->CategoryItem->save($categoryItem);
+			$message = "删除成功";
+		}
+		$this->Session->setFlash(__($message));
+		$this->redirect("/");
 	}
 }
