@@ -52,23 +52,24 @@ class FavorsController extends AppController {
  * 3. 添加到表favors，记录content_id、item_id、user_id
  * 5. 修改categories的son_count--
  * 6. 从cateogry_items中删除item
- * 
- * @return void
  */
     public function add($item_id) {
+        $item = $this->Item->find("first", array(
+        	'conditions'=>array(
+        		'Item.id'=>$item_id,
+        	)
+        ));
+        if(!$item){
+        	$message = __('该商品不存在.');
+       		$this->Session->setFlash($message);
+        	$this->redirect("/");
+        }
+        else if($item['Item']['user_id'] != 0){
+        	$message = __('该商品已被分享.');
+       		$this->Session->setFlash($message);
+        	$this->redirect("/");
+        }
         if ($this->request->is('post')) {
-	        $item = $this->Item->find("first", array(
-	        	'conditions'=>array(
-	        		'Item.id'=>$item_id,
-	        	)
-	        ));
-	        if(!$item){
-	        	$message = __('该商品不存在.');
-	        }
-	        else if($item['Item']['user_id'] != 0){
-	        	$message = __('已分享该商品.');
-	        }
-	        else {
 	         	$item['Item']['user_id'] = $this->uid;
           		$item['Item']['content_id'] = $_POST['content_id'];
           		$item['Item']['description'] = $_POST['description'];
@@ -100,7 +101,6 @@ class FavorsController extends AppController {
                 }
 	       		$this->Session->setFlash($message);
 	        	$this->redirect("/");
-		    }
         }
         else {
         	$this->set("contents", $this->Content->find("all", array(
@@ -112,27 +112,46 @@ class FavorsController extends AppController {
 	}
 
 /**
- * edit method
+ * 用户修改分享的商品信息
+ * 前置条件：
+ * 1. 分享记录存在
+ * 2. 商品是自己分享的
+ * 操作：
+ * 1. 修改商品的描述信息
+ * 2. 修改商品所属的目录
  */
 	public function edit($id = null) {
-		$this->Favor->id = $id;
-		if (!$this->Favor->exists()) {
-			throw new NotFoundException(__('Invalid favor'));
+		$favor = $this->Favor->read(null, $id);
+		$message = "";
+		if (!$favor) {
+			$message = "分享记录不存在";
+			$this->redirect("/");
 		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Favor->save($this->request->data)) {
-				$this->Session->setFlash(__('The favor has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The favor could not be saved. Please, try again.'));
+		else if($favor['Favor']['user_id'] != $this->uid){
+			$message = "该商品不是你分享的哦~";
+			$this->redirect("/");
+		}
+		else {
+			if ($this->request->is('post')) {
+				$favor['Item']['description'] = $_POST['description'];
+				$favor['Favor']['content_id'] = $_POST['content_id'];
+				if ($this->Favor->save($favor)) {
+					$message = "修改成功";
+					$this->redirect(array('action' => 'index'));
+				} else {
+					$message = "修改失败";
+				}
+				$this->Session->setFlash(__($message));
+			} 
+			else {
+				$this->set("description", $favor['Item']['description']);
+				$this->set("contents", $this->Content->find("all", array(
+					'conditions'=>array(
+						'user_id'=>$this->uid
+					)
+				)));
 			}
-		} else {
-			$this->request->data = $this->Favor->read(null, $id);
 		}
-		$users = $this->Favor->User->find('list');
-		$items = $this->Favor->Item->find('list');
-		$contents = $this->Favor->Content->find('list');
-		$this->set(compact('users', 'items', 'contents'));
 	}
 
 /**
@@ -148,7 +167,6 @@ class FavorsController extends AppController {
  * 6. 从cateogry_items中添加item
  */
 	public function delete($id = null) {
-		echo "<br><br><br><br><br>";
 		if (!$this->request->is('post')) {
 			$message = "error";
 		}
