@@ -15,6 +15,7 @@
             <tr>
                 <td><span class="number">243</span></td>
             	<!-- nexus 中count_1为被关注次数，count_2为关注的人的数量 -->
+            	<!-- 接口为hail/follows & fans -->
                 <td><span class="number">543</span></td>
                 <td><span class="number">33</span></td>
             </tr>
