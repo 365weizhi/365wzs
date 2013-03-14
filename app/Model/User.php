@@ -28,6 +28,10 @@ class User extends AppModel {
  * @var array
  */
 	public $hasMany = array(
+		'Follow' => array(
+			'className' => 'Follow',
+			'foreignKey' => 'user_id',
+		),
 		'Content' => array(
 			'className' => 'Content',
 			'foreignKey' => 'user_id',

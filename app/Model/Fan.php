@@ -1,13 +1,13 @@
 <?php
 App::uses('AppModel', 'Model');
 
-class Fans extends AppModel {
+class Fan extends AppModel {
 	public $name = "Follow";
 	
-	public $belongsTo = array(
+	public $hasOne = array(
 		'User' => array(
 			'className' => 'User',
-			'foreignKey' => 'user_id',
+			'foreignKey' => 'id',
 			'dependent' => true,
 			'conditions' => '',
 			'fields' => 'id, username',

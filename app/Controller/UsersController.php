@@ -32,17 +32,13 @@ class UsersController extends AppController {
 		$this->Session->setFlash(__('This account has been created, please verify email.'));
 		$this->redirect("/");
     }
-
+    
     function beforeFilter(){
-        $username = $this->Session->read('username');
-        $action = $this->params['action'];
-        if($action == 'edit' || $action == 'view'){
-            if($username == ''){
-                $this->Session->setFlash(__('Please Login first.'));
-                $this->redirect("/users/login");
-            }
-        } else if($action == 'register' && $username == ''){
-
+    	$isLogin = $this->isLogin();
+        if($this->view == 'view' || $this->view == "edit"){
+	        if(!$isLogin){
+	        	$this->redirect('/ajax/login');
+	        }
         }
     }
 
@@ -96,7 +92,7 @@ class UsersController extends AppController {
             $userinfo = $this->User->find('first', array('conditions'=>array("username" => $username)));
             //pr($userinfo);
             if(isset($userinfo['User'])){
-                if($userinfo['User']['password'] == md5($_POST['password'])){
+                if($userinfo['User']['password'] == $this->_md5($_POST['password'])){
                     $this->Session->write('user_id', $userinfo['User']['id']);
                     $this->Session->write('username', $username);
                     $this->redirect($_POST['redirect']);
@@ -117,21 +113,25 @@ class UsersController extends AppController {
  * @param string $id
  * @return void
  */
-    public function view($id = null) {
-        $userinfo['User']['username'] = "test";
-        $userinfo['User']['password'] = "test";
-        $userinfo['User']['email'] = "test@test.com";
-
-        $id = $this->User->save($userinfo);
-        // pr($id);
-
-        $id = $this->Session->read("user_id");
-		$this->User->id = $id;
-        // pr($this->User->read(null, $id));
-		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
+    public function view() {
+		$user = $this->User->find("first", array(
+			'conditions'=>array(
+				'id'=>$this->uid,
+			)
+		));
+		$rt_obj = array();
+		if (!$user) {
+			$rt_obj['code'] = "failed";
+			$rt_obj['msg'] = "用户不存在";
+			echo json_encode($rt_obj);
+			return ;
 		}
-		$this->set('user', $this->User->read(null, $id));
+		
+		$user_id = $this->uid;
+		$sql = "SELECT SUM(	CASE WHEN (	user_id = $user_id ) THEN 1 ELSE 0 END ) count_1, SUM(	CASE WHEN (	follow_id = $user_id ) THEN 1 ELSE 0 END ) count_2 FROM 365wzs_follows";
+		$nexus = $this->User->Follow->Query($sql);
+		$this->set("nexus", $nexus[0][0]);
+		$this->set('user', $user);
     }
 
 
@@ -189,8 +189,8 @@ class UsersController extends AppController {
 	public function register() {
 		if ($this->request->is('post')) {
             $arr = $this->request->data;
-            $arr['password'] = md5($arr['password']);
-            $arr['activekey'] = md5($arr['password'].time());
+            $arr['password'] = $this->_md5($arr['password']);
+            $arr['activekey'] = $this->_md5($arr['password'].time());
             $user['Registration'] = $arr;
 
             // First check Registerations Table whether has register once
@@ -241,28 +241,76 @@ class UsersController extends AppController {
  * @return void
  */
     // Id is record in Session
-    public function edit($id = null) {
+    public function edit() {
         // Must confirm user is login & only can modify user's own profile
-        $id = ($this->Session->read("user_id"));
-		$this->User->id = $id; 
-		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
+        $rt_obj = array();
+        $user = $this->User->find("first", array(
+        	'conditions'=>array(
+        		'id'=>$this->uid,
+        	)
+        ));
+        
+		if (!$user) {
+			$rt_obj['code'] = "failed";
+			$rt_obj['msg'] = "用户不存在呢~";
+        	echo json_encode($rt_obj);
+        	return ;
 		}
-        if ($this->request->is('post') || $this->request->is('put')) {
-            $userinfo['User'] = $this->request->data;
-            if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('Edit has been saved'));
+        if ($this->request->is('post')) {
+        	if($_FILES['pic_url']['name'] != ""){
+				if ((($_FILES["pic_url"]["type"] == "image/gif")
+						|| ($_FILES["pic_url"]["type"] == "image/jpeg")
+						|| ($_FILES["pic_url"]["type"] == "image/png")
+						|| ($_FILES["pic_url"]["type"] == "image/pjpeg")) 
+						){
+						// 后期添加大小限制
+						//&& ($_FILES["pic_url"]["size"] < 20000)) {
+					if ($_FILES["pic_url"]["error"] > 0) {
+						$rt_obj['code'] = "failed1";
+						$rt_obj['msg'] = "文件上传失败";
+						echo json_encode($rt_obj);
+						return ;
+					}
+					else {
+						//echo "Upload: " . $_FILES["file"]["name"] . "<br />";
+						//echo "Type: " . $_FILES["file"]["type"] . "<br />";
+						//echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
+						//echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
+						$dir = dirname(dirname(__FILE__)).DS."webroot".DS."static".DS."avatar";
+						move_uploaded_file($_FILES["pic_url"]["tmp_name"], $dir.DS.md5($user['User']['username']).".jpg");
+						
+			        	$user['User']['pic_url'] = md5($user['User']['username']).".jpg";
+					}
+				}
+				else {
+					$rt_obj['code'] = "failed2";
+					$rt_obj['msg'] = "文件格式错误";
+					echo json_encode($rt_obj);
+					return ;
+				}
+        	}
+        	$user['User']['nickname'] = $_POST['nickname'];
+        	$user['User']['password'] = $this->_md5($_POST['password']);
+        	$user['User']['email'] = $_POST['email'];
+        	$user['User']['description'] = $_POST['description'];
+        	$user['User']['birthdate'] = $_POST['birthdate'];
+        	$user['User']['gender'] = $_POST['gender'];
+        	$user['User']['address'] = $_POST['address'];
+        	
+            if ($this->User->save($user)) {
+				$this->Session->setFlash(__('修改成功了~'));
 				$this->redirect(array('action' => 'view'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$rt_obj['code'] = "false";
+				$rt_obj['msg'] = "有错了~~等会再试试";
 			}
-		} else {
-			$this->request->data = $this->User->read(null, $id);
 		}
-
-        $this->set("User", $this->User->read());
+        $this->set("User", $user);
 	}
-
+	
+	function _md5($password){
+		return md5($password."365wzs");
+	}
 // Currently not supply user delete himself
 /**
  * delete method

@@ -1,19 +1,38 @@
 <?php
     $user = $User['User'];
 ?>
-<form method="post">
+
+<form enctype="multipart/form-data" method="post">
   <fieldset>
+	
     <legend>用户信息</legend>
 
-    <label>用户名</label>
-    <input type="text" name="username" placeholder="<?php echo $user['username']; ?>">
+    <label>昵称</label>
+    <input type="text" name="nickname" placeholder="<?php echo $user['username']; ?>">
 
     <label>密码</label>
     <input type="password" name="password" placeholder="要改密码么...">
 
     <label>邮箱</label>
-    <input type="email" name="email" placeholder="<?php echo $user['email']; ?>">
+    <input type="email" name="email" value="<?php echo $user['email']; ?>">
 
+    <label>性别</label>
+    <input type="text" name="gender" value="<?php echo $user['gender']; ?>">
+
+	<label>心情</label>
+	<input type="text" name="description" value="<?php echo $user['description'];?>">
+	
+	<label>生日</label>
+	<input type="text" name="birthdate" value="<?php echo $user['birthdate']; ?>">
+	
+	<label>地址</label>
+	<input type="text" name="address" value="<?php echo $user['address']; ?>">
+	
+	
+	<label>修改头像</label>
+	<!-- 前端js判断是否png，jpg等，再看看是否需要显示缩略图 -->
+	<input type="file" name="pic_url" />
+	
     <br />
     <button type="submit" class="btn btn-block">好啦</button>
   </fieldset>

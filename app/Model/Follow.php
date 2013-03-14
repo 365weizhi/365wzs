@@ -2,10 +2,10 @@
 App::uses('AppModel', 'Model');
 
 class Follow extends AppModel {
-	public $belongsTo = array(
+	public $hasOne = array(
 		'User' => array(
 			'className' => 'User',
-			'foreignKey' => 'follow_id',
+			'foreignKey' => 'id',
 			'dependent' => true,
 			'conditions' => '',
 			'fields' => 'id, username',

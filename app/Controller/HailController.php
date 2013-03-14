@@ -1,7 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 
-class FollowsController extends AppController {
+class HailController extends AppController {
 	public $uses = array('Follow', 'Fan');
 	
 	public function index() {
@@ -9,7 +9,11 @@ class FollowsController extends AppController {
 		pr($this->Follow->find('all'));
 	}
 	
+	/**
+	 * 我关注的人
+	 */
 	public function follows(){
+		/*
 		$this->autoRender = false;
 		$this->Follow->User->recursive = -1;
 		$follows = $this->Follow->find('all');
@@ -19,10 +23,24 @@ class FollowsController extends AppController {
 			$rt_obj['data'][] = $follow['User'];
 		}
 		echo json_encode($rt_obj);
+		*/
+		echo "<meta charset='utf-8'>";
+		$this->autoRender = false;
+		//$this->Follow->user_id = $this->uid;
+		$fans = $this->Follow->find('all', array(
+			'conditions'=>array(
+				'follow_id'=>$this->uid,
+			)
+		));
+		pr($fans);
 	}
 	
+	/**
+	 * 我的粉丝
+	 */
 	public function fans(){
 		$this->autoRender = false;
+		echo "<meta charset='utf-8'>";
 		//$this->Follow->user_id = $this->uid;
 		$fans = $this->Fan->find('all', array(
 			'conditions'=>array(
