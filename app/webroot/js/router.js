@@ -25,8 +25,14 @@
 
     Router.prototype.index = function() {
       var col, cols_num, i, post, posts, postsCollection, row, size, src, zexpo, _i, _len, _ref1;
+      $.ajax({
+        url: '/365wzs/pipe/10/0',
+        success: function(data) {
+          return console.log(data);
+        }
+      });
       posts = [];
-      cols_num = 7;
+      cols_num = 8;
       size = 1000 / cols_num;
       _ref1 = App.TEST_IMAGES;
       for (i = _i = 0, _len = _ref1.length; _i < _len; i = ++_i) {

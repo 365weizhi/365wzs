@@ -11,8 +11,13 @@ class Router extends Backbone.Router
         # doing nothing...
 
     index: ->
+        $.ajax
+            url: '/365wzs/pipe/10/0'
+            success: (data) ->
+                console.log data
+
         posts = []
-        cols_num = 7
+        cols_num = 8
         size = 1000 / cols_num
         for src, i in App.TEST_IMAGES
             row = Math.floor i/cols_num

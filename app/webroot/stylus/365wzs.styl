@@ -48,14 +48,13 @@ a:hover
       &:hover
         color white
   #navigator
-    size 50% auto
+    size 700px auto
     overflow hidden
     margin 0 auto
     .item
-      size 12.5% $header-height
+      size 100px $header-height
       display inline-block
       float left
-      border-bottom solid 5px $grey4
       a
         display block
         font-size 1.2em
@@ -66,13 +65,30 @@ a:hover
         text-shadow 0 0 2px black
       &:hover
         cursor pointer
-        border-bottom solid 5px $grey13
-        a  
-          color white
-    .item.active
-      border-bottom solid 5px $grey13
+    .item.index
+      border-bottom solid 5px #fda1a9
+      &:hover
+    .item.index.active
       a
-        color $grey13
+        color #fda1a9
+    .item.contentfavors
+      border-bottom solid 5px #c791d1
+      &:hover
+    .item.contentfavors.active
+      a
+        color #c791d1
+    .item.shares
+      border-bottom solid 5px #c4c4bd
+      &:hover
+    .item.shares.active
+      a
+        color #c4c4bd
+    .item.groups
+      border-bottom solid 5px #87beea
+      &:hover
+    .item.groups.active
+      a
+        color #87beea
 
 #container
   background none

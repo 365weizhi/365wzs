@@ -39,16 +39,16 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             <?php } ?>
         </div>
         <div id="navigator">
-            <div class="item <?php if($this->request->params['controller'] == 'main') echo 'active'; ?>">
+            <div class="item index <?php if($this->request->params['controller'] == 'main') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot; ?>">首页</a>
             </div>
-            <div class="item <?php if($this->request->params['controller'] == 'contentfavors') echo 'active'; ?>">
+            <div class="item contentfavors <?php if($this->request->params['controller'] == 'contentfavors') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot.'contentfavors'; ?>">未知专刊</a>
             </div>
-            <div class="item <?php if($this->request->params['controller'] == 'shares') echo 'active'; ?>">
+            <div class="item shares <?php if($this->request->params['controller'] == 'shares') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot.'shares'; ?>">分享天地</a>
             </div>
-            <div class="item <?php if($this->request->params['controller'] == 'groups' || $this->request->params['controller'] == 'forums') echo 'active'; ?>">
+            <div class="item groups <?php if($this->request->params['controller'] == 'groups' || $this->request->params['controller'] == 'forums') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot.'groups'; ?>">未知小组</a>
             </div>
             <div class="item">

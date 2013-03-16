@@ -32,8 +32,8 @@
 }
 #zexpo .expo-item {
   position: absolute;
-  width: 142.85714285714286px;
-  height: 142.85714285714286px;
+  width: 125px;
+  height: 125px;
   overflow: hidden;
   top: -1000px;
 }

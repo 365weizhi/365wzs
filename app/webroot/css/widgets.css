@@ -27,10 +27,10 @@
 .zform {
   display: block;
   background: #f4f3ef;
-  width: 350px;
+  width: 270px;
   height: auto;
   margin: auto;
-  padding: 20px;
+  padding: 0 50px 20px 50px;
   box-shadow: 0 0 5px #eee;
   border-radius: 5px;
 }
@@ -39,7 +39,7 @@
   border-radius: 0;
   padding: 5px 3px;
   margin: 10px auto;
-  width: 344px;
+  width: 264px;
   height: auto;
 }
 .zform input[type='checkbox'] {
@@ -48,18 +48,18 @@
 }
 .zform textarea {
   padding: 3px;
-  width: 344px;
+  width: 264px;
   height: 200px;
 }
 .zform select {
-  width: 350px;
+  width: 270px;
   height: auto;
 }
 .zform button[type='submit'] {
   color: #fff;
   margin: 10px auto;
   background: #c95d5d;
-  width: 350px;
+  width: 270px;
   height: auto;
   border: solid 1px #eee;
   padding: 5px;
