@@ -30,7 +30,7 @@ class UsersController extends AppController {
 		$mail->AddAddress($email, $username);
 		$mail->Send();
 		$this->Session->setFlash(__('This account has been created, please verify email.'));
-		$this->redirect("/");
+//		$this->redirect("/");
     }
     
     function beforeFilter(){
@@ -85,8 +85,6 @@ class UsersController extends AppController {
  * @return void
  */
     public function login(){
-    	//pr($_SERVER);
-    	
         if(isset($_POST['username']) && isset($_POST['password'])){
             $username = $_POST['username'];
             $userinfo = $this->User->find('first', array('conditions'=>array("username" => $username)));
@@ -180,6 +178,81 @@ class UsersController extends AppController {
         }
         $this->redirect('login');
     }
+    
+/**
+ * 修改密码
+ * 前置条件：
+ * 	1. 用户申请修改密码, post一个请求到服务器
+ *  2. 服务器接收到请求, 返回一个key并发送一封邮件给用户
+ * 操作：
+ *  1. 用户通过邮件上的url点击来到reset函数里
+ *  2. 用户凭借key拿回设置密码权限
+ *  3. 用户修改密码并确认
+ */
+    public function reset($key = null, $email = null){
+    	if($key == null && $email == null){	//key 为 null的时候, 用户通过邮箱获取验证链接
+    		if($this->request->is("post")){
+    			$user = $this->User->find("first", array(
+    				'conditions'=>array(
+    					'email'=>$_POST['email']
+    				)
+    			));
+    			if($user){
+					$home = "http://".$_SERVER['SERVER_NAME']."/365wzs";
+					$user['User']['password'] = $this->_md5($user['User']['username']);
+					if($this->User->save($user)){
+		    			$message = $user['User']['username']."您好：".'<br>'.
+								"密码取回服务, 请点击以下链接或者复制到浏览器访问：".
+    							"$home/users/reset/".$user['User']['password']."/".$user['User']['email'].
+    							"<br>365未知树  管理团队<br>";
+						$this->send($user['User']['email'], $user['User']['username'], $message);
+						$this->set("flag", true);
+	    				$this->set("message", "邮件已发送, 请查验");
+					}
+					else {
+						$this->set("flag", false);
+	    				$this->set("message", "邮件发送失败, 稍后重试");
+					}
+    			}
+    			else {
+					$this->set("flag", false);
+    				$this->set("message", "没有这个注册用户");
+    			}
+				$this->render("reset_message");
+    		}
+    		else {	// 非post请求则是输入验证邮箱
+    			$this->render('reset_request');
+    		}
+    	}
+    	else {	// key存在, 则判断是否正确
+    		$user = $this->User->find("first", array(
+    			'conditions'=>array(
+    				'email'=>$email,
+    				'password'=>$key
+    			)
+    		));
+    		if($user){
+	    		if($this->request->is("post")){
+	    			if($_POST['password'] != $_POST['password2']){
+	    				$this->set("message", "密码不一致");
+	    				$this->render("reset_response");
+	    			}
+	    			else {
+		    			$user['User']['password'] = $this->_md5($_POST['password2']);
+		    			$this->User->save($user);
+		    			$this->redirect("/users/login");
+	    			}
+	    		}
+	    		else
+	    			$this->set("flag", true);
+    		}
+    		else {
+    			$this->set("flag", false);
+    		}
+    		$this->render("reset_response");
+    	}
+    }
+    
 
 /**
  * register method
@@ -208,7 +281,6 @@ class UsersController extends AppController {
                     $this->Session->setFlash(__('This username exist, please type in another one.')); 
                 }
                 else{
-                	
                     // Save user in Registeration first and active it later
                     if ($obj = $this->Registration->save($user)) {
                     	$home = "http://".$_SERVER['SERVER_NAME']."/365wzs/";
@@ -224,7 +296,8 @@ class UsersController extends AppController {
 								$home";
                     	$this->send($user['Registration']['email'], $user['Registration']['username'], $message);
                     	
-                        $this->Session->setFlash(__('This account has been created, please verify email.'));
+                        $this->Session->setFlash(__('This account has been created, please verify email.'));		
+                        $this->redirect("/");
 			        } else {
 				        $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
                     }
@@ -234,13 +307,8 @@ class UsersController extends AppController {
 	}
 
 /**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
+ * Id is record in Session
  */
-    // Id is record in Session
     public function edit() {
         // Must confirm user is login & only can modify user's own profile
         $rt_obj = array();
