@@ -25,7 +25,7 @@ class SharesController extends AppController {
     }
     
     public function add(){
-    	
+    	//$this->set("item", $this->fetch($_POST['url']));
     }
     
     public function fetch($url){
