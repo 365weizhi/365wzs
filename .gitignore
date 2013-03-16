@@ -12,4 +12,5 @@ tags
 .htaccess
 app/.htaccess
 app/webroot/.htaccess
+app/webroot/js/app.js
 *.swp

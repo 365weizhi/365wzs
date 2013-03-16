@@ -46,6 +46,7 @@
           <td class="navigate-item navigate-left"><a href="#">好友动态</a></td>
           <td></td>
           <td></td>
+          <!-- 专刊URL：contents/add -->
           <td class="navigate-item navigate-right"><a href="#">添加专刊</a></td>
           <td class="navigate-item navigate-right"><?php echo $this->Html->link(__('修改信息'), array('controller' => 'users', 'action' => 'edit')); ?></td>
         </tr>
