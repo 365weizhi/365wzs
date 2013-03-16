@@ -8,8 +8,6 @@
 
   App.Models = (_ref1 = App.Models) != null ? _ref1 : {};
 
-  console.log(App);
-
   Post = (function(_super) {
 
     __extends(Post, _super);

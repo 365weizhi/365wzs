@@ -118,9 +118,14 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         echo $this->Html->script('lightbox');
 
         echo $this->Html->script('models/post');
+        echo $this->Html->script('models/simple_user');
         echo $this->Html->script('collections/posts');
+        echo $this->Html->script('collections/simple_users');
         echo $this->Html->script('views/post');
         echo $this->Html->script('views/zexpo');
+        echo $this->Html->script('views/simple_user');
+        echo $this->Html->script('views/simple_users');
+        echo $this->Html->script('views/user_basic_info');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');

@@ -40,7 +40,12 @@
 
     PostView.prototype.share = function() {
       return $.ajax({
-        url: "" + App.BASEURL + "/ajax/favor/" + (this.model.get('id')),
+        type: 'POST',
+        url: "" + App.BASEURL + "/ajax/share/",
+        data: {
+          id: this.model.get('id'),
+          pic_url: this.model.get('pic_url')
+        },
         success: function(data) {
           var $form;
           $form = $(data);

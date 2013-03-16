@@ -33,8 +33,8 @@ App.Views.Lightbox = (->
         
             @$content.append $widget
             @$content.css
-                width: $widget.attr 'width'
                 marginTop: '15%'
+                # width: $widget.width()
 
     new Lightbox
 )()

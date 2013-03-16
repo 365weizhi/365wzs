@@ -1,23 +1,26 @@
+<script type="text/template" id="simple-user-template">
+      <a href="/365wzs/users/view/<%= user_id %>"><img src="<%= pic_url %>"></a>
+      <p class="username"><%= username %></p>
+</script>
+
 <div class="column-4" id="user-info">
     <div class="column-4 avatar">
         <table class="column-1-12 avatar-table">
             <tr>
-                <td><?php echo $this->Html->image('default-avatar.jpg') ?></td>
+                <td><img src="<?php echo $this->webroot ?>/static/avatar/<?php echo $user['User']['pic_url']; ?>"></td>
             </tr>
         </table>
-        <table class="column-1 info-table">
+        <table id="user-basic-info" class="column-1 info-table">
             <tr>
-                <td colspan="3" class="username"><?php echo $user['User']['username'] ?></td>
+                <td colspan="3" class="username"><?php echo $user['User']['username']; ?></td>
             </tr>
             <tr>
                 <td colspan="3" class="location">广东，佛山</td>
             </tr>
             <tr>
-                <td><span class="number">243</span></td>
-            	<!-- nexus 中count_1为被关注次数，count_2为关注的人的数量 -->
-            	<!-- 接口为hail/follows & fans -->
-                <td><span class="number">543</span></td>
-                <td><span class="number">33</span></td>
+                <td class="follows"><span class="number"><?php echo $nexus['count_2']; ?></span></td>
+                <td class="fans"><span class="number"><?php echo $nexus['count_1']; ?></span></td>
+                <td><span class="number">1723</span></td>
             </tr>
             <tr>
                 <td><span class="icon"></span></td>
@@ -25,8 +28,8 @@
                 <td><span class="icon"></span></td>
             </tr>
             <tr>
-                <td>喜欢</td>
-                <td>关注</td>
+                <td class="follows">关注</td>
+                <td class="fans">粉丝</td>
                 <td>被分享</td>
             </tr>
         </table>
@@ -53,7 +56,7 @@
     </table>
 </div>
 
-<div id="users">
+<div id="tab-content">
     <div class="column-4">
         <div class="user">
             <a><?php echo $this->Html->image('avatars/avatar1.jpg') ?></a>
@@ -112,73 +115,3 @@
     </div>
 </div>
 
-<div class="users view">
-    <div class="related">
-    	<h3><?php echo __('Favors'); ?></h3>
-    	<?php if (!empty($user['Favor'])): ?>
-    	    <table cellpadding = "0" cellspacing = "0">
-    	    <tr>
-    	    	<th><?php echo __('Id'); ?></th>
-    	    	<th><?php echo __('User Id'); ?></th>
-    	    	<th><?php echo __('Item Id'); ?></th>
-    	    	<th><?php echo __('Description'); ?></th>
-    	    	<th><?php echo __('Click Count'); ?></th>
-    	    	<th><?php echo __('Content Id'); ?></th>
-    	    	<th class="actions"></th>
-    	    </tr>
-    	    <?php
-    	    	$i = 0;
-    	    	foreach ($user['Favor'] as $favor): ?>
-    	    	<tr>
-    	    		<td><?php echo $favor['id']; ?></td>
-    	    		<td><?php echo $favor['user_id']; ?></td>
-    	    		<td><?php echo $favor['item_id']; ?></td>
-    	    		<td><?php echo $favor['description']; ?></td>
-    	    		<td><?php echo $favor['click_count']; ?></td>
-    	    		<td><?php echo $favor['content_id']; ?></td>
-    	    		<td class="actions">
-    	    			<?php echo $this->Html->link(__('View Item'), array('controller' => 'items', 'action' => 'view', $favor['item_id'])); ?>
-    	    			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'favors', 'action' => 'delete', $favor['id']), null, __('Are you sure you want to delete # %s?', $favor['id'])); ?>
-    	    		</td>
-    	    	</tr>
-    	    <?php endforeach; ?>
-    	    </table>
-        <?php endif; ?>
-    </div>
-    <div class="related">
-    	<h3><?php echo __('Likes'); ?></h3>
-    	<?php if (!empty($user['Like'])): ?>
-    	    <table cellpadding = "0" cellspacing = "0">
-    	    <tr>
-    	    	<th><?php echo __('Id'); ?></th>
-    	    	<th><?php echo __('User Id'); ?></th>
-    	    	<th><?php echo __('Item Id'); ?></th>
-    	    	<th><?php echo __('Description'); ?></th>
-    	    	<th class="actions"></th>
-    	    </tr>
-    	    <?php
-    	    	$i = 0;
-    	    	foreach ($user['Like'] as $like): ?>
-    	    	<tr>
-    	    		<td><?php echo $like['id']; ?></td>
-    	    		<td><?php echo $like['user_id']; ?></td>
-    	    		<td><?php echo $like['item_id']; ?></td>
-    	    		<td><?php echo $like['description']; ?></td>
-    	    		<td class="actions">
-    	    			<?php echo $this->Html->link(__('View Item'), array('controller' => 'items', 'action' => 'view', $like['item_id'])); ?>
-    	    			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'likes', 'action' => 'delete', $like['id']), null, __('Are you sure you want to delete # %s?', $like['id'])); ?>
-    	    		</td>
-    	    	</tr>
-    	    <?php endforeach; ?>
-    	    </table>
-        <?php endif; ?>
-    </div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li> </li>
-		<li><?php echo $this->Html->link(__('List Favors'), array('controller' => 'favors', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Likes'), array('controller' => 'likes', 'action' => 'index')); ?> </li>
-	</ul>
-</div>

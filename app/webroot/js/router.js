@@ -18,6 +18,7 @@
       "365wzs/": 'index',
       "365wzs/main": 'index',
       "365wzs/shares": 'index',
+      "365wzs/users/view/:user_id": 'profile',
       "*actions": 'default'
     };
 
@@ -26,7 +27,7 @@
     Router.prototype.index = function() {
       var postsCollection;
       postsCollection = new App.Collections.Posts;
-      postsCollection.url = '/365wzs/pipe/0/32';
+      postsCollection.url = "" + App.BASEURL + "/pipe/0/32";
       return postsCollection.fetch({
         success: function() {
           var col, cols_num, i, post, row, size, _i, _len, _ref1;
@@ -71,6 +72,13 @@
           }
           return $(document.body).append(App.zexpo.render().el);
         }
+      });
+    };
+
+    Router.prototype.profile = function(user_id) {
+      var user_basic_info;
+      return user_basic_info = new App.Views.UserBasicInfo({
+        user_id: user_id
       });
     };
 

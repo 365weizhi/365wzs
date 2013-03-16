@@ -111,10 +111,10 @@ class UsersController extends AppController {
  * @param string $id
  * @return void
  */
-    public function view() {
+    public function view($user_id) {
 		$user = $this->User->find("first", array(
 			'conditions'=>array(
-				'id'=>$this->uid,
+				'id'=>$user_id,
 			)
 		));
 		$rt_obj = array();
@@ -124,8 +124,6 @@ class UsersController extends AppController {
 			echo json_encode($rt_obj);
 			return ;
 		}
-		
-		$user_id = $this->uid;
 		$sql = "SELECT SUM(	CASE WHEN (	user_id = $user_id ) THEN 1 ELSE 0 END ) count_1, SUM(	CASE WHEN (	follow_id = $user_id ) THEN 1 ELSE 0 END ) count_2 FROM 365wzs_follows";
 		$nexus = $this->User->Follow->Query($sql);
 		$this->set("nexus", $nexus[0][0]);

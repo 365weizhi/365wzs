@@ -37,7 +37,9 @@ class AjaxController extends AppController{
 		$this->set("redirect", $this->referer("/"));
 	}
 	
-	public function share($item_id){
+    public function share(){
+        $item_id = $_POST['id'];
+        $pic_url = $_POST['pic_url'];
         $contents = $this->Content->find('all',
             array(
                 'conditions'=>array(
@@ -45,6 +47,7 @@ class AjaxController extends AppController{
                 )
             )
         );
+        $this->set('pic_url', $pic_url);
         $this->set('item_id', $item_id);
     	$this->set('contents', $contents);
     	$this->render('share');

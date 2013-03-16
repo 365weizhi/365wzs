@@ -19,7 +19,11 @@ class PostView extends Backbone.View
 
     share: ->
         $.ajax
-            url: "#{App.BASEURL}/ajax/favor/#{@model.get 'id'}"
+            type: 'POST'
+            url: "#{App.BASEURL}/ajax/share/"
+            data:
+                id: @model.get 'id'
+                pic_url: @model.get 'pic_url'
             success: (data) ->
                 $form = $(data)
                 App.Views.Lightbox.show $form

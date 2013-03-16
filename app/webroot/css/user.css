@@ -31,7 +31,7 @@
   text-align: center;
 }
 #user-info .avatar .avatar-table img {
-  width: 100%;
+  width: 100px;
   height: auto;
   border-radius: 5px;
   box-shadow: 0 0 3px #666;
@@ -112,25 +112,25 @@
   width: 100px;
   height: auto;
 }
-#users .user {
+#tab-content .user {
   width: 125px;
   height: 125px;
   float: left;
   overflow: hidden;
   text-align: center;
 }
-#users .user img {
+#tab-content .user img {
   width: 70%;
   height: 70%;
   border-radius: 100%;
   box-shadow: 0 0 5px #999;
   -webkit-transition: -webkit-transform 0.3s ease;
 }
-#users .user img:hover {
+#tab-content .user img:hover {
   cursor: pointer;
   -webkit-transform: rotate(20deg);
 }
-#users .user p {
+#tab-content .user p {
   text-shadow: 1px 0 1px #fff;
   color: #666;
   margin-top: 5px;

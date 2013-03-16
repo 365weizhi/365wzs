@@ -12,7 +12,7 @@ class HailController extends AppController {
 	/**
 	 * 我关注的人
 	 */
-	public function follows(){
+	public function follows($uid){
 		/*
 		$this->autoRender = false;
 		$this->Follow->User->recursive = -1;
@@ -24,30 +24,42 @@ class HailController extends AppController {
 		}
 		echo json_encode($rt_obj);
 		*/
-		echo "<meta charset='utf-8'>";
 		$this->autoRender = false;
 		//$this->Follow->user_id = $this->uid;
-		$fans = $this->Follow->find('all', array(
+		$follows = $this->Follow->find('all', array(
 			'conditions'=>array(
-				'follow_id'=>$this->uid,
+				'follow_id'=>$uid,
 			)
-		));
-		pr($fans);
+        ));
+        $rt_obj = array();
+        foreach($follows as $follow){
+            $follow['Follow']['pic_url'] = $this->webroot."static/avatar/".$follow['User']['pic_url'];
+            $follow['Follow']['username'] = $follow['User']['username'];
+            $follow['Follow']['user_id'] = $follow['User']['id'];
+            $rt_obj[] = $follow['Follow'];
+        }
+        echo json_encode($rt_obj);
 	}
 	
 	/**
 	 * 我的粉丝
 	 */
-	public function fans(){
+	public function fans($user_id){
 		$this->autoRender = false;
-		echo "<meta charset='utf-8'>";
 		//$this->Follow->user_id = $this->uid;
 		$fans = $this->Fan->find('all', array(
 			'conditions'=>array(
-				'user_id'=>$this->uid,
+				'user_id'=>$user_id,
 			)
-		));
-		pr($fans);
+        ));
+        $rt_obj = array();
+        foreach($fans as $fan){
+            $fan['Fan']['pic_url'] = $this->webroot."static/avatar/".$fan['User']['pic_url'];
+            $fan['Fan']['username'] = $fan['User']['username'];
+            $fan['Fan']['user_id'] = $fan['User']['id'];
+            $rt_obj[] = $fan['Fan'];
+        }
+        echo json_encode($rt_obj);
 	}
 	
 	public function remove($follow_id){

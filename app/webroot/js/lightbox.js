@@ -51,7 +51,6 @@
         height = $(window).height();
         this.$content.append($widget);
         return this.$content.css({
-          width: $widget.attr('width'),
           marginTop: '15%'
         });
       };

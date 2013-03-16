@@ -10,7 +10,7 @@ class Fan extends AppModel {
 			'foreignKey' => 'id',
 			'dependent' => true,
 			'conditions' => '',
-			'fields' => 'id, username',
+			'fields' => 'id, username, pic_url',
 			'order' => '',
 			'limit' => '',
 			'offset' => '',

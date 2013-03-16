@@ -5,6 +5,7 @@ class Router extends Backbone.Router
         "365wzs/": 'index'
         "365wzs/main": 'index'
         "365wzs/shares": 'index'
+        "365wzs/users/view/:user_id": 'profile'
         "*actions": 'default'
 
     default: (actions) ->
@@ -12,7 +13,7 @@ class Router extends Backbone.Router
 
     index: ->
         postsCollection = new App.Collections.Posts
-        postsCollection.url = '/365wzs/pipe/0/32'
+        postsCollection.url = "#{App.BASEURL}/pipe/0/32"
         postsCollection.fetch
             success: ->
                 App.zexpo = new App.Views.ZExpo collection: postsCollection
@@ -38,5 +39,8 @@ class Router extends Backbone.Router
                         left: col * size
                         pic_url: post.get 'src'
                 $(document.body).append App.zexpo.render().el
+
+    profile: (user_id) ->
+        user_basic_info = new App.Views.UserBasicInfo user_id: user_id
 
 App.Router = Router
