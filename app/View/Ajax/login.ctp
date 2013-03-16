@@ -1,4 +1,4 @@
-<form class="zform" method="post">
+<form class="zform" action="/365wzs/users/login" method="post">
   <h1 class="main-title">登陆到365</h1>
   <h2 class="sub-title">365天，天天有新鲜</h2>
 
