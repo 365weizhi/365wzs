@@ -1,6 +1,6 @@
 @App = window.App ? {}
 
-App.BASEURL = '365wzs'
+App.BASEURL = '/365wzs'
 App.TEST_IMAGES = [
     '/~Aquietzero/365wzs/img/ads/1.jpg'
     '/~Aquietzero/365wzs/img/ads/2.png'
@@ -44,13 +44,6 @@ $ ->
 
     # $(document.body).append zexpo.render().el
     
-    $('.favor').click ->
-        App.Helpers.createLikeForm App.Views.Lightbox, App
-        App.Views.Lightbox.show()
-    $('.at').click ->
-        App.Helpers.createAtForm App.Views.Lightbox, App
-        App.Views.Lightbox.show()
-
     router = new App.Router
     Backbone.history.start pushState: true
 

@@ -37,7 +37,7 @@ class AjaxController extends AppController{
 		$this->set("redirect", $this->referer("/"));
 	}
 	
-	public function favor($item_id){
+	public function share($item_id){
         $contents = $this->Content->find('all',
             array(
                 'conditions'=>array(
@@ -47,7 +47,7 @@ class AjaxController extends AppController{
         );
         $this->set('item_id', $item_id);
     	$this->set('contents', $contents);
-    	$this->render('favor');
+    	$this->render('share');
 	}
 	
 	public function message($item_id){

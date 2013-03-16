@@ -4,7 +4,7 @@
 
   this.App = (_ref = window.App) != null ? _ref : {};
 
-  App.BASEURL = '365wzs';
+  App.BASEURL = '/365wzs';
 
   App.TEST_IMAGES = ['/~Aquietzero/365wzs/img/ads/1.jpg', '/~Aquietzero/365wzs/img/ads/2.png', '/~Aquietzero/365wzs/img/ads/3.jpeg', '/~Aquietzero/365wzs/img/ads/4.jpg', '/~Aquietzero/365wzs/img/ads/5.png', '/~Aquietzero/365wzs/img/ads/6.png', '/~Aquietzero/365wzs/img/ads/7.jpg', '/~Aquietzero/365wzs/img/ads/8.png', '/~Aquietzero/365wzs/img/ads/9.jpg', '/~Aquietzero/365wzs/img/ads/10.jpg', '/~Aquietzero/365wzs/img/ads/11.jpg', '/~Aquietzero/365wzs/img/ads/13.png', '/~Aquietzero/365wzs/img/ads/14.png', '/~Aquietzero/365wzs/img/ads/15.jpg', '/~Aquietzero/365wzs/img/ads/16.jpg', '/~Aquietzero/365wzs/img/ads/17.png', '/~Aquietzero/365wzs/img/ads/18.jpg', '/~Aquietzero/365wzs/img/ads/20.jpg', '/~Aquietzero/365wzs/img/ads/21.jpg', '/~Aquietzero/365wzs/img/ads/23.jpg', '/~Aquietzero/365wzs/img/ads/24.png', '/~Aquietzero/365wzs/img/ads/25.png', '/~Aquietzero/365wzs/img/ads/26.png', '/~Aquietzero/365wzs/img/ads/27.jpg', '/~Aquietzero/365wzs/img/ads/28.jpg', '/~Aquietzero/365wzs/img/ads/29.jpg', '/~Aquietzero/365wzs/img/ads/30.jpg', '/~Aquietzero/365wzs/img/ads/31.jpg'];
 
@@ -12,14 +12,6 @@
     var router;
     App.Helpers.showMessage(App.Views.Lightbox);
     adjustment();
-    $('.favor').click(function() {
-      App.Helpers.createLikeForm(App.Views.Lightbox, App);
-      return App.Views.Lightbox.show();
-    });
-    $('.at').click(function() {
-      App.Helpers.createAtForm(App.Views.Lightbox, App);
-      return App.Views.Lightbox.show();
-    });
     router = new App.Router;
     return Backbone.history.start({
       pushState: true
