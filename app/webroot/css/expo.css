@@ -31,9 +31,28 @@
   margin: 100px auto;
 }
 #zexpo .expo-item {
+  width: 142.85714285714286px;
+  height: 142.85714285714286px;
   position: absolute;
-  width: 125px;
-  height: 125px;
   overflow: hidden;
   top: -1000px;
+}
+#zexpo .expo-item .operation img {
+  width: 20px;
+  height: 20px;
+}
+#zexpo .expo-item .at {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+#zexpo .expo-item .like {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+#zexpo .expo-item .share {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }

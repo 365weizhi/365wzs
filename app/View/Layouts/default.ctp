@@ -68,7 +68,10 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
     </div>
     <div id="zexpo">
         <script type="text/template" id="expo-item">
-            <img class="post-image" src="<%= src %>" alt="" />
+            <a href="/365wzs/items/view/<%= id %>"><img class="post-image" src="<%= pic_url %>" alt="" /></a>
+            <a class="operation at"><?php echo $this->Html->image('at.png') ?></a>
+            <a class="operation like"><?php echo $this->Html->image('like.png') ?></a>
+            <a class="operation share"><?php echo $this->Html->image('share.png') ?></a>
         </script>
     </div>
 

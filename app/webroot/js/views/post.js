@@ -30,6 +30,19 @@
       });
       this.$img = this.$el.find('.post-image');
       this.$img.load(function() {
+        var height, width;
+        width = _this.$img.width();
+        height = _this.$img.height();
+        if (width > height) {
+          _this.$img.css({
+            height: '100%'
+          });
+        } else {
+          _this.$img.css({
+            width: '100%'
+          });
+        }
+        App.k;
         return App.Helpers.delay(Math.random() * 2000, function() {
           return _this.$el.animate({
             top: _this.model.get('top')

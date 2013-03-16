@@ -8,29 +8,35 @@ class Router extends Backbone.Router
         "*actions": 'default'
 
     default: (actions) ->
-        # doing nothing...
+        # do nothing...
 
     index: ->
-        $.ajax
-            url: '/365wzs/pipe/10/0'
-            success: (data) ->
-                console.log data
-
-        posts = []
-        cols_num = 8
-        size = 1000 / cols_num
-        for src, i in App.TEST_IMAGES
-            row = Math.floor i/cols_num
-            col = i % cols_num
-            post =
-                top: row * size
-                left: col * size
-                src: src
-            posts.push post
-
-        postsCollection = new App.Collections.Posts posts
-        zexpo = new App.Views.ZExpo collection: postsCollection
-
-        $(document.body).append zexpo.render().el
+        postsCollection = new App.Collections.Posts
+        postsCollection.url = '/365wzs/pipe/0/32'
+        postsCollection.fetch
+            success: ->
+                App.zexpo = new App.Views.ZExpo collection: postsCollection
+                cols_num = 7
+                size = 1000 / cols_num
+                for post, i in postsCollection.models
+                    row = Math.floor i/cols_num
+                    col = i % cols_num
+                    post.set
+                        top: row * size
+                        left: col * size
+                $(document.body).append App.zexpo.render().el
+            error: ->
+                postsCollection.add post for post in posts
+                App.zexpo = new App.Views.ZExpo collection: postsCollection
+                cols_num = 7
+                size = 1000 / cols_num
+                for post, i in postsCollection.models
+                    row = Math.floor i/cols_num
+                    col = i % cols_num
+                    post.set
+                        top: row * size
+                        left: col * size
+                        pic_url: post.get 'src'
+                $(document.body).append App.zexpo.render().el
 
 App.Router = Router

@@ -10,8 +10,16 @@ class PostView extends Backbone.View
         @$el.html( _.template @template, @model.toJSON() )
         @$el.css
             left: @model.get 'left'
+
         @$img = @$el.find '.post-image'
         @$img.load =>
+            width = @$img.width()
+            height = @$img.height()
+            if width > height
+                @$img.css height: '100%'
+            else
+                @$img.css width: '100%'
+            App.k
             App.Helpers.delay Math.random()*2000, =>
                 @$el.animate top: @model.get 'top'
         @
