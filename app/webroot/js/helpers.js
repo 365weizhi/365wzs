@@ -36,9 +36,7 @@
       parent.setWidget($login_form);
       return $login_form.trigger('spinner.stop');
     },
-    createLikeForm: function(parent, button) {
-      var item_id;
-      item_id = $(button).parent().find('.item-id').val();
+    createFavorForm: function(item_id, button) {
       return $.ajax({
         url: "" + App.BASEURL + "/ajax/favor/" + item_id,
         success: function(data) {
@@ -53,7 +51,7 @@
       var item_id;
       item_id = $(button).parent().find('.item-id').val();
       return $.ajax({
-        url: "" + App.BASEURL + "/ajax/message/" + item_id,
+        url: "/ajax/message/" + item_id,
         success: function(data) {
           var $form;
           $form = $(data);

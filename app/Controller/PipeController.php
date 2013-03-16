@@ -20,8 +20,11 @@ class PipeController extends AppController{
             'limit'=>$limit,
             'offset'=>$offset
         ));
-       //echo json_encode($items);
-       pr($items);
+       $rt_obj = array();
+       foreach($items as $item){
+           $rt_obj[] = $item['Item'];
+       }
+       echo json_encode($rt_obj);
     }
 }
 ?>

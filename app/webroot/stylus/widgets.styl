@@ -1,27 +1,45 @@
 @import helpers
 
-$form-width = 350px
-$form-padding = 20px
+$form-width = 270px
+$form-padding = 50px
 $textarea-height = 200px
 $input-padding = 3px
 
 .zform
   display block
-  background url('../img/background.png')
+  background #f4f3ef
+  // background url('../img/background.png')
   size $form-width auto
   margin auto
-  padding $form-padding
-  border solid 1px #ddd
-  box-shadow 0 0 20px #999
+  padding 0 $form-padding 20px $form-padding
+  // border solid 1px #ddd
+  box-shadow 0 0 5px $grey14
   border-radius 5px
   input
-    padding $input-padding
+    border solid 1px $grey14
+    border-radius 0
+    padding 5px $input-padding
+    margin 10px auto
     size ($form-width - 2*$input-padding) auto
+  input[type='checkbox']
+    size 20px 20px
   textarea
     padding $input-padding
     size ($form-width - 2*$input-padding) $textarea-height
   select
     size $form-width auto
+  button[type='submit']
+    color white
+    margin 10px auto
+    background #c95d5d
+    size $form-width auto
+    border solid 1px $grey14
+    padding 5px
+    &:hover
+      cursor pointer
+  label
+    display inline
+    color $grey9
 
 #message
   display none

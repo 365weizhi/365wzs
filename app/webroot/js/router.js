@@ -24,27 +24,54 @@
     Router.prototype["default"] = function(actions) {};
 
     Router.prototype.index = function() {
-      var col, cols_num, i, post, posts, postsCollection, row, size, src, zexpo, _i, _len, _ref1;
-      posts = [];
-      cols_num = 7;
-      size = 1000 / cols_num;
-      _ref1 = App.TEST_IMAGES;
-      for (i = _i = 0, _len = _ref1.length; _i < _len; i = ++_i) {
-        src = _ref1[i];
-        row = Math.floor(i / cols_num);
-        col = i % cols_num;
-        post = {
-          top: row * size,
-          left: col * size,
-          src: src
-        };
-        posts.push(post);
-      }
-      postsCollection = new App.Collections.Posts(posts);
-      zexpo = new App.Views.ZExpo({
-        collection: postsCollection
+      var postsCollection;
+      postsCollection = new App.Collections.Posts;
+      postsCollection.url = '/365wzs/pipe/0/32';
+      return postsCollection.fetch({
+        success: function() {
+          var col, cols_num, i, post, row, size, _i, _len, _ref1;
+          App.zexpo = new App.Views.ZExpo({
+            collection: postsCollection
+          });
+          cols_num = 7;
+          size = 1000 / cols_num;
+          _ref1 = postsCollection.models;
+          for (i = _i = 0, _len = _ref1.length; _i < _len; i = ++_i) {
+            post = _ref1[i];
+            row = Math.floor(i / cols_num);
+            col = i % cols_num;
+            post.set({
+              top: row * size,
+              left: col * size
+            });
+          }
+          return $(document.body).append(App.zexpo.render().el);
+        },
+        error: function() {
+          var col, cols_num, i, post, row, size, _i, _j, _len, _len1, _ref1;
+          for (_i = 0, _len = posts.length; _i < _len; _i++) {
+            post = posts[_i];
+            postsCollection.add(post);
+          }
+          App.zexpo = new App.Views.ZExpo({
+            collection: postsCollection
+          });
+          cols_num = 7;
+          size = 1000 / cols_num;
+          _ref1 = postsCollection.models;
+          for (i = _j = 0, _len1 = _ref1.length; _j < _len1; i = ++_j) {
+            post = _ref1[i];
+            row = Math.floor(i / cols_num);
+            col = i % cols_num;
+            post.set({
+              top: row * size,
+              left: col * size,
+              pic_url: post.get('src')
+            });
+          }
+          return $(document.body).append(App.zexpo.render().el);
+        }
       });
-      return $(document.body).append(zexpo.render().el);
     };
 
     return Router;

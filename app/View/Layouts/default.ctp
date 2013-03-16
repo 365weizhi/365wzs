@@ -39,16 +39,16 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             <?php } ?>
         </div>
         <div id="navigator">
-            <div class="item <?php if($this->request->params['controller'] == 'main') echo 'active'; ?>">
+            <div class="item index <?php if($this->request->params['controller'] == 'main') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot; ?>">首页</a>
             </div>
-            <div class="item <?php if($this->request->params['controller'] == 'contentfavors') echo 'active'; ?>">
+            <div class="item contentfavors <?php if($this->request->params['controller'] == 'contentfavors') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot.'contentfavors'; ?>">未知专刊</a>
             </div>
-            <div class="item <?php if($this->request->params['controller'] == 'shares') echo 'active'; ?>">
+            <div class="item shares <?php if($this->request->params['controller'] == 'shares') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot.'shares'; ?>">分享天地</a>
             </div>
-            <div class="item <?php if($this->request->params['controller'] == 'groups' || $this->request->params['controller'] == 'forums') echo 'active'; ?>">
+            <div class="item groups <?php if($this->request->params['controller'] == 'groups' || $this->request->params['controller'] == 'forums') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot.'groups'; ?>">未知小组</a>
             </div>
             <div class="item">
@@ -68,7 +68,10 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
     </div>
     <div id="zexpo">
         <script type="text/template" id="expo-item">
-            <img class="post-image" src="<%= src %>" alt="" />
+            <a href="/365wzs/items/view/<%= id %>"><img class="post-image" src="<%= pic_url %>" alt="" /></a>
+            <a class="operation at"><?php echo $this->Html->image('at.png') ?></a>
+            <a class="operation like"><?php echo $this->Html->image('like.png') ?></a>
+            <a class="operation share"><?php echo $this->Html->image('share.png') ?></a>
         </script>
     </div>
 
@@ -96,6 +99,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->css('view');
 		echo $this->Html->css('user');
 		echo $this->Html->css('expo');
+		echo $this->Html->css('login');
 
         // Libraries.
         echo $this->Html->script('../vendor/jquery-1.8.3.min');

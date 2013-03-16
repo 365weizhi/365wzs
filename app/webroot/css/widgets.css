@@ -26,28 +26,50 @@
 }
 .zform {
   display: block;
-  background: url("../img/background.png");
-  width: 350px;
+  background: #f4f3ef;
+  width: 270px;
   height: auto;
   margin: auto;
-  padding: 20px;
-  border: solid 1px #ddd;
-  box-shadow: 0 0 20px #999;
+  padding: 0 50px 20px 50px;
+  box-shadow: 0 0 5px #eee;
   border-radius: 5px;
 }
 .zform input {
-  padding: 3px;
-  width: 344px;
+  border: solid 1px #eee;
+  border-radius: 0;
+  padding: 5px 3px;
+  margin: 10px auto;
+  width: 264px;
   height: auto;
+}
+.zform input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
 }
 .zform textarea {
   padding: 3px;
-  width: 344px;
+  width: 264px;
   height: 200px;
 }
 .zform select {
-  width: 350px;
+  width: 270px;
   height: auto;
+}
+.zform button[type='submit'] {
+  color: #fff;
+  margin: 10px auto;
+  background: #c95d5d;
+  width: 270px;
+  height: auto;
+  border: solid 1px #eee;
+  padding: 5px;
+}
+.zform button[type='submit']:hover {
+  cursor: pointer;
+}
+.zform label {
+  display: inline;
+  color: #999;
 }
 #message {
   display: none;

@@ -24,35 +24,33 @@
 .pull-right {
   float: right;
 }
-#zexpo {
-  position: relative;
-  width: 1000px;
-  height: auto;
-  margin: 100px auto;
+.main-title {
+  margin: 0;
+  text-align: center;
+  font-size: 15pt;
 }
-#zexpo .expo-item {
-  width: 142.85714285714286px;
-  height: 142.85714285714286px;
-  position: absolute;
-  overflow: hidden;
-  top: -1000px;
+.sub-title {
+  margin: -10px auto 10px auto;
+  color: #c95d5d;
+  text-align: center;
+  font-size: 10pt;
 }
-#zexpo .expo-item .operation img {
-  width: 20px;
-  height: 20px;
+.options {
+  margin: 10px auto;
+  text-align: center;
 }
-#zexpo .expo-item .at {
-  position: absolute;
-  top: 5px;
-  right: 5px;
+.options span {
+  color: #999;
 }
-#zexpo .expo-item .like {
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
+.options strong {
+  color: #666;
+  margin-left: 20px;
 }
-#zexpo .expo-item .share {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
+.options a {
+  color: #c95d5d;
+}
+.options .option img {
+  vertical-align: middle;
+  width: 15px;
+  height: 15px;
 }

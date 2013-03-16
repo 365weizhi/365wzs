@@ -22,6 +22,29 @@
 
     PostView.prototype.template = $('#expo-item').html();
 
+    PostView.prototype.events = {
+      'click .at': 'at',
+      'click .share': 'share'
+    };
+
+    PostView.prototype.at = function() {
+      App.Helpers.createAtForm(App.Views.Lightbox, App);
+      return App.Views.Lightbox.show();
+    };
+
+    PostView.prototype.share = function() {
+      return $.ajax({
+        url: "" + App.BASEURL + "/ajax/favor/" + (this.model.get('id')),
+        success: function(data) {
+          var $form;
+          $form = $(data);
+          console.log($form);
+          App.Views.Lightbox.setWidget($form);
+          return App.Views.Lightbox.show();
+        }
+      });
+    };
+
     PostView.prototype.render = function() {
       var _this = this;
       this.$el.html(_.template(this.template, this.model.toJSON()));
@@ -30,6 +53,19 @@
       });
       this.$img = this.$el.find('.post-image');
       this.$img.load(function() {
+        var height, width;
+        width = _this.$img.width();
+        height = _this.$img.height();
+        if (width > height) {
+          _this.$img.css({
+            height: '100%'
+          });
+        } else {
+          _this.$img.css({
+            width: '100%'
+          });
+        }
+        App.k;
         return App.Helpers.delay(Math.random() * 2000, function() {
           return _this.$el.animate({
             top: _this.model.get('top')

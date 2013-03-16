@@ -79,17 +79,16 @@ a:hover {
   color: #fff;
 }
 #header #navigator {
-  width: 50%;
+  width: 700px;
   height: auto;
   overflow: hidden;
   margin: 0 auto;
 }
 #header #navigator .item {
-  width: 12.5%;
+  width: 100px;
   height: 65px;
   display: inline-block;
   float: left;
-  border-bottom: solid 5px #444;
 }
 #header #navigator .item a {
   display: block;
@@ -103,16 +102,42 @@ a:hover {
 }
 #header #navigator .item:hover {
   cursor: pointer;
+}
+#header #navigator .item.index {
+  border-bottom: solid 5px #fda1a9;
+}
+#header #navigator .item.index:hover {
   border-bottom: solid 5px #ddd;
 }
-#header #navigator .item:hover a {
-  color: #fff;
+#header #navigator .item.index.active a {
+  color: #fda1a9;
 }
-#header #navigator .item.active {
+#header #navigator .item.contentfavors {
+  border-bottom: solid 5px #c791d1;
+}
+#header #navigator .item.contentfavors:hover {
   border-bottom: solid 5px #ddd;
 }
-#header #navigator .item.active a {
-  color: #ddd;
+#header #navigator .item.contentfavors.active a {
+  color: #c791d1;
+}
+#header #navigator .item.shares {
+  border-bottom: solid 5px #c4c4bd;
+}
+#header #navigator .item.shares:hover {
+  border-bottom: solid 5px #ddd;
+}
+#header #navigator .item.shares.active a {
+  color: #c4c4bd;
+}
+#header #navigator .item.groups {
+  border-bottom: solid 5px #87beea;
+}
+#header #navigator .item.groups:hover {
+  border-bottom: solid 5px #ddd;
+}
+#header #navigator .item.groups.active a {
+  color: #87beea;
 }
 #container {
   background: none;
