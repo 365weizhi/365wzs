@@ -28,8 +28,14 @@
     };
 
     PostView.prototype.at = function() {
-      App.Helpers.createAtForm(App.Views.Lightbox, App);
-      return App.Views.Lightbox.show();
+      return $.ajax({
+        url: "" + App.BASEURL + "/ajax/message/" + (this.model.get('id')),
+        success: function(data) {
+          var $form;
+          $form = $(data);
+          return App.Views.Lightbox.show($form);
+        }
+      });
     };
 
     PostView.prototype.share = function() {
@@ -38,9 +44,7 @@
         success: function(data) {
           var $form;
           $form = $(data);
-          console.log($form);
-          App.Views.Lightbox.setWidget($form);
-          return App.Views.Lightbox.show();
+          return App.Views.Lightbox.show($form);
         }
       });
     };

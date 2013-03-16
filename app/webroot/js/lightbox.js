@@ -29,8 +29,8 @@
         return this.$content = this.$el.find('#lightbox');
       };
 
-      Lightbox.prototype.show = function() {
-        this.$content.empty();
+      Lightbox.prototype.show = function($widget) {
+        this.setWidget($widget);
         $('body').addClass('ban-scroll');
         return this.$el.fadeIn();
       };
@@ -46,13 +46,13 @@
 
       Lightbox.prototype.setWidget = function($widget) {
         var height, width;
+        this.$content.empty();
         width = $(window).width();
         height = $(window).height();
         this.$content.append($widget);
         return this.$content.css({
-          width: $widget.width(),
-          height: $widget.height(),
-          marginTop: (height - $widget.height()) / 2
+          width: $widget.attr('width'),
+          marginTop: '15%'
         });
       };
 

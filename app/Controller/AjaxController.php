@@ -52,7 +52,9 @@ class AjaxController extends AppController{
 	
 	public function message($item_id){
 		$user_id = $this->uid;
-		$this->set(compact('user_id', 'item_id'));
+		$this->set('user_id', $user_id);
+		$this->set('item_id', $item_id);
+    	$this->render('message');
 	}
 }
 ?>

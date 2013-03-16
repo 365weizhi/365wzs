@@ -36,30 +36,6 @@
       parent.setWidget($login_form);
       return $login_form.trigger('spinner.stop');
     },
-    createFavorForm: function(item_id, button) {
-      return $.ajax({
-        url: "" + App.BASEURL + "/ajax/favor/" + item_id,
-        success: function(data) {
-          var $form;
-          $form = $(data);
-          parent.setWidget($form);
-          return $form.trigger('spinner.stop');
-        }
-      });
-    },
-    createAtForm: function(parent, button) {
-      var item_id;
-      item_id = $(button).parent().find('.item-id').val();
-      return $.ajax({
-        url: "/ajax/message/" + item_id,
-        success: function(data) {
-          var $form;
-          $form = $(data);
-          parent.setWidget($form);
-          return $form.trigger('spinner.stop');
-        }
-      });
-    },
     showMessage: function(parent) {
       var $message, $messagebox;
       $message = $('#message');

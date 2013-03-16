@@ -12,8 +12,8 @@ App.Views.Lightbox = (->
         initialize: ->
             @$content = @$el.find '#lightbox'
     
-        show: ->
-            @$content.empty()
+        show: ($widget) ->
+            @setWidget $widget
 
             $('body').addClass 'ban-scroll'
             @$el.fadeIn()
@@ -26,14 +26,15 @@ App.Views.Lightbox = (->
             e.stopPropagation()
         
         setWidget: ($widget) ->
+            @$content.empty()
+
             width = $(window).width()
             height = $(window).height()
         
             @$content.append $widget
             @$content.css
-                width: $widget.width()
-                height: $widget.height()
-                marginTop: (height - $widget.height()) / 2
+                width: $widget.attr 'width'
+                marginTop: '15%'
 
     new Lightbox
 )()

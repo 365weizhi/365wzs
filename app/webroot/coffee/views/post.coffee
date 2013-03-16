@@ -11,17 +11,18 @@ class PostView extends Backbone.View
         'click .share': 'share'
 
     at: ->
-        App.Helpers.createAtForm App.Views.Lightbox, App
-        App.Views.Lightbox.show()
+        $.ajax
+            url: "#{App.BASEURL}/ajax/message/#{@model.get 'id'}"
+            success: (data) ->
+                $form = $(data)
+                App.Views.Lightbox.show $form
 
     share: ->
         $.ajax
             url: "#{App.BASEURL}/ajax/favor/#{@model.get 'id'}"
             success: (data) ->
                 $form = $(data)
-                console.log $form
-                App.Views.Lightbox.setWidget $form
-                App.Views.Lightbox.show()
+                App.Views.Lightbox.show $form
 
     render: ->
         @$el.html( _.template @template, @model.toJSON() )

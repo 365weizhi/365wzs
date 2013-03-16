@@ -29,23 +29,6 @@ App.Helpers =
         parent.setWidget $login_form
         $login_form.trigger 'spinner.stop'
 
-    createFavorForm: (item_id, button) ->
-        $.ajax
-            url: "#{App.BASEURL}/ajax/favor/#{item_id}"
-            success: (data) ->
-                $form = $(data)
-                parent.setWidget $form
-                $form.trigger 'spinner.stop'
-            
-    createAtForm: (parent, button) ->
-        item_id = $(button).parent().find('.item-id').val()
-        $.ajax
-            url: "/ajax/message/#{item_id}"
-            success: (data) ->
-                $form = $(data)
-                parent.setWidget $form
-                $form.trigger 'spinner.stop'
-
     showMessage: (parent) ->
         $message = $('#message')
         unless $message.html() is ''

@@ -9,7 +9,7 @@
     <br />
     <input type="password" name="password" placeholder="求密码...">
     <br />
-    <label for="remember"><input id="remember" type="checkbox" />记住密码</label>
+    <input id="remember" type="checkbox" /><label for="remember">记住密码</label>
     <button type="submit" class="btn btn-block">求验证</button>
   </fieldset>
 </form>

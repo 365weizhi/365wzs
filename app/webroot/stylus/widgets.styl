@@ -11,7 +11,7 @@ $input-padding = 3px
   // background url('../img/background.png')
   size $form-width auto
   margin auto
-  padding 0 $form-padding 20px $form-padding
+  padding 20px $form-padding
   // border solid 1px #ddd
   box-shadow 0 0 5px $grey14
   border-radius 5px
@@ -19,10 +19,11 @@ $input-padding = 3px
     border solid 1px $grey14
     border-radius 0
     padding 5px $input-padding
-    margin 10px auto
+    margin 0 auto 10px auto
     size ($form-width - 2*$input-padding) auto
   input[type='checkbox']
-    size 20px 20px
+    size 20px auto
+    margin-bottom 4px
   textarea
     padding $input-padding
     size ($form-width - 2*$input-padding) $textarea-height
