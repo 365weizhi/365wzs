@@ -18,35 +18,6 @@ class FavorsController extends AppController {
     }
 
 /**
- * 用户获取自己分享过的商品
- * 前置：
- * 	不用判断太多了，有就有没有就没~
- * 操作：
- *  1. 通过user_id从item表中搜出所有当前用户分享的商品
- *  2. 返回item数组
- */
-	public function items($user_id) {
-		$this->autoRender = false;
-//		echo "<meta charset='utf-8'>";
-		$items = $this->Item->find("all", array(
-			'conditions'=>array(
-				'Item.user_id'=>$user_id,
-			)
-		));
-		$rt_obj = array();
-		foreach($items as $item){
-			$item['Item']['content_name'] = $item['Content']['name'];
-			$item['Item']['content_description'] = $item['Content']['description'];
-			$item['Item']['content_pic_url'] = $item['Content']['pic_url'];
-			$item['Item']['content_favor_count'] = $item['Content']['favor_count'];
-			$item['Item']['content_like_count'] = $item['Content']['like_count'];
-			$item['Item']['post_count'] = sizeof($item['Post']);
-			$rt_obj[] = $item['Item'];
-		}
-		echo json_encode($rt_obj);
-    }
-    
-/**
  * view method
  * @throws NotFoundException
  * @param string $id
