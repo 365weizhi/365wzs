@@ -7,7 +7,6 @@ class SimpleUsers extends Backbone.View
     render: ->
         @$el.empty()
 
-        console.log @collection.length
         for i in [0...@collection.length] by 8
             $row = App.Helpers.create 'div', class: 'column-4'
 

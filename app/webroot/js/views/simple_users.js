@@ -21,7 +21,6 @@
     SimpleUsers.prototype.render = function() {
       var $row, i, n, user_view, _i, _j, _ref2, _ref3;
       this.$el.empty();
-      console.log(this.collection.length);
       for (i = _i = 0, _ref2 = this.collection.length; _i < _ref2; i = _i += 8) {
         $row = App.Helpers.create('div', {
           "class": 'column-4'
