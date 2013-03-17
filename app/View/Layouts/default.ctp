@@ -43,7 +43,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                 <a href="<?php echo $this->webroot; ?>">首页</a>
             </div>
             <div class="item contentfavors <?php if($this->request->params['controller'] == 'contentfavors') echo 'active'; ?>">
-                <a href="<?php echo $this->webroot.'contentfavors'; ?>">未知专刊</a>
+                <a href="<?php echo $this->webroot.'contentfavors'; ?>">特色专刊</a>
             </div>
             <div class="item shares <?php if($this->request->params['controller'] == 'shares') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot.'shares'; ?>">分享天地</a>
@@ -126,6 +126,9 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         echo $this->Html->script('views/simple_user');
         echo $this->Html->script('views/simple_users');
         echo $this->Html->script('views/user_basic_info');
+        echo $this->Html->script('views/detail_post');
+        echo $this->Html->script('views/detail_posts');
+        echo $this->Html->script('views/user_detail_info');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');

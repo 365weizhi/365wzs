@@ -42,5 +42,6 @@ class Router extends Backbone.Router
 
     profile: (user_id) ->
         user_basic_info = new App.Views.UserBasicInfo user_id: user_id
+        user_detail_info = new App.Views.UserDetailInfo user_id: user_id
 
 App.Router = Router

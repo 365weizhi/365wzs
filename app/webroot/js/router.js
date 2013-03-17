@@ -76,8 +76,11 @@
     };
 
     Router.prototype.profile = function(user_id) {
-      var user_basic_info;
-      return user_basic_info = new App.Views.UserBasicInfo({
+      var user_basic_info, user_detail_info;
+      user_basic_info = new App.Views.UserBasicInfo({
+        user_id: user_id
+      });
+      return user_detail_info = new App.Views.UserDetailInfo({
         user_id: user_id
       });
     };
