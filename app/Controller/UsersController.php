@@ -160,8 +160,10 @@ class UsersController extends AppController {
             $userinfo['User'] = $account['Registration'];
             if($new_user = $this->User->save($userinfo)){
             	// 增加一个默认专刊
-                $content['Content']['name'] = "default";
+                $content['Content']['name'] = "默认专刊";
                 $content['Content']['user_id'] = $new_user['User']['id'];
+                $content['Content']['create_time'] = time();
+                $content['Content']['update_time'] = time();
                 // 添加用户个人信息
                 $profile['Profile']['user_id'] = $new_user['User']['id'];
                 
