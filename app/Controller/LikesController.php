@@ -10,11 +10,26 @@ class LikesController extends AppController {
 
     function beforeFilter(){
     	$isLogin = $this->isLogin();
-        if($isLogin){
+    
+        if($this->view == 'view'){
         	
-        }else{
-            $this->redirect("/ajax/login");
         }
+        else if(!$isLogin){
+        	$this->redirect('/user/login');
+        }
+    }
+    
+/**
+ * 用户查看自己偷偷喜欢的商品
+ * 前置条件:
+ * 1. 用户已经登录
+ * 2. 只有自己才能看自己的偷偷喜欢商品
+ * 操作：
+ * 1. 通过用户user_id查找用户偷偷喜欢的记录
+ * 2. 查找返回数据到页面
+ */
+    public function view(){
+		
     }
 
 /**

@@ -10,25 +10,18 @@ class FavorsController extends AppController {
 
     function beforeFilter(){
     	$isLogin = $this->isLogin();
-        if($this->view == 'index' || $this->view == "delete"){
+        if($this->view == 'index' || $this->view == "view"){
+        	
         }
         else if(!$isLogin){
-        	$this->redirect('/ajax/login');
+        	$this->redirect('/user/login');
         }
     }
 
 /**
- * view method
- * @throws NotFoundException
- * @param string $id
- * @return void
+ * 查看用户喜欢的商品
  */
-	public function view($id = null) {
-		$this->Favor->id = $id;
-		if (!$this->Favor->exists()) {
-			throw new NotFoundException(__('Invalid favor'));
-		}
-		$this->set('favor', $this->Favor->read(null, $id));
+	public function view($user_id = null) {
 	}
 
 /**
