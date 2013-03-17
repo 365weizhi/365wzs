@@ -29,7 +29,24 @@ class LikesController extends AppController {
  * 2. 查找返回数据到页面
  */
     public function view(){
-		
+		$items = $this->Like->find("all", array(
+			'conditions'=>array(
+				'User.id'=>$this->uid
+			)
+		));
+		$size = sizeof($items);
+		if($size > 0){
+			$rt_obj = array();
+			foreach($items as $item){
+				$rt_obj[] = $item['Item'];
+			}
+			$this->set("size", $size);
+			$this->set("items", $rt_obj);
+			$this->set("user", $items[0]['User']);
+		}
+		else {
+			$this->set("size", 0);
+		}
     }
 
 /**
