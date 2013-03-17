@@ -18,13 +18,32 @@ class FavorsController extends AppController {
     }
 
 /**
- * index method
- *
- * @return void
+ * 用户获取自己分享过的商品
+ * 前置：
+ * 	不用判断太多了，有就有没有就没~
+ * 操作：
+ *  1. 通过user_id从item表中搜出所有当前用户分享的商品
+ *  2. 返回item数组
  */
-	public function index() {
-        $favors = $this->Favor->find('all');
-		$this->set('favors', $favors);//$this->paginate());
+	public function items($user_id) {
+		$this->autoRender = false;
+//		echo "<meta charset='utf-8'>";
+		$items = $this->Item->find("all", array(
+			'conditions'=>array(
+				'Item.user_id'=>$user_id,
+			)
+		));
+		$rt_obj = array();
+		foreach($items as $item){
+			$item['Item']['content_name'] = $item['Content']['name'];
+			$item['Item']['content_description'] = $item['Content']['description'];
+			$item['Item']['content_pic_url'] = $item['Content']['pic_url'];
+			$item['Item']['content_favor_count'] = $item['Content']['favor_count'];
+			$item['Item']['content_like_count'] = $item['Content']['like_count'];
+			$item['Item']['post_count'] = sizeof($item['Post']);
+			$rt_obj[] = $item['Item'];
+		}
+		echo json_encode($rt_obj);
     }
     
 /**
@@ -49,7 +68,7 @@ class FavorsController extends AppController {
  * 操作：
  * 1. 商品属性 并修改商品属性content_id、user_id、faver_count= 0
  * 2. 更新商品属性 update_time，修改商品description
- * 3. 添加到表favors，记录content_id、item_id、user_id
+ * 3. 添加到表favors，记录item_id、user_id
  * 5. 修改categories的son_count--
  * 6. 从cateogry_items中删除item
  */
@@ -80,12 +99,13 @@ class FavorsController extends AppController {
           		// 添加喜欢的商品到自己的专刊中
           		$favor = Array();
           		$favor['Favor']['item_id'] = $item_id;
-                $favor['Favor']['content_id'] = $_POST['content_id'];
+          		// 由于已经被分享的的商品只可以被赞，所以不需要content_id
+                //$favor['Favor']['content_id'] = $_POST['content_id'];
                 $favor['Favor']['user_id'] = $this->uid;
                 $_favor = $this->Favor->save($favor);
                 
                 // 判断是否需要刷新专刊的封面
-                $content = $this->Content->read(null, $favor['Favor']['content_id']);
+                $content = $this->Content->read(null, $_POST['content_id']);
                 if(empty($content['Content']['pic_url'])){
                 	$content['Content']['pic_url'] = $item['Item']['pic_url'];
                 	$this->Content->save($content);
@@ -134,7 +154,7 @@ class FavorsController extends AppController {
 		else {
 			if ($this->request->is('post')) {
 				$favor['Item']['description'] = $_POST['description'];
-				$favor['Favor']['content_id'] = $_POST['content_id'];
+				$favor['Item']['content_id'] = $_POST['content_id'];
 				if ($this->Favor->save($favor)) {
 					$message = "修改成功";
 					$this->redirect(array('action' => 'index'));
