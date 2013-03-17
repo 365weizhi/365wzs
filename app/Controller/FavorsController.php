@@ -10,21 +10,33 @@ class FavorsController extends AppController {
 
     function beforeFilter(){
     	$isLogin = $this->isLogin();
-        if($this->view == 'index' || $this->view == "view"){
+        if($this->view == 'index'){
         	
         }
         else if(!$isLogin){
         	$this->redirect('/user/login');
         }
     }
-
+    
 /**
  * 查看用户喜欢的商品
+ * 前置条件：
+ * 1. 专刊都已经排好序
+ * 操作：
+ * 1. 搜索所有的专刊	
+ * 2. 后期再添加时间商品以上才会被显示的逻辑
  */
-	public function view($user_id = null) {
-	}
+    public function index(){
+    	$contents = $this->Content->find("all", array(
+    		'order'=>'Content.update_time DESC',
+    	));
+    	$this->set("contents", $contents);
+    }
 
 /**
+ * ******
+ * 这个方法后期得修改，改成分享在sharescontroller&赞在favorscontroller
+ * ******
  * 分享商品到用户的目录
  * 前置条件：
  * 1. 存在该商品
@@ -72,6 +84,8 @@ class FavorsController extends AppController {
                 $content = $this->Content->read(null, $_POST['content_id']);
                 if(empty($content['Content']['pic_url'])){
                 	$content['Content']['pic_url'] = $item['Item']['pic_url'];
+                	$content['Content']['update_time'] = time();
+                	$content['Content']['item_count'] ++;
                 	$this->Content->save($content);
                 }
                 
@@ -165,19 +179,21 @@ class FavorsController extends AppController {
 			// 清理Item自带的属性
 			$item = array();
 			$item['Item'] = $favor['Item'];
+			// 从用户专刊内移除商品
+			$this->Content->query("update 365wzs_contents set item_count=item_count-1 where id = ".$item['Content']['content_id']);
 			$item['Item']['content_id'] = 0;
 			$item['Item']['user_id'] = 0;
 			$item['Item']['favor_count'] = 0;
 			$item['Item']['description'] = '';
 			$item['Item']['update_time'] = '';
 			$this->Item->save($item);
-			
 			$this->Favor->delete($favor['Favor']['id']);
-			$this->Category->query("update 365wzs_categories set son_count=son_count+1 where id = 1");
 			$categoryItem = array();
 			$categoryItem['CategoryItem']['category_id'] = 1;
 			$categoryItem['CategoryItem']['item_id'] = $item['Item']['id'];
-			$this->Item->CategoryItem->save($categoryItem);
+			
+			$_categoryItem = $this->Item->CategoryItem->save($categoryItem);
+			$this->Category->query("update 365wzs_categories set son_count=son_count+1 where id = ".$categoryItem['CategoryItem']['id'] );
 			$message = "删除成功";
 		}
 		$this->Session->setFlash(__($message));

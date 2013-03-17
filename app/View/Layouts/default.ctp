@@ -43,7 +43,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                 <a href="<?php echo $this->webroot; ?>">首页</a>
             </div>
             <div class="item contentfavors <?php if($this->request->params['controller'] == 'contentfavors') echo 'active'; ?>">
-                <a href="<?php echo $this->webroot.'contentfavors'; ?>">特色专刊</a>
+                <a href="<?php echo $this->webroot.'favors'; ?>">特色专刊</a>
             </div>
             <div class="item shares <?php if($this->request->params['controller'] == 'shares') echo 'active'; ?>">
                 <a href="<?php echo $this->webroot.'shares'; ?>">分享天地</a>
