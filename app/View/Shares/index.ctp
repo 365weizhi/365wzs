@@ -17,7 +17,7 @@
     <?php foreach ($shares as $item) { ?>
         <div class="image-block">
             <div class="image">
-                <a href="<?php echo $this->webroot."items/view/".$item['Item']['id'];?>">
+                <a href="/items/view/".$item['Item']['id'];?>">
                     <img src="<?php echo $item['Item']['pic_url']; ?>" alt="" />
                 </a>
             </div>

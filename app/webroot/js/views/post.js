@@ -56,6 +56,7 @@
 
     PostView.prototype.render = function() {
       var _this = this;
+	console.log(this);
       this.$el.html(_.template(this.template, this.model.toJSON()));
       this.$el.css({
         left: this.model.get('left')
