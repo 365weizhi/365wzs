@@ -14,15 +14,20 @@
       return Router.__super__.constructor.apply(this, arguments);
     }
 
+		/**
+		 * 这里的路由设置好像和其他语言的不一样，根目录不是用"/"来表示的
+		 */
     Router.prototype.routes = {
-      "365wzs/": 'index',
-      "365wzs/main": 'index',
-      "365wzs/shares": 'index',
-      "365wzs/users/view/:user_id": 'profile',
+      "": 'index',
+      "main": 'index',
+      "shares": 'index',
+      "users/view/:user_id": 'profile',
       "*actions": 'default'
     };
 
-    Router.prototype["default"] = function(actions) {};
+    Router.prototype["default"] = function(actions) {
+			console.log("default");
+		};
 
     Router.prototype.index = function() {
       var postsCollection;
