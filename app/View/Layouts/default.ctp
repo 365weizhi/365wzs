@@ -26,7 +26,9 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
+	<!-- Meta for QQ and Weibo -->
 	<meta property="wb:webmaster" content="cff58bf9aa918fb9" />
+	<meta property="qc:admins" content="35026125005646375" />
 </head>
 <body>
     <div id="header">
