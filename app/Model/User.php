@@ -14,7 +14,11 @@ class User extends AppModel {
 
 /**
  * Display field
- *
+ * * 表中type
+ * 0：常规注册用户
+ * 1：机器人
+ * 2：微博用户
+ * 3：QQ用户
  * @var string
  */
 	public $displayField = 'username';

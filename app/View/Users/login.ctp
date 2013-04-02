@@ -16,7 +16,7 @@
 
 <div class="options">
   <span>用其它方式登陆</span>
-  <a href="" class="option"><?php echo $this->Html->image('weibo.png') ?></a>
+  <a href="https://api.weibo.com/oauth2/authorize?client_id=4136609974&redirect_uri=http://loiter.us/oauth/sina&response_type=code" class="option"><?php echo $this->Html->image('weibo.png') ?></a>
   <a href="" class="option"><?php echo $this->Html->image('qq.png') ?></a>
 
   <strong>还没有账号？</strong>

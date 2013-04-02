@@ -8,11 +8,11 @@
     <legend>用户信息</legend>
 
     <label>昵称</label>
-    <input type="text" name="nickname" placeholder="<?php echo $user['username']; ?>">
-
+    <input type="text" name="nickname" placeholder="<?php echo $user['nickname']; ?>">
+<!-- 
     <label>密码</label>
     <input type="password" name="password" placeholder="要改密码么...">
-
+ -->
     <label>邮箱</label>
     <input type="email" name="email" value="<?php echo $user['email']; ?>">
 

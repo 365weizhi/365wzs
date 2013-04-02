@@ -11,15 +11,24 @@
     <div class="column-4 avatar">
         <table class="column-1-12 avatar-table">
             <tr>
-                <td><img src="<?php echo $this->webroot ?>/static/avatar/<?php echo $user['User']['pic_url']; ?>"></td>
+                <td><img src="
+                	<?php 
+                	if($user['User']['type'] == 2 || $user['User']['type'] == 3){
+                		echo $user['User']['pic_url'];
+                	}
+                	else {
+		               echo $this->webroot."/static/avatar/".$user['User']['pic_url'];
+                	} 
+		            ?>"	
+                	></td>
             </tr>
         </table>
         <table id="user-basic-info" class="column-1 info-table">
             <tr>
-                <td colspan="3" class="username"><?php echo $user['User']['username']; ?></td>
+                <td colspan="3" class="username"><?php echo $user['User']['nickname']; ?></td>
             </tr>
             <tr>
-                <td colspan="3" class="location">广东，佛山</td>
+                <td colspan="3" class="location"><?php echo $user['User']['address']?></td>
             </tr>
             <tr>
                 <td class="follows"><span class="number"><?php echo $nexus['count_2']; ?></span></td>

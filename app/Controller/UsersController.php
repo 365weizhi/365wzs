@@ -81,8 +81,6 @@ class UsersController extends AppController {
     }
 /**
  * login method
- *
- * @return void
  */
     public function login(){
         if(isset($_POST['username']) && isset($_POST['password'])){
@@ -111,7 +109,9 @@ class UsersController extends AppController {
  * @param string $id
  * @return void
  */
-    public function view($user_id) {
+    public function view($user_id = null) {
+    	if(!$user_id)
+    		$user_id = $this->uid;
 		$user = $this->User->find("first", array(
 			'conditions'=>array(
 				'id'=>$user_id,
@@ -133,7 +133,11 @@ class UsersController extends AppController {
 
 /**
  * activate method
- * activate user in Registerations table
+ * 表中type
+ * 0：常规注册用户
+ * 1：机器人
+ * 2：微博用户
+ * 3：QQ用户
  * @return void
  */
     public function active($key){
@@ -317,7 +321,6 @@ class UsersController extends AppController {
         		'id'=>$this->uid,
         	)
         ));
-        
 		if (!$user) {
 			$rt_obj['code'] = "failed";
 			$rt_obj['msg'] = "用户不存在呢~";
